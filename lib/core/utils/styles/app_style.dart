@@ -1,0 +1,18 @@
+import 'package:dentiq/core/utils/colors/app_colors.dart';
+import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class AppStyle {
+   static final TextStyle _baseStyle = GoogleFonts.poppins(
+    color: AppColors.blackColor,
+  );
+   static final text20 = _baseStyle.copyWith(
+    fontWeight: FontWeight.bold,
+    fontSize: 20,
+  );
+
+  static final text18 = _baseStyle.copyWith(
+    fontWeight: FontWeight.bold,
+    fontSize: 18,
+  );
+}
