@@ -1,3 +1,6 @@
+import 'package:dentiq/core/utils/colors/app_colors.dart';
+import 'package:dentiq/core/utils/styles/app_style.dart';
+import 'package:dentiq/core/utils/widgets/custom_elevated_button.dart';
 import 'package:dentiq/features/onboarding/data/model/onboarding_data.dart';
 import 'package:dentiq/features/onboarding/presentation/widgets/dot_widget.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +19,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 70.0),
+        padding: const EdgeInsets.symmetric(vertical: 70.0,horizontal: 10),
         child: Column(
           children: [
             Expanded(
@@ -34,29 +37,28 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                       Card(
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                         child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20), // لازم هنا كمان
+                              borderRadius: BorderRadius.circular(20), 
                   
                           child: Image.asset(
                             onboardingData[index].image,
                             height: 250,
+                            width: double.infinity,
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
-                      SizedBox(height: 40),
+                      const SizedBox(height: 40),
                       Text(
                         onboardingData[index].title,
-                        style: TextStyle(
-                            fontSize: 28,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue[900]),
+                        style:AppStyle.text28.copyWith(color: AppColors.blue900),                        
+                        
+                         
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Text(
                         onboardingData[index].description,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 18, color: Colors.blueGrey[800]),
+                        style: AppStyle.text18.copyWith(color: AppColors.blueGrey,fontWeight: FontWeight.w500),
                       ),
                     ],
                   );
@@ -70,44 +72,37 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                 (index) => DotBuilder(index: index, currentPage: currentPage,),
               ),
             ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      // Skip the onboarding
-                    },
-                    child: Text(
-                      "Skip",
-                      style: TextStyle(fontSize: 18, color: Colors.blue[900]),
-                    ),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextButton(
+                  onPressed: () {
+                  },
+                  child: Text(
+                    "Skip",
+                                          style: AppStyle.text18.copyWith(color: AppColors.blue900),
+            
                   ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue[900],
-                      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                    ),
-                    onPressed: () {
-                      if (currentPage == onboardingData.length - 1) {
-                      } else {
-                        _controller.nextPage(
-                          duration: Duration(milliseconds: 300),
-                          curve: Curves.ease,
-                        );
-                      }
-                    },
-                    child: Text(
-                      currentPage == onboardingData.length - 1 ? "Start" : "Next",
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ),
-                  )
-                ],
-              ),
+                ),
+
+                CustomElevatedButton(
+                  backgroundColor:AppColors.blue900 ,
+                  padding:  const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+
+                 text: currentPage == onboardingData.length - 1 ? "Start" : "Next", onPressed: () { 
+                     if (currentPage == onboardingData.length - 1) {
+                    } else {
+                      _controller.nextPage(
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.ease,
+                      );
+                    }
+                   },textStyle: AppStyle.text18,)
+  
+              ],
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
           ],
         ),
       );
