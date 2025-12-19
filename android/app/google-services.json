@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "562115108928",
+    "project_id": "dentiq-317c6",
+    "storage_bucket": "dentiq-317c6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:562115108928:android:cf558a61bcb1f9468dbfa5",
+        "android_client_info": {
+          "package_name": "com.example.dentiq"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZd9cOnAG-Yr_leIiVekTWgf3x7E8k9gs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

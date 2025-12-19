@@ -18,6 +18,11 @@ class AppStyle {
     fontSize: 18,
 
   );
+    static final text16 = _baseStyle.copyWith(
+    fontWeight: FontWeight.w500,
+    fontSize: 16,
+
+  );
    static final text28 = _baseStyle.copyWith(
     fontWeight: FontWeight.bold,
     fontSize: 28,
