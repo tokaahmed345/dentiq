@@ -14,6 +14,7 @@ class SignUpCubit extends Cubit<SignUpState> {
     required String password,
     required String phone,
     required String gender,})async{
+       emit(SignUpLoading());
 
 final user = await signUpRepo.register(name: name, email: email, password: password, phone: phone, gender: gender);
 user.fold((failure)=>emit(SignUpFailure(errorMessage: failure.message)), (user)=>emit(SignUpSuccess(userModel: user)));

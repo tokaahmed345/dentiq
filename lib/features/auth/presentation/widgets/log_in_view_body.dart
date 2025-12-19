@@ -5,8 +5,11 @@ import 'package:dentiq/core/utils/router/routes_name.dart';
 import 'package:dentiq/core/utils/styles/app_style.dart';
 import 'package:dentiq/core/utils/widgets/custom_elevated_button.dart';
 import 'package:dentiq/core/utils/widgets/custom_text_form_field.dart';
+import 'package:dentiq/core/utils/widgets/snackbar.dart';
+import 'package:dentiq/features/auth/presentation/view_model/auth_cubit/log_in_cubit/log_in_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class LogInViewBody extends StatefulWidget {
@@ -19,8 +22,8 @@ class LogInViewBody extends StatefulWidget {
 class _LogInViewBodyState extends State<LogInViewBody> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final GlobalKey <FormState>formKey=GlobalKey();
-   bool obscure=true;
+  final GlobalKey<FormState> formKey = GlobalKey();
+  bool obscure = true;
   @override
   void dispose() {
     super.dispose();
@@ -66,26 +69,26 @@ class _LogInViewBodyState extends State<LogInViewBody> {
             ),
             const SizedBox(height: 32),
             CustomFormField(
-              validator: (value){
-                   return   Validators.emailValidator(value);
-                    },
+              validator: (value) {
+                return Validators.emailValidator(value);
+              },
               hint: 'your.email@example.com',
               controller: emailController,
               icon: Icons.email_outlined,
             ),
             const SizedBox(height: 16),
             CustomFormField(
-              validator: (value){
-                   return   Validators.passwordValidator(value);
-                    },
+              validator: (value) {
+                return Validators.passwordValidator(value);
+              },
               hint: '*********',
               obscure: obscure,
               controller: passwordController,
               icon: Icons.lock_outline,
-              suffixIcon:obscure? Icons.visibility_off: Icons.visibility,
-              onPressed: (){
+              suffixIcon: obscure ? Icons.visibility_off : Icons.visibility,
+              onPressed: () {
                 setState(() {
-                  obscure=! obscure;
+                  obscure = !obscure;
                 });
               },
             ),
@@ -94,7 +97,7 @@ class _LogInViewBodyState extends State<LogInViewBody> {
               alignment: Alignment.centerRight,
               child: TextButton(
                 onPressed: () {
-                  GoRouter.of(context).go(RoutesName.forgotPassword);
+                  GoRouter.of(context).pushNamed(RoutesName.forgotPassword);
                 },
                 child: Text('Forgot Password?',
                     style: AppStyle.text16.copyWith(
@@ -104,34 +107,60 @@ class _LogInViewBodyState extends State<LogInViewBody> {
               ),
             ),
             const SizedBox(height: 20),
-            SizedBox(
-                width: double.infinity,
-                height: 62,
-                child: CustomElevatedButton(
-                    radius: 12,
-                    text: "Log In →",
-                    textStyle: AppStyle.text18,
-                    onPressed: () {
-                      if(formKey.currentState!.validate()){
-
-                      }
-                    },
-                    backgroundColor: AppColors.primary)),
+            BlocConsumer<LogInCubit, LogInState>(
+              listener: (context, state) {
+                 if (state is LogInFailure) {
+                      showSnackBarFuction(context, state.errorMessage, isError: true);
+                    }
+                    if (state is LogInSuccess) {
+                      showSnackBarFuction(
+                              context, "Welcome back to Dentiq 🦷", isError: false)
+                          .then((_) {
+                        if (context.mounted) context.go(RoutesName.home);
+                      });
+                    }
+              },
+              builder: (context, state) {
+                return SizedBox(
+                    width: double.infinity,
+                    height: 62,
+                    child:state is LogInLoading
+    ? Center(
+        
+        child:  CircularProgressIndicator(
+          color: AppColors.primary,
+        ),
+      ): CustomElevatedButton(
+                        radius: 12,
+                        text: "Log In →",
+                        textStyle: AppStyle.text18,
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            context.read<LogInCubit>().logIn(
+      email: emailController.text,
+      password: passwordController.text,
+    );
+                          }
+                        },
+                        backgroundColor: AppColors.primary));
+              },
+            ),
             const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children:  [
-                Text("Don't have an account? ",style: AppStyle.text16.copyWith(color:   AppColors.blackColor),),
+              children: [
+                Text(
+                  "Don't have an account? ",
+                  style: AppStyle.text16.copyWith(color: AppColors.blackColor),
+                ),
                 InkWell(
-                  onTap: (){
+                  onTap: () {
                     GoRouter.of(context).go(RoutesName.signup);
                   },
-                  child: Text(
-                    'Sign Up',
-                    style:AppStyle.text16.copyWith(   color: AppColors.darkBlue,fontWeight: FontWeight.bold)
-                    
-                             
-                  ),
+                  child: Text('Sign Up',
+                      style: AppStyle.text16.copyWith(
+                          color: AppColors.darkBlue,
+                          fontWeight: FontWeight.bold)),
                 ),
               ],
             ),
