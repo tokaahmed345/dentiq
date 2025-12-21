@@ -36,7 +36,10 @@ class ButtonsSection extends StatelessWidget {
           OutlinedButton.icon(
             onPressed: () {},
             icon: const Icon(Icons.upload),
-            label: const Text('Upload from Gallery'),
+            label:  Text('Upload from Gallery',style: AppStyle.text18.copyWith(
+                  color: AppColors.primary,
+                  fontWeight: FontWeight.w600,
+                ),),
             style: OutlinedButton.styleFrom(
               minimumSize: const Size(double.infinity, 52),
               shape: RoundedRectangleBorder(

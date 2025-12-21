@@ -6,5 +6,6 @@ class RoutesName {
   static const String forgotPassword='/forgotPassword';
   static const String home='/home';
   static const String scan='/scan';
-
+  static const String tips='/tips';
+static const String profile="/ProfileView";
 }

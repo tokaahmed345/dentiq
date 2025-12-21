@@ -4,7 +4,9 @@ import 'package:dentiq/features/auth/presentation/log_in_view.dart';
 import 'package:dentiq/features/auth/presentation/sign_up_view.dart';
 import 'package:dentiq/features/home/presentation/home_view.dart';
 import 'package:dentiq/features/onboarding/presentation/onboarding_view.dart';
+import 'package:dentiq/features/profile/profile_view.dart';
 import 'package:dentiq/features/splash/presentation/splash_view.dart';
+import 'package:dentiq/features/tips/presentation/tips_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 
@@ -58,6 +60,16 @@ class AppRouter {
         path: RoutesName.scan,
         name: RoutesName.scan,
         builder: (context, state) => const HomeView(),
+      ),
+      GoRoute(
+        path: RoutesName.tips,
+        name: RoutesName.tips,
+        builder: (context, state) => const TipsView(),
+      ),
+           GoRoute(
+        path: RoutesName.profile,
+        name: RoutesName.profile,
+        builder: (context, state) => const ProfileView(),
       ),
     ],
   );

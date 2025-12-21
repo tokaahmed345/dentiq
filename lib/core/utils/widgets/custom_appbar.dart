@@ -7,24 +7,28 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
     required this.title,
-    required this.subtitle,
+    this.subtitle,
     this.onNotificationTap,
+    this.bottom,
+    this.suffixIcon,
   });
 
   final String title;
-  final String subtitle;
+  final String? subtitle;
   final VoidCallback? onNotificationTap;
-
+  final PreferredSizeWidget? bottom;
+final IconData ?suffixIcon;
   @override
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
       backgroundColor: AppColors.primary,
+      toolbarHeight: 80,
+      bottom: bottom,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(30),
           bottomRight: Radius.circular(30),
-
         ),
       ),
       title: Row(
@@ -32,6 +36,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   title,
@@ -40,42 +45,38 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                const SizedBox(height: 5),
-                Text(
-                  subtitle,
-                  style: AppStyle.text16.copyWith(
-                    color: Colors.white70,
+                if (subtitle != null)
+                  Text(
+                    subtitle!,
+                    style: AppStyle.text16.copyWith(
+                      color: Colors.white70,
+                    ),
                   ),
-                ),
               ],
             ),
           ),
-
-          
-          Container(
-  width: 48,
-  height: 48,
-  decoration: const BoxDecoration(
-    color: AppColors.whiteColor,
-    shape: BoxShape.circle,
-  ),
-  child: Center(
-    child: GestureDetector(
-      onTap: onNotificationTap,
-      child: Icon(
-        Icons.notifications_outlined,
-        size: 35,
-        color: AppColors.primary,
-      ),
-    ),
-  ),
-),
-
+          if (onNotificationTap != null)
+            GestureDetector(
+              onTap: onNotificationTap,
+              child: Container(
+                width: 44,
+                height: 44,
+                decoration: const BoxDecoration(
+                  color: AppColors.whiteColor,
+                  shape: BoxShape.circle,
+                ),
+                child:  Icon(
+suffixIcon,
+                  color: AppColors.primary,
+                ),
+              ),
+            ),
         ],
       ),
     );
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(80);
+  Size get preferredSize =>
+      Size.fromHeight(bottom == null ? 80 : 140);
 }
