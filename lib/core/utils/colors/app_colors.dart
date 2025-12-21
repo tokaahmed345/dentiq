@@ -11,4 +11,15 @@ static Color? primary=Colors.blue[900];
 
 static const redColor= Colors.red;
 
+
+
+  /// Primary gradient colors
+  static const Color primaryDark = Color(0xff020617);
+
+  /// Backgrounds
+  static const Color lightBackground = Color(0xffF6F7FB);
+  static const Color tipsBackground = Color(0xffEEF2FF);
+
+  /// Status
+  static const Color success = Colors.green;
 }

@@ -54,6 +54,11 @@ class AppRouter {
         name: RoutesName.home,
         builder: (context, state) => const HomeView(),
       ),
+       GoRoute(
+        path: RoutesName.scan,
+        name: RoutesName.scan,
+        builder: (context, state) => const HomeView(),
+      ),
     ],
   );
 }

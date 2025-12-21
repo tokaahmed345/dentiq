@@ -5,4 +5,5 @@ static const String onboardingTwo= "assets/images/onboarding_two.jfif";
 
 static const String onboardingThree= "assets/images/onboarding_three.jfif";
  static const String tooth= "assets/images/tooth.png";
+ static const String scan="assets/images/Scan.json";
 }

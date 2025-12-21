@@ -5,5 +5,6 @@ class RoutesName {
   static const String signup='/sigUp';
   static const String forgotPassword='/forgotPassword';
   static const String home='/home';
+  static const String scan='/scan';
 
 }
