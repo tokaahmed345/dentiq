@@ -10,7 +10,7 @@ class ScanView extends StatelessWidget {
   Widget build(BuildContext context) {
     return 
 
-      SafeArea(child: SingleChildScrollView(child: ScanViewBody()),);
+      Scaffold(body: SafeArea(child: SingleChildScrollView(child: ScanViewBody()),));
     
     
 
