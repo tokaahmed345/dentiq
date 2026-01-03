@@ -18,7 +18,7 @@ class CustomCarouselSlider extends StatelessWidget {
             items: [
               buildCarouselCard(AppAssets.keepTeeth, "Keep Your Teeth Healthy!"),
               buildCarouselCard(AppAssets.floosTeeth, "Don't Forget To Floss!"),
-              buildCarouselCard(AppAssets.visitDoctor, "Visit Your Dentist Regularly"),
+              buildCarouselCard(AppAssets.scanTeeth, "Scan Your Teeth Regularly"),
             ],
           );
   

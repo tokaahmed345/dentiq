@@ -1,7 +1,6 @@
 import 'package:dentiq/core/utils/colors/app_colors.dart';
 import 'package:dentiq/core/utils/widgets/custom_appbar.dart';
 import 'package:dentiq/features/progress_tracker/presentation/widgets/progress_view_body.dart';
-import 'package:dentiq/features/tips/presentation/widgets/articles_details.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
