@@ -6,7 +6,6 @@ import 'package:dentiq/features/scan/presentation/scan_view.dart';
 import 'package:dentiq/features/tips/presentation/tips_view.dart';
 import 'package:flutter/material.dart';
 
-
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
@@ -21,56 +20,53 @@ class _HomeViewState extends State<HomeView> {
     HomeViewBody(),
     ScanView(),
     TipsView(),
-   ProfileView()
+    ProfileView()
   ];
 
-PreferredSizeWidget? _buildAppBar() {
-  switch (_currentIndex) {
-    case 2:
-      return const CustomAppBar(
-        title: "Dental Tips",
-        subtitle: "Daily care tips",
-        bottom: TipsTabs(),
-      );
+  PreferredSizeWidget? _buildAppBar() {
+    switch (_currentIndex) {
+      case 2:
+        return const CustomAppBar(
+          title: "Dental Tips",
+          subtitle: "Daily care tips",
+          bottom: TipsTabs(),
+        );
 
-    case 0:
-      return CustomAppBar(
-        title: "DentIQ",
-        subtitle: "Your smile, our priority",
-        onNotificationTap: () {},
-        suffixIcon:                   Icons.notifications_outlined,
+      case 0:
+        return CustomAppBar(
+          title: "DentIQ",
+          subtitle: "Your smile, our priority",
+          onNotificationTap: () {},
+          suffixIcon: Icons.notifications_outlined,
+        );
 
-      );
+      case 1:
+        return CustomAppBar(
+          title: "Teeth Scan",
+        );
 
-    case 1:
-      return  CustomAppBar(
-        title: "Teeth Scan",
+      case 3:
+        return const CustomAppBar(
+          title: "Profile",
+          subtitle: "Your personal info",
+        );
 
-      );
-
-    case 3:
-      return const CustomAppBar(
-        title: "Profile",
-        subtitle: "Your personal info",
-      );
-
-    default:
-      return null;
+      default:
+        return null;
+    }
   }
-}
 
   @override
   Widget build(BuildContext context) {
-   return DefaultTabController(
-  length: 3,
-  child: Scaffold(
-    backgroundColor: Colors.blue[50],
-    appBar: _buildAppBar(),
-    body: SafeArea(child: _pages[_currentIndex]),
-    bottomNavigationBar: _buildBottomNav(),
-  ),
-);
-
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        backgroundColor: Colors.blue[50],
+        appBar: _buildAppBar(),
+        body: SafeArea(child: _pages[_currentIndex]),
+        bottomNavigationBar: _buildBottomNav(),
+      ),
+    );
   }
 
   Widget _buildBottomNav() {
@@ -101,8 +97,10 @@ PreferredSizeWidget? _buildAppBar() {
         unselectedItemColor: Colors.grey,
         items: [
           _buildAnimatedItem(Icons.home_outlined, Icons.home, 'Home', 0),
-          _buildAnimatedItem(Icons.qr_code_scanner_outlined, Icons.qr_code_scanner, 'Scan', 1),
-          _buildAnimatedItem(Icons.lightbulb_outline, Icons.lightbulb, 'Tips', 2),
+          _buildAnimatedItem(
+              Icons.qr_code_scanner_outlined, Icons.qr_code_scanner, 'Scan', 1),
+          _buildAnimatedItem(
+              Icons.lightbulb_outline, Icons.lightbulb, 'Tips', 2),
           _buildAnimatedItem(Icons.person_outline, Icons.person, 'Profile', 3),
         ],
       ),
@@ -110,11 +108,11 @@ PreferredSizeWidget? _buildAppBar() {
   }
 
   BottomNavigationBarItem _buildAnimatedItem(
-      IconData icon,
-      IconData activeIcon,
-      String label,
-      int index,
-      ) {
+    IconData icon,
+    IconData activeIcon,
+    String label,
+    int index,
+  ) {
     bool isActive = _currentIndex == index;
     return BottomNavigationBarItem(
       icon: AnimatedScale(
@@ -127,7 +125,6 @@ PreferredSizeWidget? _buildAppBar() {
   }
 }
 
-
 class TipsTabs extends StatelessWidget implements PreferredSizeWidget {
   const TipsTabs({super.key});
 
@@ -137,10 +134,17 @@ class TipsTabs extends StatelessWidget implements PreferredSizeWidget {
       margin: const EdgeInsets.fromLTRB(16, 8, 16, 12),
       padding: const EdgeInsets.all(6),
       decoration: BoxDecoration(
-        // color: Colors.white.withOpacity(.25),
         borderRadius: BorderRadius.circular(22),
       ),
       child: TabBar(
+        onTap: (index) {
+          // index 0 = Videos, 1 = Articles, 2 = Guidelines
+          // if (index == 1) {
+          //   context.read<ArticlesCubit>().getArticles();
+          // }   if (index == 0) {
+          //   context.read<VideosCubit>().getVideos();
+          // }
+        },
         indicator: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(18),
@@ -164,8 +168,8 @@ class TipsTabs extends StatelessWidget implements PreferredSizeWidget {
         ),
         tabs: const [
           Tab(text: 'Videos'),
-          Tab(text: 'Guidelines'),
           Tab(text: 'Articles'),
+          Tab(text: 'Guidelines'),
         ],
       ),
     );
@@ -174,4 +178,3 @@ class TipsTabs extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(60);
 }
-

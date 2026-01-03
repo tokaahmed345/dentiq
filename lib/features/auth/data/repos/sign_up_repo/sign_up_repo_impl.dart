@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dentiq/core/utils/failure/failure.dart';
+import 'package:dentiq/core/utils/sharedprefrence.dart';
 import 'package:dentiq/features/auth/data/model/sign_up_model.dart';
 import 'package:dentiq/features/auth/data/repos/sign_up_repo/sign_up_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -8,10 +9,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class SignUpRepoImpl extends SignUpRepo {
   final FirebaseAuth firebaseAuth;
   final FirebaseFirestore firestore;
-
+  final SharedPrefs sharedPrefs;
   SignUpRepoImpl({
     required this.firebaseAuth,
-required this.firestore,
+required this.firestore, required this.sharedPrefs,
   }) ;
 
   @override
@@ -37,6 +38,8 @@ required this.firestore,
       );
 
       await firestore.collection('users').doc(user.id).set(user.toMap());
+
+      await  sharedPrefs.saveUserId(user.id);
 
       return Right(user);
     } on FirebaseAuthException catch (e) {

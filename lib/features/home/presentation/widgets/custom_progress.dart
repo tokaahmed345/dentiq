@@ -1,10 +1,14 @@
-
 import 'package:dentiq/core/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomProgress extends StatelessWidget {
+  final double progress;
+  final String message;
+
   const CustomProgress({
     super.key,
+    required this.progress,
+    required this.message,
   });
 
   @override
@@ -19,16 +23,25 @@ class CustomProgress extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Today's Progress", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color: AppColors.whiteColor)),
-              SizedBox(height: 10),
+              Text("Today's Progress",
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.whiteColor)),
+              const SizedBox(height: 10),
               LinearProgressIndicator(
-                value: 0.6,
+                value: progress,
                 color: AppColors.primary,
                 backgroundColor: AppColors.whiteColor.withOpacity(.7),
                 minHeight: 10,
               ),
-              SizedBox(height: 5),
-              Text("60% Completed", style: TextStyle(color: AppColors.whiteColor)),
+              const SizedBox(height: 5),
+              Text("${(progress * 100).toInt()}% Completed",
+                  style: TextStyle(color: AppColors.whiteColor)),
+              const SizedBox(height: 5),
+              Text(message,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.white)),
             ],
           ),
         ),

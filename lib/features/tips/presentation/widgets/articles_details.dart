@@ -1,15 +1,18 @@
 
 import 'package:dentiq/core/utils/assets/app_assets.dart';
 import 'package:dentiq/core/utils/colors/app_colors.dart';
+import 'package:dentiq/core/utils/styles/app_style.dart';
+import 'package:dentiq/features/tips/data/models/articles_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ArticleDetailsView extends StatelessWidget {
-  const ArticleDetailsView({super.key});
-
+  const ArticleDetailsView({super.key, required this.article});
+final Article article;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue[50],
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -36,8 +39,8 @@ class ArticleDetailsView extends StatelessWidget {
             expandedHeight: 260,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                    AppAssets.onboardingTwo,
+              background: Image.network(
+                  article.imageUrl,
                 fit: BoxFit.cover,
               ),
             ),
@@ -46,32 +49,91 @@ class ArticleDetailsView extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             sliver: SliverList(
               delegate: SliverChildListDelegate(
-                const [
+                 [
                   Text(
-                    'How to Brush Your Teeth Properly',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    ),
+                   article.title,
+                    style: AppStyle.text20.copyWith(color: AppColors.primary,    fontWeight: FontWeight.bold,)
+                    
+                 
                   ),
                   SizedBox(height: 12),
+                  
                   Text(
-                    'Proper brushing technique is essential for maintaining good oral health...\n\n'
-                    '• Use a soft-bristled toothbrush\n'
-                    '• Brush at a 45-degree angle\n'
-                    '• Brush for at least two minutes\n'
-                    '• Don’t forget your tongue\n',
-                    style: TextStyle(
-                      fontSize: 16,
-                      height: 1.6,
-                    ),
+                   article.content,
+                                        style: AppStyle.text16.copyWith(color:AppColors.blueGrey,)
+
                   ),
+//                   const SizedBox(height: 24),
+
+// Container(
+//   padding: const EdgeInsets.all(16),
+//   decoration: BoxDecoration(
+//     color: Colors.blue[100],
+//     borderRadius: BorderRadius.circular(16),
+//   ),
+//   child: Column(
+//     crossAxisAlignment: CrossAxisAlignment.start,
+//     children: [
+//       Row(
+//         children: [
+//            Icon(
+//             Icons.lightbulb_outline,
+//             color: AppColors.primary,
+//             size: 22,
+//           ),
+//           const SizedBox(width: 8),
+//           Text(
+//             'Key Takeaways',
+//             style: AppStyle.text16.copyWith(
+//               fontWeight: FontWeight.bold,
+//               color: AppColors.darkBlue,
+//             ),
+//           ),
+//         ],
+//       ),
+
+//       // const SizedBox(height: 12),
+
+//       // _buildBulletText('Consistency is more important than intensity'),
+//       // _buildBulletText('Proper technique ensures better results'),
+//       // _buildBulletText('Make it a daily habit for long-term benefits'),
+//     ],
+//   ),
+// ),
+
                 ],
               ),
             ),
           ),
         ],
       ),
+      
     );
+    
   }
+  
+
+// Widget _buildBulletText(String text) {
+//   return Padding(
+//     padding: const EdgeInsets.only(bottom: 8),
+//     child: Row(
+//       crossAxisAlignment: CrossAxisAlignment.start,
+//       children: [
+//         const Text(
+//           '• ',
+//           style: TextStyle(fontSize: 18),
+//         ),
+//         Expanded(
+//           child: Text(
+//             text,
+//             style: AppStyle.text16.copyWith(
+//               color: AppColors.blueGrey,
+//             ),
+//           ),
+//         ),
+//       ],
+//     ),
+//   );
+// }
+  
 }

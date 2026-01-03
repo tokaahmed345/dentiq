@@ -40,7 +40,7 @@
 //   }
 // }
 import 'package:dentiq/core/utils/colors/app_colors.dart';
-import 'package:dentiq/features/tips/presentation/view_model/cubit/videos_cubit_cubit.dart';
+import 'package:dentiq/features/tips/presentation/view_model/videos_cubit/videos_cubit_cubit.dart';
 import 'package:dentiq/features/tips/presentation/widgets/video_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

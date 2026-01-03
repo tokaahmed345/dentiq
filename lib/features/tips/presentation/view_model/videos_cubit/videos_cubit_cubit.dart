@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dentiq/features/tips/data/models/video_model.dart';
-import 'package:dentiq/features/tips/data/repo/video_repo.dart';
+import 'package:dentiq/features/tips/data/repo/video_repo/video_repo.dart';
 import 'package:equatable/equatable.dart';
 
 part 'videos_cubit_state.dart';
