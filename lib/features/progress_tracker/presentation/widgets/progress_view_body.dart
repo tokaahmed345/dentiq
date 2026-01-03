@@ -10,7 +10,6 @@ class ProgressViewBody extends StatelessWidget {
     return BlocConsumer<ProgressTrackerCubit, ProgressTrackerState>(
       listener: (context, state) {
         if (state is ProgressTrackerSuccess) {
-          // لو الرسالة فيها مكافأة، نعرض SnackBar
           if (state.message.contains("🎉")) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               ScaffoldMessenger.of(context).showSnackBar(
@@ -24,7 +23,6 @@ class ProgressViewBody extends StatelessWidget {
             });
           }
         } else if (state is ProgressTrackerFailure) {
-          // لو في خطأ نعرضه
           WidgetsBinding.instance.addPostFrameCallback((_) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
@@ -45,11 +43,18 @@ class ProgressViewBody extends StatelessWidget {
           final dailyProgress = state.dailyProgress;
 
           final routines = [
-            {"title": "Morning Brushing", "done": dailyProgress.morningBrushing},
-            {"title": "Flossing", "done": dailyProgress.flossing},
-            {"title": "Evening Brushing", "done": dailyProgress.eveningBrushing},
-            {"title": "Mouthwash", "done": dailyProgress.mouthwash},
-          ];
+{"title":  "Morning Brushing","done": dailyProgress.morningBrushing},
+{ "title": "Evening Brushing","done": dailyProgress.eveningBrushing},
+{  "title":"Flossing" ,"done":dailyProgress.flossing} ,
+{ "title":"Mouthwash","done": dailyProgress.mouthwash,},
+{  "title":"Drink Water","done": dailyProgress.drinkWater}  ,
+{"title":"Healthy Meals","done": dailyProgress.healthyMeals,
+},
+{"title"  :"Tongue Cleaning","done": dailyProgress.tongueCleaning},
+{ "title" :"Check Gums","done": dailyProgress.checkGums,
+}         
+ ];
+
 
           final overallProgress = state.overallProgress;
 

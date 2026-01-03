@@ -16,25 +16,7 @@ final Article article;
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            leading: Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: CircleAvatar(
-                radius: 18,
-                  backgroundColor: Colors.white54,
-                  child: IconButton(
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(),
-                    icon:  Icon(
-                      Icons.arrow_back_ios_new,
-                      size: 27,
-                      color: AppColors.primary,
-                    ),
-                    onPressed: () {
-                      GoRouter.of(context).pop();
-                    },
-                  ),
-              ),
-            ),
+            leading: CustomArrowBack(),
             automaticallyImplyLeading: false,
             expandedHeight: 260,
             pinned: true,
@@ -136,4 +118,33 @@ final Article article;
 //   );
 // }
   
+}
+
+class CustomArrowBack extends StatelessWidget {
+  const CustomArrowBack({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: CircleAvatar(
+        radius: 18,
+          backgroundColor: Colors.white54,
+          child: IconButton(
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(),
+            icon:  Icon(
+              Icons.arrow_back_ios_new,
+              size: 27,
+              color: AppColors.primary,
+            ),
+            onPressed: () {
+              GoRouter.of(context).pop();
+            },
+          ),
+      ),
+    );
+  }
 }

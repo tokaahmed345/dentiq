@@ -3,12 +3,20 @@ class DailyProgressModel {
   bool eveningBrushing;
   bool flossing;
   bool mouthwash;
+  bool drinkWater;
+  bool healthyMeals;
+  bool tongueCleaning;
+  bool checkGums;
 
   DailyProgressModel({
-    required this.morningBrushing,
-    required this.eveningBrushing,
-    required this.flossing,
-    required this.mouthwash,
+    this.morningBrushing = false,
+    this.eveningBrushing = false,
+    this.flossing = false,
+    this.mouthwash = false,
+    this.drinkWater = false,
+    this.healthyMeals = false,
+    this.tongueCleaning = false,
+    this.checkGums = false,
   });
 
   Map<String, dynamic> toJson() => {
@@ -16,6 +24,10 @@ class DailyProgressModel {
         'eveningBrushing': eveningBrushing,
         'flossing': flossing,
         'mouthwash': mouthwash,
+        'drinkWater': drinkWater,
+        'healthyMeals': healthyMeals,
+        'tongueCleaning': tongueCleaning,
+        'checkGums': checkGums,
       };
 
   factory DailyProgressModel.fromJson(Map<String, dynamic> json) =>
@@ -24,5 +36,9 @@ class DailyProgressModel {
         eveningBrushing: json['eveningBrushing'] ?? false,
         flossing: json['flossing'] ?? false,
         mouthwash: json['mouthwash'] ?? false,
+        drinkWater: json['drinkWater'] ?? false,
+        healthyMeals: json['healthyMeals'] ?? false,
+        tongueCleaning: json['tongueCleaning'] ?? false,
+        checkGums: json['checkGums'] ?? false,
       );
 }

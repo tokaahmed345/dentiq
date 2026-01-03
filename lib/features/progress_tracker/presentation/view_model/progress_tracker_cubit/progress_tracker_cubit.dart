@@ -133,8 +133,12 @@ class ProgressTrackerCubit extends Cubit<ProgressTrackerState> {
       p.flossing,
       p.eveningBrushing,
       p.mouthwash,
+      p.checkGums,
+      p.drinkWater,
+      p.healthyMeals,
+      p.tongueCleaning
     ].where((e) => e).length;
-    return done / 4;
+    return done / 8;
   }
 
   String _getMessage(double progress) {
@@ -163,23 +167,34 @@ class ProgressTrackerCubit extends Cubit<ProgressTrackerState> {
       final currentState = state as ProgressTrackerSuccess;
       final dailyProgress = currentState.dailyProgress;
 
-      // تحديث الروتين اللي المستخدم غيره
-      switch (routine) {
-        case "Morning Brushing":
-          dailyProgress.morningBrushing = value;
-          break;
-        case "Flossing":
-          dailyProgress.flossing = value;
-          break;
-        case "Evening Brushing":
-          dailyProgress.eveningBrushing = value;
-          break;
-        case "Mouthwash":
-          dailyProgress.mouthwash = value;
-          break;
-      }
+     switch (routine) {
+  case "Morning Brushing":
+    dailyProgress.morningBrushing = value;
+    break;
+  case "Evening Brushing":
+    dailyProgress.eveningBrushing = value;
+    break;
+  case "Flossing":
+    dailyProgress.flossing = value;
+    break;
+  case "Mouthwash":
+    dailyProgress.mouthwash = value;
+    break;
+  case "Drink Water":
+    dailyProgress.drinkWater = value;
+    break;
+  case "Healthy Meals":
+    dailyProgress.healthyMeals = value;
+    break;
+  case "Tongue Cleaning":
+    dailyProgress.tongueCleaning = value;
+    break;
+  case "Check Gums":
+    dailyProgress.checkGums = value;
+    break;
+}
 
-      // حفظ التغيير في Firestore
+
       final resRoutine =
           await progress.updateRoutine(routineFieldKey(routine), value);
       resRoutine.fold(

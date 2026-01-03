@@ -1,6 +1,7 @@
 
 import 'package:dentiq/core/utils/colors/app_colors.dart';
 import 'package:dentiq/core/utils/styles/app_style.dart';
+import 'package:dentiq/features/tips/presentation/widgets/articles_details.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -10,7 +11,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.subtitle,
     this.onNotificationTap,
     this.bottom,
-    this.suffixIcon,
+    this.suffixIcon, this.arrowBack,
   });
 
   final String title;
@@ -18,13 +19,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onNotificationTap;
   final PreferredSizeWidget? bottom;
 final IconData ?suffixIcon;
+final Widget ?arrowBack;
   @override
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
+      leading:arrowBack??null ,
       backgroundColor: AppColors.primary,
       toolbarHeight: 80,
       bottom: bottom,
+      automaticallyImplyLeading: false,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(30),
