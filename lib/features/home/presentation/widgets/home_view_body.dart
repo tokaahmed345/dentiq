@@ -3,6 +3,8 @@ import 'package:dentiq/features/home/presentation/widgets/custom_grid_view.dart'
 import 'package:dentiq/features/home/presentation/widgets/custom_progress.dart';
 import 'package:dentiq/features/home/presentation/widgets/custom_reminder_list.dart';
 import 'package:dentiq/features/progress_tracker/presentation/view_model/progress_tracker_cubit/progress_tracker_cubit.dart';
+import 'package:dentiq/features/reminder/data/models/dental_reminder_model.dart';
+import 'package:dentiq/features/reminder/presentation/view_model/cubit/dental_reminder_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,13 +21,13 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 10),
           CustomCarouselSlider(),
           const SizedBox(height: 20),
           CustomGridView(),
           const SizedBox(height: 20),
-
           BlocBuilder<ProgressTrackerCubit, ProgressTrackerState>(
             builder: (context, state) {
               if (state is ProgressTrackerSuccess) {
@@ -40,9 +42,25 @@ class HomeViewBody extends StatelessWidget {
               );
             },
           ),
-
           const SizedBox(height: 20),
-          CustomRemiderList(reminders: reminders),
+          BlocBuilder<DentalReminderCubit, DentalReminderState>(
+            builder: (context, state) {
+              List<DentalReminder> remindersToShow = [];
+
+              if (state is DentalReminderSuccess) {
+                remindersToShow = state.reminders;
+              }
+
+              return Column(
+                children: [
+                  if (state is DentalReminderLoading) const SizedBox(),
+                  remindersToShow.isEmpty
+                      ? SizedBox()
+                      : CustomRemiderList(reminders: remindersToShow),
+                ],
+              );
+            },
+          ),
           const SizedBox(height: 30),
         ],
       ),

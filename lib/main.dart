@@ -1,6 +1,8 @@
 import 'package:dentiq/core/utils/router/app_router.dart';
 import 'package:dentiq/core/utils/service_locator/service_locator.dart';
 import 'package:dentiq/features/progress_tracker/presentation/view_model/progress_tracker_cubit/progress_tracker_cubit.dart';
+import 'package:dentiq/features/reminder/data/repos/dental_remider_repo.dart';
+import 'package:dentiq/features/reminder/presentation/view_model/cubit/dental_reminder_cubit.dart';
 import 'package:dentiq/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +17,15 @@ void main() async {
 
   // await InAppWebViewController.setWebContentsDebuggingEnabled(true);
 
-  runApp(BlocProvider(
-    create: (context) => getIt.get<ProgressTrackerCubit>()..trackProgress(),
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider(
+        create: (context) => getIt.get<ProgressTrackerCubit>()..trackProgress(),
+      ),
+      BlocProvider(
+        create: (context) => getIt.get<DentalReminderCubit>(),
+      ),
+    ],
     child: const DentiqApp(),
   ));
 }

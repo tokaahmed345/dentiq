@@ -1,5 +1,6 @@
 import 'package:dentiq/core/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:dentiq/features/reminder/data/models/dental_reminder_model.dart';
 
 class CustomRemiderList extends StatelessWidget {
   const CustomRemiderList({
@@ -7,7 +8,7 @@ class CustomRemiderList extends StatelessWidget {
     required this.reminders,
   });
 
-  final List<Map<String, String>> reminders;
+  final List<DentalReminder> reminders;
 
   @override
   Widget build(BuildContext context) {
@@ -16,24 +17,37 @@ class CustomRemiderList extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Next Reminders", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-          SizedBox(height: 12),
+          const Text(
+            " Upcoming Reminders",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 12),
           ...reminders.map((r) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 6),
                 child: Card(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)),
                   color: Colors.blue.shade50,
                   child: ListTile(
                     leading: Container(
-                      padding: EdgeInsets.all(12),
+                      padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color:AppColors.primary,
+                        color: AppColors.primary,
                         shape: BoxShape.circle,
                       ),
-                      child: Icon(Icons.alarm, color: Colors.white),
+                      child: Icon(
+                        IconData(int.parse(r.icon), fontFamily: 'MaterialIcons'),
+                        color: Colors.white,
+                      ),
                     ),
-                    title: Text(r["title"]!, style: TextStyle(fontWeight: FontWeight.bold)),
-                    trailing: Text(r["time"]!, style: TextStyle(color: Colors.blueGrey)),
+                    title: Text(
+                      r.title,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    trailing: Text(
+                      r.time,
+                      style: const TextStyle(color: Colors.blueGrey),
+                    ),
                   ),
                 ),
               )),

@@ -2,9 +2,11 @@ import 'package:dentiq/core/utils/colors/app_colors.dart';
 import 'package:dentiq/core/utils/widgets/custom_appbar.dart';
 import 'package:dentiq/features/home/presentation/widgets/home_view_body.dart';
 import 'package:dentiq/features/profile/profile_view.dart';
+import 'package:dentiq/features/reminder/presentation/view_model/cubit/dental_reminder_cubit.dart';
 import 'package:dentiq/features/scan/presentation/scan_view.dart';
 import 'package:dentiq/features/tips/presentation/tips_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -55,7 +57,13 @@ class _HomeViewState extends State<HomeView> {
         return null;
     }
   }
-
+ @override
+  void initState() {
+    super.initState();
+    if (_currentIndex == 0) {
+      context.read<DentalReminderCubit>().fetchReminders();
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -90,6 +98,9 @@ class _HomeViewState extends State<HomeView> {
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() => _currentIndex = index);
+           if (index == 0) {
+      context.read<DentalReminderCubit>().fetchReminders();
+    }
         },
         backgroundColor: Colors.transparent,
         elevation: 0,

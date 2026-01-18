@@ -13,6 +13,9 @@ import 'package:dentiq/features/auth/presentation/view_model/auth_cubit/sign_up_
 import 'package:dentiq/features/progress_tracker/data/repos/daily_progress_repo.dart';
 import 'package:dentiq/features/progress_tracker/data/repos/daily_progress_repo_impl.dart';
 import 'package:dentiq/features/progress_tracker/presentation/view_model/progress_tracker_cubit/progress_tracker_cubit.dart';
+import 'package:dentiq/features/reminder/data/repos/dental_remider_repo.dart';
+import 'package:dentiq/features/reminder/data/repos/dental_reminder_repo_impl.dart';
+import 'package:dentiq/features/reminder/presentation/view_model/cubit/dental_reminder_cubit.dart';
 import 'package:dentiq/features/tips/data/repo/articles_repo/article_repo.dart';
 import 'package:dentiq/features/tips/data/repo/articles_repo/article_repo_impl.dart';
 import 'package:dentiq/features/tips/data/repo/video_repo/video_repo.dart';
@@ -45,5 +48,10 @@ getIt.registerLazySingleton<SharedPrefs>(() => SharedPrefs());
  
       getIt.registerLazySingleton<ProgressRepo>(()=>DailyProgressRepoImpl( firestore:  getIt.get<FirebaseFirestore>(), sharedPreferences: getIt.get<SharedPrefs>() ));
   getIt.registerFactory<ProgressTrackerCubit>(()=>ProgressTrackerCubit( getIt.get<ProgressRepo>()));
+ 
+
+
+       getIt.registerLazySingleton<DentalRemiderRepo>(()=>DentalReminderRepoImpl( firestore:  getIt.get<FirebaseFirestore>(), sharedPreferences: getIt.get<SharedPrefs>() ));
+  getIt.registerFactory<DentalReminderCubit>(()=>DentalReminderCubit( getIt.get<DentalRemiderRepo>()));
  
 }
