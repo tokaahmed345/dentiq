@@ -74,9 +74,12 @@ class _ReminderViewBodyState extends State<ReminderViewBody> {
               backgroundColor: Colors.green,
             ),
           );
-          Future.delayed(const Duration(seconds: 1), () {
-            GoRouter.of(context).pop();
-          });
+        Future.delayed(const Duration(milliseconds: 300), () {
+  if (context.canPop()) {
+    context.pop();
+  }
+});
+
         }
       },
       builder: (context, state) {
@@ -250,7 +253,7 @@ class _ReminderViewBodyState extends State<ReminderViewBody> {
                                           .addReminder(reminder);
                                       context
                                           .read<DentalReminderCubit>()
-                                          .fetchReminders();
+                                          .fetchUpcomingReminders();
                                     },
                               label: Text(
                                 "Add Reminder",

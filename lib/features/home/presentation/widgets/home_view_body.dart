@@ -2,6 +2,7 @@ import 'package:dentiq/features/home/presentation/widgets/custom_carousel_slider
 import 'package:dentiq/features/home/presentation/widgets/custom_grid_view.dart';
 import 'package:dentiq/features/home/presentation/widgets/custom_progress.dart';
 import 'package:dentiq/features/home/presentation/widgets/custom_reminder_list.dart';
+import 'package:dentiq/features/notifications/presentation/view_model/cubit/notification_cubit.dart';
 import 'package:dentiq/features/progress_tracker/presentation/view_model/progress_tracker_cubit/progress_tracker_cubit.dart';
 import 'package:dentiq/features/reminder/data/models/dental_reminder_model.dart';
 import 'package:dentiq/features/reminder/presentation/view_model/cubit/dental_reminder_cubit.dart';
@@ -17,12 +18,17 @@ class HomeViewBody extends StatelessWidget {
     {"title": "Evening Brushing", "time": "08:00 PM"},
   ];
 
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+      child: BlocListener<DentalReminderCubit, DentalReminderState>(
+        listener: (context, state) {
+    if (state is DentalReminderSuccess) {
+      for (var reminder in state.reminders) {
+      }
+    }        },
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const SizedBox(height: 10),
           CustomCarouselSlider(),
           const SizedBox(height: 20),
@@ -45,24 +51,43 @@ class HomeViewBody extends StatelessWidget {
           const SizedBox(height: 20),
           BlocBuilder<DentalReminderCubit, DentalReminderState>(
             builder: (context, state) {
-              List<DentalReminder> remindersToShow = [];
-
-              if (state is DentalReminderSuccess) {
-                remindersToShow = state.reminders;
+              if (state is DentalReminderLoading) {
+                return const Center(child: CircularProgressIndicator());
               }
 
-              return Column(
-                children: [
-                  if (state is DentalReminderLoading) const SizedBox(),
-                  remindersToShow.isEmpty
-                      ? SizedBox()
-                      : CustomRemiderList(reminders: remindersToShow),
-                ],
-              );
+              if (state is DentalReminderSuccess) {
+                final upcomingReminders = state.reminders
+                    .where((r) => r.status != ReminderStatus.missed)
+                    .take(7) // أقصى عدد يظهر
+                    .toList();
+
+                if (upcomingReminders.isEmpty) {
+                  return const Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Text(
+                      "All caught up today 🦷✨",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  );
+                }
+
+                return CustomRemiderList(
+                  reminders: upcomingReminders,
+                );
+              }
+
+              if (state is DentalReminderFailure) {
+                return Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Text("Error: ${state.message}"),
+                );
+              }
+
+              return const SizedBox();
             },
           ),
           const SizedBox(height: 30),
-        ],
+        ]),
       ),
     );
   }

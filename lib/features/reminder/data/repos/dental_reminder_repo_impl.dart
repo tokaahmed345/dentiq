@@ -16,36 +16,59 @@ class DentalReminderRepoImpl implements DentalRemiderRepo {
     try {
       final userId = await sharedPreferences.getUserId();
       final docRef = firestore.collection('users').doc(userId).collection('reminders').doc();
-
       final reminderWithId = reminder.copyWith(id: docRef.id);
       await docRef.set(reminderWithId.toJson());
-
       return Right(reminderWithId);
     } catch (e) {
       return Left(Failure(e.toString()));
     }
   }
 
- @override
-Future<Either<Failure, List<DentalReminder>>> getReminder() async {
+  @override
+  Future<Either<Failure, List<DentalReminder>>> getReminder() async {
+    try {
+      final userId = await sharedPreferences.getUserId();
+      final querySnapshot = await firestore
+          .collection('users')
+          .doc(userId)
+          .collection('reminders')
+          .orderBy('reminderTime')
+          .get();
+
+      final reminders = querySnapshot.docs
+          .map((doc) => DentalReminder.fromJson(doc.data(), doc.id))
+          .toList();
+      return Right(reminders);
+    } catch (e) {
+      return Left(Failure(e.toString()));
+    }
+  }
+Future<Either<Failure, DentalReminder>> updateReminder(DentalReminder reminder) async {
   try {
     final userId = await sharedPreferences.getUserId();
-
-    final querySnapshot = await firestore
+    final docRef = firestore
         .collection('users')
         .doc(userId)
         .collection('reminders')
-.orderBy('reminderTime', descending: true)
-        .get();
+        .doc(reminder.id);
 
-    final reminders = querySnapshot.docs
-        .map((doc) => DentalReminder.fromJson(doc.data()).copyWith(id: doc.id))
-        .toList();
-
-    return Right(reminders);
+    await docRef.update(reminder.toJson()); // تحديث reminder في Firestore
+    return Right(reminder);
   } catch (e) {
     return Left(Failure(e.toString()));
   }
 }
+
+  // @override
+  // Future<void> markAsDone(String reminderId) async {
+  //   final userId = await sharedPreferences.getUserId();
+  //   await firestore
+  //       .collection('users')
+  //       .doc(userId)
+  //       .collection('reminders')
+  //       .doc(reminderId)
+  //       .update({'isDone': true});
+  // }
+
 
 }

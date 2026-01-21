@@ -11,7 +11,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.subtitle,
     this.onNotificationTap,
     this.bottom,
-    this.suffixIcon, this.arrowBack,
+    this.suffixIcon, this.arrowBack, this.suffixIconWidget,
   });
 
   final String title;
@@ -20,6 +20,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final PreferredSizeWidget? bottom;
 final IconData ?suffixIcon;
 final Widget ?arrowBack;
+final Widget? suffixIconWidget;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -69,10 +70,8 @@ final Widget ?arrowBack;
                   color: AppColors.whiteColor,
                   shape: BoxShape.circle,
                 ),
-                child:  Icon(
-suffixIcon,
-                  color: AppColors.primary,
-                ),
+                child: suffixIconWidget ?? Icon(suffixIcon, color: AppColors.primary),
+
               ),
             ),
         ],

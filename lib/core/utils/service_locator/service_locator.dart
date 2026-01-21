@@ -10,6 +10,9 @@ import 'package:dentiq/features/auth/data/repos/sign_up_repo/sign_up_repo_impl.d
 import 'package:dentiq/features/auth/presentation/view_model/auth_cubit/forgot_password_cubit/forgot_password_cubit.dart';
 import 'package:dentiq/features/auth/presentation/view_model/auth_cubit/log_in_cubit/log_in_cubit.dart';
 import 'package:dentiq/features/auth/presentation/view_model/auth_cubit/sign_up_cubit/sign_up_cubit.dart';
+import 'package:dentiq/features/profile/data/repos/profile_header_repo.dart';
+import 'package:dentiq/features/profile/data/repos/profile_header_repo_impl.dart';
+import 'package:dentiq/features/profile/presentation/view_model/cubit/profile_image_cubit.dart';
 import 'package:dentiq/features/progress_tracker/data/repos/daily_progress_repo.dart';
 import 'package:dentiq/features/progress_tracker/data/repos/daily_progress_repo_impl.dart';
 import 'package:dentiq/features/progress_tracker/presentation/view_model/progress_tracker_cubit/progress_tracker_cubit.dart';
@@ -24,10 +27,13 @@ import 'package:dentiq/features/tips/presentation/view_model/cubit/articles_cubi
 import 'package:dentiq/features/tips/presentation/view_model/videos_cubit/videos_cubit_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 final getIt = GetIt.instance;
 void setUp(){
   getIt.registerLazySingleton<FirebaseAuth>(()=>FirebaseAuth.instance);
+  getIt.registerLazySingleton<SupabaseClient>(()=>Supabase.instance.client);
+
     getIt.registerLazySingleton<FirebaseFirestore>(()=>FirebaseFirestore.instance);
 getIt.registerLazySingleton<SharedPrefs>(() => SharedPrefs());
 
@@ -54,4 +60,8 @@ getIt.registerLazySingleton<SharedPrefs>(() => SharedPrefs());
        getIt.registerLazySingleton<DentalRemiderRepo>(()=>DentalReminderRepoImpl( firestore:  getIt.get<FirebaseFirestore>(), sharedPreferences: getIt.get<SharedPrefs>() ));
   getIt.registerFactory<DentalReminderCubit>(()=>DentalReminderCubit( getIt.get<DentalRemiderRepo>()));
  
+       getIt.registerLazySingleton<ProfileHeaderRepo>(()=>ProfileHeaderRepoImpl( firebaseAuth:  getIt.get<FirebaseAuth>(), sharedPrefs: getIt.get<SharedPrefs>() ,supabase: getIt.get<SupabaseClient>()));
+  getIt.registerFactory<ProfileHeaderCubit>(()=>ProfileHeaderCubit(repo:  getIt.get<ProfileHeaderRepo>(), firebaseAuth: getIt.get<FirebaseAuth>()));
+ 
+
 }

@@ -40,7 +40,7 @@ required this.firestore, required this.sharedPrefs,
       await firestore.collection('users').doc(user.id).set(user.toMap());
 
       await  sharedPrefs.saveUserId(user.id);
-
+await sharedPrefs.saveUserName(name); 
       return Right(user);
     } on FirebaseAuthException catch (e) {
       return Left(Failure.fromFirebaseAuthCode(e.code));

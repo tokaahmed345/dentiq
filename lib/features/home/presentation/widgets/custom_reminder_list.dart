@@ -6,9 +6,13 @@ class CustomRemiderList extends StatelessWidget {
   const CustomRemiderList({
     super.key,
     required this.reminders,
+    this.onDone, // ✅ callback optional
   });
 
   final List<DentalReminder> reminders;
+
+  // id of reminder اللي هيتبعت لـ Cubit
+  final void Function(String reminderId)? onDone;
 
   @override
   Widget build(BuildContext context) {
@@ -18,39 +22,56 @@ class CustomRemiderList extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            " Upcoming Reminders",
+            "  Upcoming Reminders",
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 12),
-          ...reminders.map((r) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 6),
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15)),
-                  color: Colors.blue.shade50,
-                  child: ListTile(
-                    leading: Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: AppColors.primary,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(
-                        IconData(int.parse(r.icon), fontFamily: 'MaterialIcons'),
-                        color: Colors.white,
-                      ),
+          ...reminders.map((r) {
+
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 6),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                color: 
+                    
+                   Colors.blue.shade50, // لون مختلف لو فات
+                child: ListTile(
+                  leading: Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: AppColors.primary,
+                      shape: BoxShape.circle,
                     ),
-                    title: Text(
-                      r.title,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    trailing: Text(
-                      r.time,
-                      style: const TextStyle(color: Colors.blueGrey),
+                    child: Icon(
+                      IconData(int.parse(r.icon), fontFamily: 'MaterialIcons'),
+                      color: Colors.white,
                     ),
                   ),
+                  title: Text(
+                    r.title,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                     
+                    ),
+                  ),
+                  
+                  trailing:  Row(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    Text(
+      r.time,
+      style: const TextStyle(color: Colors.blueGrey),
+    ),
+    const SizedBox(width: 8),
+    
+  ],
+),
+
                 ),
-              )),
+              ),
+            );
+          }).toList(),
         ],
       ),
     );

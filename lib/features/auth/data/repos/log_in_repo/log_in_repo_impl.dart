@@ -30,6 +30,7 @@ final SharedPrefs sharedPrefs;
       );
 
 await sharedPrefs.saveUserId(user.id);
+
       return Right(user);
     } on FirebaseAuthException catch (e) {
       return Left(Failure.fromFirebaseAuthCode(e.code));

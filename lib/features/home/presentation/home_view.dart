@@ -1,7 +1,10 @@
 import 'package:dentiq/core/utils/colors/app_colors.dart';
 import 'package:dentiq/core/utils/widgets/custom_appbar.dart';
 import 'package:dentiq/features/home/presentation/widgets/home_view_body.dart';
-import 'package:dentiq/features/profile/profile_view.dart';
+import 'package:dentiq/features/notifications/presentation/notification_list_viewbody.dart';
+import 'package:dentiq/features/notifications/presentation/view_model/cubit/notification_cubit.dart';
+import 'package:dentiq/features/profile/presentation/profile_view.dart';
+import 'package:dentiq/features/profile/presentation/widgets/profile_view_body.dart';
 import 'package:dentiq/features/reminder/presentation/view_model/cubit/dental_reminder_cubit.dart';
 import 'package:dentiq/features/scan/presentation/scan_view.dart';
 import 'package:dentiq/features/tips/presentation/tips_view.dart';
@@ -38,8 +41,17 @@ class _HomeViewState extends State<HomeView> {
         return CustomAppBar(
           title: "DentIQ",
           subtitle: "Your smile, our priority",
-          onNotificationTap: () {},
-          suffixIcon: Icons.notifications_outlined,
+          onNotificationTap: () {
+            Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => NotificationListView(),
+      ),
+
+    );
+
+          },
+    suffixIconWidget: notificationIcon(context), // <-- هنا
         );
 
       case 1:
@@ -57,12 +69,14 @@ class _HomeViewState extends State<HomeView> {
         return null;
     }
   }
+  
  @override
   void initState() {
     super.initState();
     if (_currentIndex == 0) {
-      context.read<DentalReminderCubit>().fetchReminders();
+      context.read<DentalReminderCubit>().fetchUpcomingReminders();
     }
+    
   }
   @override
   Widget build(BuildContext context) {
@@ -76,6 +90,46 @@ class _HomeViewState extends State<HomeView> {
       ),
     );
   }
+Widget notificationIcon(BuildContext context) {
+  final unreadCount = context.watch<NotificationCubit>().getUnreadCount();
+
+  return Stack(
+    children: [
+      IconButton(
+        icon: Icon(Icons.notifications_outlined),
+        onPressed: () {
+          // افتح قائمة notifications
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => NotificationListView()),
+          );
+          // علم كل notifications كمقروءة
+          context.read<NotificationCubit>().markAllAsRead();
+        },
+      ),
+      if (unreadCount > 0)
+        Positioned(
+          right: 6,
+          top: 6,
+          child: Container(
+            padding: const EdgeInsets.all(4),
+            decoration: BoxDecoration(
+              color: Colors.red,
+              shape: BoxShape.circle,
+            ),
+            child: Text(
+              unreadCount.toString(),
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+    ],
+  );
+}
 
   Widget _buildBottomNav() {
     return Container(
@@ -99,7 +153,7 @@ class _HomeViewState extends State<HomeView> {
         onTap: (index) {
           setState(() => _currentIndex = index);
            if (index == 0) {
-      context.read<DentalReminderCubit>().fetchReminders();
+      context.read<DentalReminderCubit>().fetchUpcomingReminders();
     }
         },
         backgroundColor: Colors.transparent,
