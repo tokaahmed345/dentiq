@@ -1,4 +1,5 @@
 import 'package:dentiq/core/utils/colors/app_colors.dart';
+import 'package:dentiq/core/utils/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
 class PersonalInfoCard extends StatelessWidget {
@@ -9,6 +10,8 @@ class PersonalInfoCard extends StatelessWidget {
   final TextEditingController phone;
   final TextEditingController email;
   final TextEditingController password;
+  final TextEditingController oldPassword;
+
 
   const PersonalInfoCard({
     super.key,
@@ -17,7 +20,7 @@ class PersonalInfoCard extends StatelessWidget {
     required this.name,
     required this.phone,
     required this.email,
-    required this.password,
+    required this.password, required this.oldPassword,
   });
 
   @override
@@ -54,38 +57,27 @@ class PersonalInfoCard extends StatelessWidget {
                 ),
               ],
             ),
-            _field("Name", name, isEditing),
-            _field("Phone", phone, isEditing),
-            _field("Email", email, isEditing),
-            if (isEditing) _field("New Password", password, true, true),
+          CustomFormField(hint: 'Name', controller: name,enabled: isEditing,),
+          SizedBox(height: 20,),
+          CustomFormField(hint: 'Phone', controller: phone,enabled: isEditing,),
+                    SizedBox(height: 20,),
+
+                    CustomFormField(hint: 'Email', controller: email,enabled: isEditing,),
+
+                    SizedBox(height: 20,),
+
+ if (isEditing) ...[
+              CustomFormField(hint: 'Old Password', controller: oldPassword), // جديد
+              const SizedBox(height: 20),
+              CustomFormField(hint: 'New Password', controller: password),
+            ],
           ],
         ),
       ),
     );
   }
 
-  Widget _field(
-    String label,
-    TextEditingController controller,
-    bool enabled, [
-    bool obscure = false,
-  ]) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
-      child: TextField(
-        controller: controller,
-        enabled: enabled,
-        obscureText: obscure,
-        decoration: InputDecoration(
-          labelText: label,
-          filled: true,
-          fillColor: enabled ? const Color(0xffF6F8FB) : Colors.grey[200],
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
-            borderSide: BorderSide.none,
-          ),
-        ),
-      ),
-    );
-  }
+
+
+
 }

@@ -51,15 +51,23 @@ class Header extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: CircleAvatar(
-                      radius: 52,
-                      backgroundImage: state.localImage != null
-                          ? FileImage(state.localImage!)
-                          : (state.imageUrl != null
-                              ? NetworkImage(state.imageUrl!)
-                              : const NetworkImage('https://i.pravatar.cc/300'))
-                          as ImageProvider,
-                    ),
+                    child:CircleAvatar(
+  radius: 52,
+  backgroundColor: Colors.grey.shade200,
+  backgroundImage: state.localImage != null
+      ? FileImage(state.localImage!)
+      : (state.imageUrl != null
+          ? NetworkImage(state.imageUrl!)
+          : null),
+  child: state.localImage == null && state.imageUrl == null
+      ? const Icon(
+          Icons.person,
+          size: 48,
+          color: Colors.grey,
+        )
+      : null,
+)
+
                   ),
                   Positioned(
                     bottom: 4,
@@ -88,7 +96,7 @@ class Header extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             Text(
-              state.userName ?? 'User',
+             state.userName??"",
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,

@@ -5,14 +5,20 @@ import 'package:dentiq/features/auth/data/repos/forgot_password_repo/forgot_pass
 import 'package:dentiq/features/auth/data/repos/forgot_password_repo/forgot_password_repo_impl.dart';
 import 'package:dentiq/features/auth/data/repos/log_in_repo/log_in_repo.dart';
 import 'package:dentiq/features/auth/data/repos/log_in_repo/log_in_repo_impl.dart';
+import 'package:dentiq/features/auth/data/repos/log_out_repo/logout_repo.dart';
+import 'package:dentiq/features/auth/data/repos/log_out_repo/logout_repo_impl.dart';
 import 'package:dentiq/features/auth/data/repos/sign_up_repo/sign_up_repo.dart';
 import 'package:dentiq/features/auth/data/repos/sign_up_repo/sign_up_repo_impl.dart';
 import 'package:dentiq/features/auth/presentation/view_model/auth_cubit/forgot_password_cubit/forgot_password_cubit.dart';
 import 'package:dentiq/features/auth/presentation/view_model/auth_cubit/log_in_cubit/log_in_cubit.dart';
 import 'package:dentiq/features/auth/presentation/view_model/auth_cubit/sign_up_cubit/sign_up_cubit.dart';
+import 'package:dentiq/features/auth/presentation/view_model/log_out_cubit/log_out_cubit.dart';
 import 'package:dentiq/features/profile/data/repos/profile_header_repo.dart';
 import 'package:dentiq/features/profile/data/repos/profile_header_repo_impl.dart';
+import 'package:dentiq/features/profile/data/repos/profile_info/profile_info_repo.dart';
+import 'package:dentiq/features/profile/data/repos/profile_info/profile_info_repo_impl.dart';
 import 'package:dentiq/features/profile/presentation/view_model/cubit/profile_image_cubit.dart';
+import 'package:dentiq/features/profile/presentation/view_model/cubit/profile_info_cubit.dart';
 import 'package:dentiq/features/progress_tracker/data/repos/daily_progress_repo.dart';
 import 'package:dentiq/features/progress_tracker/data/repos/daily_progress_repo_impl.dart';
 import 'package:dentiq/features/progress_tracker/presentation/view_model/progress_tracker_cubit/progress_tracker_cubit.dart';
@@ -64,4 +70,11 @@ getIt.registerLazySingleton<SharedPrefs>(() => SharedPrefs());
   getIt.registerFactory<ProfileHeaderCubit>(()=>ProfileHeaderCubit(repo:  getIt.get<ProfileHeaderRepo>(), firebaseAuth: getIt.get<FirebaseAuth>()));
  
 
+ 
+       getIt.registerLazySingleton<ProfileInfoRepo>(()=>ProfileRepoImpl( firebaseAuth:  getIt.get<FirebaseAuth>(), firestore: getIt.get<FirebaseFirestore>()));
+  getIt.registerFactory<ProfileInfoCubit>(()=>ProfileInfoCubit(  getIt.get<ProfileInfoRepo>()));
+ 
+     getIt.registerLazySingleton<LogoutRepo>(()=>LogoutRepoImpl( firebaseAuth:  getIt.get<FirebaseAuth>(), ));
+  getIt.registerFactory<LogOutCubit>(()=>LogOutCubit(  getIt.get<LogoutRepo>()));
+ 
 }

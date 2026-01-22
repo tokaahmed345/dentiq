@@ -10,18 +10,21 @@ class CustomFormField extends StatelessWidget {
 final void Function()? onPressed;
   final IconData? suffixIcon; 
 final bool ?obscure;
+final bool ?enabled;
   const CustomFormField({
     super.key,
     required this.hint,
     required this.controller,
     this.keyboardType = TextInputType.text,
     this.validator,
-    this.icon, this.suffixIcon, this.obscure=false, this.onPressed,
+    this.icon, this.suffixIcon, this.obscure=false, this.onPressed, this.enabled,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      enabled: enabled,
+      
       controller: controller,
       obscureText: obscure??false,
       keyboardType: keyboardType,
@@ -43,6 +46,18 @@ final bool ?obscure;
         contentPadding: const EdgeInsets.symmetric(
           vertical: 16,
           horizontal: 16,
+        ),
+        disabledBorder:  OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14),
+          borderSide: BorderSide(
+            color: AppColors.primary!.withOpacity(.2),
+          ),
+        ),
+        border:  OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14),
+          borderSide: BorderSide(
+            color: AppColors.primary!.withOpacity(.2),
+          ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14),

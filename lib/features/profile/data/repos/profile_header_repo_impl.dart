@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dentiq/core/utils/sharedprefrence.dart';
 import 'package:dentiq/features/profile/data/repos/profile_header_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ProfileHeaderRepoImpl extends ProfileHeaderRepo {
@@ -15,12 +16,21 @@ class ProfileHeaderRepoImpl extends ProfileHeaderRepo {
     required this.firebaseAuth,
     required this.sharedPrefs,
   });
+@override
+Future<String?> getProfileImage(String userId) async {
+  final fileName = 'profile_$userId.png';
 
-  @override
-  Future<String?> getProfileImage(String userId) async {
-    final fileName = 'profile_$userId.png';
-    return '${supabase.storage.from('Profile_image').getPublicUrl(fileName)}?t=${DateTime.now().millisecondsSinceEpoch}';
+  try {
+    await supabase.storage
+        .from('Profile_image')
+        .download(fileName);
+
+    return '${supabase.storage.from('Profile_image').getPublicUrl(fileName)}'
+        '?t=${DateTime.now().millisecondsSinceEpoch}';
+  } catch (_) {
+    return null;
   }
+}
 
   @override
   Future<String?> uploadProfileImage(String userId, File file) async {

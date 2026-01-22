@@ -51,7 +51,7 @@ class _HomeViewState extends State<HomeView> {
     );
 
           },
-    suffixIconWidget: notificationIcon(context), // <-- هنا
+    suffixIconWidget: notificationIcon(context), 
         );
 
       case 1:
@@ -75,6 +75,7 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
     if (_currentIndex == 0) {
       context.read<DentalReminderCubit>().fetchUpcomingReminders();
+      
     }
     
   }
