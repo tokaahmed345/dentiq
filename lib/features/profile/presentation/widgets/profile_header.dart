@@ -1,26 +1,25 @@
 import 'dart:io';
 import 'package:dentiq/features/profile/presentation/view_model/cubit/profile_image_cubit.dart';
+import 'package:dentiq/features/profile/presentation/view_model/cubit/profile_info_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dentiq/core/utils/colors/app_colors.dart';
 
-
-class Header extends StatelessWidget {
-  const Header({super.key});
+class ProfileHeader extends StatelessWidget {
+  const ProfileHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
     final picker = ImagePicker();
 
-    return BlocBuilder<ProfileHeaderCubit, ProfileHeaderState>(
-      builder: (context, state) {
-        return Column(
-          children: [
-            GestureDetector(
+    return Column(
+      children: [
+        BlocBuilder<ProfileHeaderCubit, ProfileHeaderState>(
+          builder: (context, state) {
+            return GestureDetector(
               onTap: () async {
-                final pickedFile =
-                    await picker.pickImage(source: ImageSource.gallery);
+                final pickedFile = await picker.pickImage(source: ImageSource.gallery);
                 if (pickedFile != null) {
                   final file = File(pickedFile.path);
                   context.read<ProfileHeaderCubit>().pickAndUploadImage(file);
@@ -51,23 +50,22 @@ class Header extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child:CircleAvatar(
-  radius: 52,
-  backgroundColor: Colors.grey.shade200,
-  backgroundImage: state.localImage != null
-      ? FileImage(state.localImage!)
-      : (state.imageUrl != null
-          ? NetworkImage(state.imageUrl!)
-          : null),
-  child: state.localImage == null && state.imageUrl == null
-      ? const Icon(
-          Icons.person,
-          size: 48,
-          color: Colors.grey,
-        )
-      : null,
-)
-
+                    child: CircleAvatar(
+                      radius: 52,
+                      backgroundColor: Colors.grey.shade200,
+                      backgroundImage: state.localImage != null
+                          ? FileImage(state.localImage!)
+                          : (state.imageUrl != null
+                              ? NetworkImage(state.imageUrl!) as ImageProvider
+                              : null),
+                      child: state.localImage == null && state.imageUrl == null
+                          ? const Icon(
+                              Icons.person,
+                              size: 48,
+                              color: Colors.grey,
+                            )
+                          : null,
+                    ),
                   ),
                   Positioned(
                     bottom: 4,
@@ -93,24 +91,35 @@ class Header extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
-            const SizedBox(height: 12),
-            Text(
-             state.userName??"",
+            );
+          },
+        ),
+
+        const SizedBox(height: 12),
+
+        BlocBuilder<ProfileInfoCubit, ProfileInfoState>(
+          builder: (context, state) {
+            String name = "";
+            if (state is ProfileInfoGetSuccess || state is ProfileInfoUpdateSuccess) {
+              name = context.read<ProfileInfoCubit>().nameController.text;
+            }
+            return Text(
+              name,
               style: TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
                 color: AppColors.primary,
               ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              "Oral Health • Good",
-              style: TextStyle(color: AppColors.blueGrey),
-            ),
-          ],
-        );
-      },
+            );
+          },
+        ),
+
+        const SizedBox(height: 4),
+        Text(
+          "Oral Health • Good",
+          style: TextStyle(color: AppColors.blueGrey),
+        ),
+      ],
     );
   }
 }

@@ -41,7 +41,7 @@ class _TipItem extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 8),
       child: Row(
         children: const [
-          Icon(Icons.check_circle, color: AppColors.success, size: 18),
+          Icon(Icons.check_circle, color: AppColors.greenColor, size: 18),
           SizedBox(width: 8),
         ],
       ),

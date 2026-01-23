@@ -108,7 +108,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
         return SingleChildScrollView(
           child: Column(
             children: [
-              const Header(),
+              const ProfileHeader(),
               const SizedBox(height: 20),
               const SummaryRow(),
               const SizedBox(height: 24),

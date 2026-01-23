@@ -227,34 +227,41 @@ class _ReminderViewBodyState extends State<ReminderViewBody> {
                                 Icons.alarm,
                                 color: AppColors.whiteColor,
                               ),
-                              onPressed: selectedReminder == null
-                                  ? null
-                                  : () async {
-                                      final now = DateTime.now();
-                                      final reminderDateTime = DateTime(
-                                        now.year,
-                                        now.month,
-                                        now.day,
-                                        selectedTime.hour,
-                                        selectedTime.minute,
-                                      );
-                                      final reminder = DentalReminder(
-                                        id: '',
-                                        title: selectedReminder!.title,
-                                        subtitle: selectedReminder!.subtitle,
-                                        time: selectedTime.format(context),
-                                        icon: selectedReminder!.icon.codePoint
-                                            .toString(),
-                                        reminderTime: Timestamp.fromDate(
-                                            reminderDateTime),
-                                      );
-                                      await context
-                                          .read<DentalReminderCubit>()
-                                          .addReminder(reminder);
-                                      context
-                                          .read<DentalReminderCubit>()
-                                          .fetchUpcomingReminders();
-                                    },
+                           onPressed: selectedReminder == null
+    ? null
+    : () async {
+        final now = DateTime.now();
+        final reminderDateTime = DateTime(
+          now.year,
+          now.month,
+          now.day,
+          selectedTime.hour,
+          selectedTime.minute,
+        );
+
+        if (reminderDateTime.isBefore(now)) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text("Cannot set a reminder in the past!"),
+              backgroundColor: AppColors.redColor,
+            ),
+          );
+          return; 
+        }
+
+        final reminder = DentalReminder(
+          id: '',
+          title: selectedReminder!.title,
+          subtitle: selectedReminder!.subtitle,
+          time: selectedTime.format(context),
+          icon: selectedReminder!.icon.codePoint.toString(),
+          reminderTime: Timestamp.fromDate(reminderDateTime),
+        );
+
+        await context.read<DentalReminderCubit>().addReminder(reminder);
+        context.read<DentalReminderCubit>().fetchUpcomingReminders();
+      },
+
                               label: Text(
                                 "Add Reminder",
                                 style: AppStyle.text16,

@@ -12,11 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
 
-  final List<Map<String, String>> reminders = const [
-    {"title": "Morning Brushing", "time": "08:00 AM"},
-    {"title": "Flossing", "time": "08:30 AM"},
-    {"title": "Evening Brushing", "time": "08:00 PM"},
-  ];
+
 
 
   @override
@@ -58,15 +54,24 @@ class HomeViewBody extends StatelessWidget {
               if (state is DentalReminderSuccess) {
                 final upcomingReminders = state.reminders
                     .where((r) => r.status != ReminderStatus.missed)
-                    .take(7) // أقصى عدد يظهر
+                    .take(7) 
                     .toList();
 
                 if (upcomingReminders.isEmpty) {
                   return const Padding(
                     padding: EdgeInsets.all(16),
-                    child: Text(
-                      "All caught up today 🦷✨",
-                      style: TextStyle(fontSize: 16),
+                    child: Column(
+                      children: [
+                        const Text(
+            "  Upcoming Reminders",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: 20,),
+                        Text(
+                          "All caught up today 🦷✨",
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ],
                     ),
                   );
                 }

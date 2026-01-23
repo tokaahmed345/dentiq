@@ -11,9 +11,8 @@ class DentalReminder {
   final String icon;
   final ReminderStatus status;
 
-  // متغيرات محلية للـ badge
-  bool isNotified; // هل وصل وقت notification؟
-  bool isRead;     // هل المستخدم شافه؟
+  bool isNotified; 
+  bool isRead;     
 
   DentalReminder({
     required this.id,

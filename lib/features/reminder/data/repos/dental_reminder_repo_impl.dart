@@ -52,7 +52,7 @@ Future<Either<Failure, DentalReminder>> updateReminder(DentalReminder reminder) 
         .collection('reminders')
         .doc(reminder.id);
 
-    await docRef.update(reminder.toJson()); // تحديث reminder في Firestore
+    await docRef.update(reminder.toJson()); 
     return Right(reminder);
   } catch (e) {
     return Left(Failure(e.toString()));

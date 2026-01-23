@@ -24,7 +24,9 @@ import 'package:dentiq/features/progress_tracker/data/repos/daily_progress_repo_
 import 'package:dentiq/features/progress_tracker/presentation/view_model/progress_tracker_cubit/progress_tracker_cubit.dart';
 import 'package:dentiq/features/reminder/data/repos/dental_remider_repo.dart';
 import 'package:dentiq/features/reminder/data/repos/dental_reminder_repo_impl.dart';
+import 'package:dentiq/features/reminder/presentation/view_model/cubit/cubit/reminder_history_cubit.dart';
 import 'package:dentiq/features/reminder/presentation/view_model/cubit/dental_reminder_cubit.dart';
+import 'package:dentiq/features/reminder/presentation/widgets/reminder_history.dart';
 import 'package:dentiq/features/tips/data/repo/articles_repo/article_repo.dart';
 import 'package:dentiq/features/tips/data/repo/articles_repo/article_repo_impl.dart';
 import 'package:dentiq/features/tips/data/repo/video_repo/video_repo.dart';
@@ -76,5 +78,6 @@ getIt.registerLazySingleton<SharedPrefs>(() => SharedPrefs());
  
      getIt.registerLazySingleton<LogoutRepo>(()=>LogoutRepoImpl( firebaseAuth:  getIt.get<FirebaseAuth>(), ));
   getIt.registerFactory<LogOutCubit>(()=>LogOutCubit(  getIt.get<LogoutRepo>()));
+  getIt.registerFactory<ReminderHistoryCubit>(()=>ReminderHistoryCubit(  getIt.get<DentalRemiderRepo>()));
  
 }

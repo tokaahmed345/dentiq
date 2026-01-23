@@ -6,12 +6,11 @@ class CustomRemiderList extends StatelessWidget {
   const CustomRemiderList({
     super.key,
     required this.reminders,
-    this.onDone, // ✅ callback optional
+    this.onDone,
   });
 
   final List<DentalReminder> reminders;
 
-  // id of reminder اللي هيتبعت لـ Cubit
   final void Function(String reminderId)? onDone;
 
   @override

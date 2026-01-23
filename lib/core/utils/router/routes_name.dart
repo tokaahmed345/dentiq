@@ -8,4 +8,6 @@ class RoutesName {
   static const String scan='/scan';
   static const String tips='/tips';
 static const String profile="/ProfileView";
+static const String reminderHistory="/reminderHistory";
+
 }

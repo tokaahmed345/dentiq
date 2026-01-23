@@ -5,6 +5,7 @@ import 'package:dentiq/features/auth/presentation/sign_up_view.dart';
 import 'package:dentiq/features/home/presentation/home_view.dart';
 import 'package:dentiq/features/onboarding/presentation/onboarding_view.dart';
 import 'package:dentiq/features/profile/presentation/widgets/profile_view_body.dart';
+import 'package:dentiq/features/reminder/presentation/widgets/reminder_history.dart';
 import 'package:dentiq/features/splash/presentation/splash_view.dart';
 import 'package:dentiq/features/tips/presentation/tips_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -70,6 +71,11 @@ class AppRouter {
         path: RoutesName.profile,
         name: RoutesName.profile,
         builder: (context, state) => const ProfileViewBody(),
+      ),
+        GoRoute(
+        path: RoutesName.reminderHistory,
+        name: RoutesName.reminderHistory,
+        builder: (context, state) =>  ReminderHistoryPage(),
       ),
     ],
   );
