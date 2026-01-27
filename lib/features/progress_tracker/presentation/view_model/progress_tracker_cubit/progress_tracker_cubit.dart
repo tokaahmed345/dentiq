@@ -146,21 +146,29 @@ class ProgressTrackerCubit extends Cubit<ProgressTrackerState> {
     if (progress < 1) return "Great job, keep going 👏";
     return "Perfect day! 🦷✨";
   }
-
-  String routineFieldKey(String routine) {
-    switch (routine) {
-      case "Morning Brushing":
-        return "morningBrushing";
-      case "Evening Brushing":
-        return "eveningBrushing";
-      case "Flossing":
-        return "flossing";
-      case "Mouthwash":
-        return "mouthwash";
-      default:
-        return routine;
-    }
+String routineFieldKey(String routine) {
+  switch (routine) {
+    case "Morning Brushing":
+      return "morningBrushing";
+    case "Evening Brushing":
+      return "eveningBrushing";
+    case "Flossing":
+      return "flossing";
+    case "Mouthwash":
+      return "mouthwash";
+    case "Drink Water":
+      return "drinkWater";
+    case "Healthy Meals":
+      return "healthyMeals";
+    case "Tongue Cleaning":
+      return "tongueCleaning";
+    case "Check Gums":
+      return "checkGums";
+    default:
+      throw Exception("Unknown routine: $routine");
   }
+}
+
 
   Future<void> updateRoutine(String routine, bool value) async {
     if (state is ProgressTrackerSuccess) {
@@ -207,6 +215,7 @@ class ProgressTrackerCubit extends Cubit<ProgressTrackerState> {
             overallProgress: overall,
             message: _getMessage(overall),
           ));
+          
         },
       );
     }

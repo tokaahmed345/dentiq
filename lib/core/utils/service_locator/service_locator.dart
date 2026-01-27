@@ -13,6 +13,7 @@ import 'package:dentiq/features/auth/presentation/view_model/auth_cubit/forgot_p
 import 'package:dentiq/features/auth/presentation/view_model/auth_cubit/log_in_cubit/log_in_cubit.dart';
 import 'package:dentiq/features/auth/presentation/view_model/auth_cubit/sign_up_cubit/sign_up_cubit.dart';
 import 'package:dentiq/features/auth/presentation/view_model/log_out_cubit/log_out_cubit.dart';
+import 'package:dentiq/features/home/presentation/view_model/cubit/progress_home_tracker_cubit.dart';
 import 'package:dentiq/features/profile/data/repos/profile_header_repo.dart';
 import 'package:dentiq/features/profile/data/repos/profile_header_repo_impl.dart';
 import 'package:dentiq/features/profile/data/repos/profile_info/profile_info_repo.dart';
@@ -66,7 +67,12 @@ getIt.registerLazySingleton<SharedPrefs>(() => SharedPrefs());
 
 
        getIt.registerLazySingleton<DentalRemiderRepo>(()=>DentalReminderRepoImpl( firestore:  getIt.get<FirebaseFirestore>(), sharedPreferences: getIt.get<SharedPrefs>() ));
-  getIt.registerFactory<DentalReminderCubit>(()=>DentalReminderCubit( getIt.get<DentalRemiderRepo>()));
+getIt.registerLazySingleton<DentalReminderCubit>(
+  () => DentalReminderCubit(
+   getIt.get<DentalRemiderRepo>(),
+
+  ),
+);
  
        getIt.registerLazySingleton<ProfileHeaderRepo>(()=>ProfileHeaderRepoImpl( firebaseAuth:  getIt.get<FirebaseAuth>(), sharedPrefs: getIt.get<SharedPrefs>() ,supabase: getIt.get<SupabaseClient>()));
   getIt.registerFactory<ProfileHeaderCubit>(()=>ProfileHeaderCubit(repo:  getIt.get<ProfileHeaderRepo>(), firebaseAuth: getIt.get<FirebaseAuth>()));
@@ -79,5 +85,6 @@ getIt.registerLazySingleton<SharedPrefs>(() => SharedPrefs());
      getIt.registerLazySingleton<LogoutRepo>(()=>LogoutRepoImpl( firebaseAuth:  getIt.get<FirebaseAuth>(), ));
   getIt.registerFactory<LogOutCubit>(()=>LogOutCubit(  getIt.get<LogoutRepo>()));
   getIt.registerFactory<ReminderHistoryCubit>(()=>ReminderHistoryCubit(  getIt.get<DentalRemiderRepo>()));
- 
+   getIt.registerFactory<ProgressHomeTrackerCubit>(()=>ProgressHomeTrackerCubit(  getIt.get<ProgressRepo>(),getIt.get<DentalRemiderRepo>()),);
+
 }

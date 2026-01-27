@@ -1,5 +1,6 @@
 import 'package:dentiq/core/utils/colors/app_colors.dart';
 import 'package:dentiq/core/utils/widgets/custom_appbar.dart';
+import 'package:dentiq/features/home/presentation/view_model/cubit/progress_home_tracker_cubit.dart';
 import 'package:dentiq/features/home/presentation/widgets/home_view_body.dart';
 import 'package:dentiq/features/notifications/presentation/notification_list_viewbody.dart';
 import 'package:dentiq/features/notifications/presentation/view_model/cubit/notification_cubit.dart';
@@ -75,7 +76,7 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
     if (_currentIndex == 0) {
       context.read<DentalReminderCubit>().fetchUpcomingReminders();
-      
+
     }
     
   }

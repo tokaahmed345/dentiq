@@ -1,9 +1,11 @@
 import 'package:dentiq/core/utils/router/app_router.dart';
 import 'package:dentiq/core/utils/service_locator/service_locator.dart';
+import 'package:dentiq/features/home/presentation/view_model/cubit/progress_home_tracker_cubit.dart';
 import 'package:dentiq/features/notifications/data/notifications_service.dart';
 import 'package:dentiq/features/notifications/presentation/view_model/cubit/notification_cubit.dart';
 import 'package:dentiq/features/progress_tracker/presentation/view_model/progress_tracker_cubit/progress_tracker_cubit.dart';
 import 'package:dentiq/features/reminder/data/repos/dental_remider_repo.dart';
+import 'package:dentiq/features/reminder/presentation/view_model/cubit/cubit/reminder_history_cubit.dart';
 import 'package:dentiq/features/reminder/presentation/view_model/cubit/dental_reminder_cubit.dart';
 import 'package:dentiq/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -12,16 +14,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
-   WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await NotificationService.init();
-  await NotificationService. requestNotificationPermission();
+  await NotificationService.requestNotificationPermission();
   await NotificationService.testNotification();
   await Supabase.initialize(
     url: 'https://sdyzanmqockopnauzxya.supabase.co',
-    anonKey: 'sb_publishable_XHH4GYKnRIouLF3GrPLQLg_DnoMKJ6W',        
+    anonKey: 'sb_publishable_XHH4GYKnRIouLF3GrPLQLg_DnoMKJ6W',
   );
   setUp();
 
@@ -29,15 +31,35 @@ void main() async {
 
   runApp(MultiBlocProvider(
     providers: [
+      // BlocProvider(
+      //   create: (context) => getIt.get<ProgressTrackerCubit>()..trackProgress(),
+      // ),
+      //   BlocProvider(
+      //   create: (context) => NotificationCubit(),
+      // ),
+      //   BlocProvider(
+      //   create: (context) => getIt.get<ProgressHomeTrackerCubit>()..loadHomeProgress(),
+      // ),
+      // BlocProvider(
+      //   create: (context) => getIt.get<DentalReminderCubit>(),
+      // ),
+
       BlocProvider(
-        create: (context) => getIt.get<ProgressTrackerCubit>()..trackProgress(),
+        create: (_) => getIt<ProgressTrackerCubit>()..trackProgress(),
       ),
-        BlocProvider(
+      BlocProvider(
+        create: (_) => getIt<ProgressHomeTrackerCubit>(),
+      ),
+      BlocProvider(
+        create: (_) => getIt<DentalReminderCubit>(),
+      ),
+
+      BlocProvider(
+        create: (_) => getIt<ReminderHistoryCubit>(),
+      ),
+      BlocProvider(
         create: (context) => NotificationCubit(),
-      ),
-      BlocProvider(
-        create: (context) => getIt.get<DentalReminderCubit>(),
-      ),
+      )
     ],
     child: const DentiqApp(),
   ));

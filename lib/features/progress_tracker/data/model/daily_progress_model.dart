@@ -41,4 +41,6 @@ class DailyProgressModel {
         tongueCleaning: json['tongueCleaning'] ?? false,
         checkGums: json['checkGums'] ?? false,
       );
+     
+
 }

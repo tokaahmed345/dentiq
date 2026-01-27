@@ -72,7 +72,7 @@ class ProgressViewBody extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Overall Progress",
+                        Text("Routine Progress",
                             style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
