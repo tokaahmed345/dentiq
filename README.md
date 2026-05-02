@@ -101,79 +101,41 @@
     </ul>
 </div>
 
-<div class="box">
-    <h2>📱 App Screenshots</h2>
+
+    
+## 📱 App Screenshots
     <p>Below are real screens from the Dentiq application:</p>
 
-    <div style="text-align: center; margin-bottom: 25px;">
 
-        <img src="screenshots/splash.jpg" alt="Splash Screen"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+<img src="screenshots/splash.jpg" width="200"/>
+<img src="screenshots/onboarding.jpg" width="200"/>
+<img src="screenshots/onboarding2.jpg" width="200"/>
+<img src="screenshots/onboarding3.jpg" width="200"/>
 
-        <img src="screenshots/onboarding.jpg" alt="Onboarding 1"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+<img src="screenshots/login.jpg" width="200"/>
+<img src="screenshots/sign_up.jpg" width="200"/>
+<img src="screenshots/signup2.jpg" width="200"/>
+<img src="screenshots/forget_pass.jpg" width="200"/>
 
-        <img src="screenshots/onboarding2.jpg" alt="Onboarding 2"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+<img src="screenshots/home.jpg" width="200"/>
+<img src="screenshots/profile.jpg" width="200"/>
+<img src="screenshots/personal_page.jpg" width="200"/>
 
-        <img src="screenshots/onboarding3.jpg" alt="Onboarding 3"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+<img src="screenshots/scan.jpg" width="200"/>
+<img src="screenshots/scan2.jpg" width="200"/>
+<img src="screenshots/scan_detection.jpg" width="200"/>
+<img src="screenshots/scan_history.jpg" width="200"/>
 
-        <img src="screenshots/login.jpg" alt="Login Screen"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+<img src="screenshots/reminder.jpg" width="200"/>
+<img src="screenshots/done_reminder.jpg" width="200"/>
+<img src="screenshots/reminder_history.jpg" width="200"/>
 
-        <img src="screenshots/sign_up.jpg" alt="Sign Up Screen"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+<img src="screenshots/progress.jpg" width="200"/>
+<img src="screenshots/chat_bot.jpg" width="200"/>
+<img src="screenshots/tips_videos.jpg" width="200"/>
+<img src="screenshots/log_out.jpg" width="200"/>
 
-        <img src="screenshots/signup2.jpg" alt="Sign Up Alternative"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
-
-        <img src="screenshots/forget_pass.jpg" alt="Forgot Password"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
-
-        <img src="screenshots/home.jpg" alt="Home Screen"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
-
-        <img src="screenshots/profile.jpg" alt="Profile Page"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
-
-        <img src="screenshots/personal_page.jpg" alt="Personal Page"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
-
-        <img src="screenshots/scan.jpg" alt="Scan Screen"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
-
-        <img src="screenshots/scan2.jpg" alt="Scan 2"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
-
-        <img src="screenshots/scan_detection.jpg" alt="Scan Result"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
-
-        <img src="screenshots/scan_history.jpg" alt="Scan History"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
-
-        <img src="screenshots/reminder.jpg" alt="Reminder"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
-
-        <img src="screenshots/done_reminder.jpg" alt="Done Reminder"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
-
-        <img src="screenshots/reminder_history.jpg" alt="Reminder History"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
-
-        <img src="screenshots/progress.jpg" alt="Progress"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
-
-        <img src="screenshots/chat_bot.jpg" alt="Chat Bot"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
-
-        <img src="screenshots/tips_videos.jpg" alt="Tips Videos"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
-
-        <img src="screenshots/log_out.jpg" alt="Logout Screen"
-            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
-
-    </div>
+---
 </div>
 <div class="box">
     <h2>⚙️ Technologies Used</h2>
