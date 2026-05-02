@@ -1,11 +1,8 @@
 import 'package:dentiq/core/utils/colors/app_colors.dart';
 import 'package:dentiq/core/utils/widgets/custom_appbar.dart';
-import 'package:dentiq/features/home/presentation/view_model/cubit/progress_home_tracker_cubit.dart';
+import 'package:dentiq/features/chat/presentation/chat_view.dart';
 import 'package:dentiq/features/home/presentation/widgets/home_view_body.dart';
-import 'package:dentiq/features/notifications/presentation/notification_list_viewbody.dart';
-import 'package:dentiq/features/notifications/presentation/view_model/cubit/notification_cubit.dart';
 import 'package:dentiq/features/profile/presentation/profile_view.dart';
-import 'package:dentiq/features/profile/presentation/widgets/profile_view_body.dart';
 import 'package:dentiq/features/reminder/presentation/view_model/cubit/dental_reminder_cubit.dart';
 import 'package:dentiq/features/scan/presentation/scan_view.dart';
 import 'package:dentiq/features/tips/presentation/tips_view.dart';
@@ -16,11 +13,11 @@ class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<HomeView> createState() => HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
-  int _currentIndex = 0;
+class HomeViewState extends State<HomeView> {
+  int currentIndex = 0;
 
   final List<Widget> _pages = const [
     HomeViewBody(),
@@ -30,7 +27,7 @@ class _HomeViewState extends State<HomeView> {
   ];
 
   PreferredSizeWidget? _buildAppBar() {
-    switch (_currentIndex) {
+    switch (currentIndex) {
       case 2:
         return const CustomAppBar(
           title: "Dental Tips",
@@ -43,20 +40,13 @@ class _HomeViewState extends State<HomeView> {
           title: "DentIQ",
           subtitle: "Your smile, our priority",
           onNotificationTap: () {
-            Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) => NotificationListView(),
-      ),
-
-    );
 
           },
     suffixIconWidget: notificationIcon(context), 
         );
 
       case 1:
-        return CustomAppBar(
+        return const CustomAppBar(
           title: "Teeth Scan",
         );
 
@@ -74,7 +64,7 @@ class _HomeViewState extends State<HomeView> {
  @override
   void initState() {
     super.initState();
-    if (_currentIndex == 0) {
+    if (currentIndex == 0) {
       context.read<DentalReminderCubit>().fetchUpcomingReminders();
 
     }
@@ -85,50 +75,50 @@ class _HomeViewState extends State<HomeView> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        backgroundColor: Colors.blue[50],
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: _buildAppBar(),
-        body: SafeArea(child: _pages[_currentIndex]),
+        body: SafeArea(child: _pages[currentIndex]),
         bottomNavigationBar: _buildBottomNav(),
       ),
     );
   }
 Widget notificationIcon(BuildContext context) {
-  final unreadCount = context.watch<NotificationCubit>().getUnreadCount();
+  // final unreadCount = context.watch<NotificationCubit>().getUnreadCount();
 
   return Stack(
     children: [
       IconButton(
-        icon: Icon(Icons.notifications_outlined),
+        icon: const Icon(Icons.message),
         onPressed: () {
           // افتح قائمة notifications
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (_) => NotificationListView()),
+            MaterialPageRoute(builder: (_) => const ChatView()),
           );
           // علم كل notifications كمقروءة
-          context.read<NotificationCubit>().markAllAsRead();
+          // context.read<NotificationCubit>().markAllAsRead();
         },
       ),
-      if (unreadCount > 0)
-        Positioned(
-          right: 6,
-          top: 6,
-          child: Container(
-            padding: const EdgeInsets.all(4),
-            decoration: BoxDecoration(
-              color: Colors.red,
-              shape: BoxShape.circle,
-            ),
-            child: Text(
-              unreadCount.toString(),
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        ),
+      // if (unreadCount > 0)
+      //   Positioned(
+      //     right: 6,
+      //     top: 6,
+      //     child: Container(
+      //       padding: const EdgeInsets.all(4),
+      //       decoration: const BoxDecoration(
+      //         color: Colors.red,
+      //         shape: BoxShape.circle,
+      //       ),
+      //       child: Text(
+      //         unreadCount.toString(),
+      //         style: const TextStyle(
+      //           color: Colors.white,
+      //           fontSize: 12,
+      //           fontWeight: FontWeight.bold,
+      //         ),
+      //       ),
+      //     ),
+      //   ),
     ],
   );
 }
@@ -136,7 +126,7 @@ Widget notificationIcon(BuildContext context) {
   Widget _buildBottomNav() {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.blue[50],
+        color: Theme.of(context).colorScheme.surface,
         boxShadow: const [
           BoxShadow(
             color: Colors.black12,
@@ -151,9 +141,9 @@ Widget notificationIcon(BuildContext context) {
       ),
       child: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        currentIndex: _currentIndex,
+        currentIndex: currentIndex,
         onTap: (index) {
-          setState(() => _currentIndex = index);
+          setState(() => currentIndex = index);
            if (index == 0) {
       context.read<DentalReminderCubit>().fetchUpcomingReminders();
     }
@@ -180,7 +170,7 @@ Widget notificationIcon(BuildContext context) {
     String label,
     int index,
   ) {
-    bool isActive = _currentIndex == index;
+    bool isActive = currentIndex == index;
     return BottomNavigationBarItem(
       icon: AnimatedScale(
         scale: isActive ? 1.3 : 1.0,

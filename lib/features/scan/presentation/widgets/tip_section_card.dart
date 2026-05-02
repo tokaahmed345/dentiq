@@ -1,8 +1,8 @@
 import 'package:dentiq/core/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
-
-class TipsSection extends StatelessWidget {
-  const TipsSection({super.key});
+class TipsSectionCard extends StatelessWidget {
+  final List<String> tips;
+  const TipsSectionCard({super.key, required this.tips});
 
   @override
   Widget build(BuildContext context) {
@@ -15,34 +15,40 @@ class TipsSection extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Text(
+        children: [
+          const Text(
             'Tips for best results:',
             style: TextStyle(fontWeight: FontWeight.w600),
           ),
-          SizedBox(height: 12),
-          _TipItem(text: 'Ensure good lighting conditions'),
-          _TipItem(text: 'Keep your teeth centered in the frame'),
-          _TipItem(text: 'Hold your phone steady while scanning'),
+          const SizedBox(height: 12),
+          ...tips.map((tip) => TipItem(text: tip)).toList(),
         ],
       ),
     );
   }
-
 }
 
-class _TipItem extends StatelessWidget {
+
+class TipItem extends StatelessWidget {
   final String text;
-  const _TipItem({required this.text});
+  const TipItem({required this.text});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: Row(
-        children: const [
+        children:  [
           Icon(Icons.check_circle, color: AppColors.greenColor, size: 18),
           SizedBox(width: 8),
+          Expanded(
+            child: Text(
+                text,
+                style: const TextStyle(
+                  fontSize: 14,
+                ),
+              ),
+          ),
         ],
       ),
     );

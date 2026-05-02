@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dentiq/features/notifications/data/notifications_service.dart';
 import 'package:dentiq/features/reminder/data/models/dental_reminder_model.dart';
 import 'package:dentiq/features/reminder/presentation/view_model/cubit/dental_reminder_cubit.dart';
 import 'package:flutter/material.dart';
@@ -231,6 +232,7 @@ class _ReminderViewBodyState extends State<ReminderViewBody> {
     ? null
     : () async {
         final now = DateTime.now();
+final testReminderTime = now.add(const Duration(seconds: 10)); // بعد 10 ثواني
         final reminderDateTime = DateTime(
           now.year,
           now.month,
@@ -259,6 +261,15 @@ class _ReminderViewBodyState extends State<ReminderViewBody> {
         );
 
         await context.read<DentalReminderCubit>().addReminder(reminder);
+       // ⚡ التعديل هنا
+//         await NotificationService.scheduleDailyNotification(
+//           id: reminderDateTime.millisecondsSinceEpoch ~/ 1000,
+//           title: reminder.title,
+//           body: reminder.subtitle,
+//           time:   TimeOfDay(hour: testReminderTime.hour, minute: testReminderTime.minute),
+//  // ✅ هنا
+//         );
+
         context.read<DentalReminderCubit>().fetchUpcomingReminders();
       },
 

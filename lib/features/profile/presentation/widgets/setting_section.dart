@@ -2,8 +2,11 @@ import 'package:dentiq/core/utils/colors/app_colors.dart';
 import 'package:dentiq/core/utils/router/routes_name.dart';
 import 'package:dentiq/core/utils/service_locator/service_locator.dart';
 import 'package:dentiq/core/utils/sharedprefrence.dart';
+import 'package:dentiq/core/utils/themes/theme_cubit/theme_cubit.dart';
 import 'package:dentiq/features/auth/presentation/view_model/log_out_cubit/log_out_cubit.dart';
 import 'package:dentiq/features/reminder/presentation/widgets/reminder_history.dart';
+import 'package:dentiq/features/scan/presentation/view_model/cubit/scan_history_cubit.dart';
+import 'package:dentiq/features/scan/presentation/widgets/scan_history_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -17,10 +20,11 @@ class SettingsSection extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _SettingTile(
-              icon: Icons.notifications,
-              title: "Reminders",
+              icon: Icons.alarm_on,
+              title: "Reminder History",
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
@@ -28,6 +32,21 @@ class SettingsSection extends StatelessWidget {
                   ),
                 );
               }),
+              _SettingTile(
+  icon: Icons.history,
+  title: "Scan History",
+  onTap: () {
+  Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => BlocProvider(
+          create: (_) => getIt.get<ScanHistoryCubit>()..getHistory(),
+          child: ScanHistoryPage(),
+        ),
+      ),
+    );
+  },
+),
           BlocProvider(
             create: (context) => getIt.get<LogOutCubit>(),
             child: BlocConsumer<LogOutCubit, LogOutState>(
@@ -61,6 +80,30 @@ class SettingsSection extends StatelessWidget {
               },
             ),
           ),
+//       ListTile(
+//   contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+//   leading: CircleAvatar(
+//     backgroundColor: AppColors.primary!.withOpacity(0.1),
+//     child: Icon(
+//       context.watch<ThemeCubit>().state == ThemeMode.dark
+//           ? Icons.dark_mode
+//           : Icons.light_mode,
+//       color: AppColors.primary,
+//     ),
+//   ),
+//   title: Text(
+//     context.watch<ThemeCubit>().state == ThemeMode.dark
+//         ? "Dark Mode"
+//         : "Light Mode",
+//     style: const TextStyle(fontWeight: FontWeight.w500),
+//   ),
+//   trailing: Switch(
+//     value: context.watch<ThemeCubit>().state == ThemeMode.dark,
+//     onChanged: (value) {
+//       context.read<ThemeCubit>().toggleTheme();
+//     },
+//   ),
+// ),
         ],
       ),
     );

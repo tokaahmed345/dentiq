@@ -34,7 +34,7 @@ class CustomRemiderList extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15)),
                 color: 
                     
-                   Colors.blue.shade50, // لون مختلف لو فات
+                   Colors.blue.shade50, 
                 child: ListTile(
                   leading: Container(
                     padding: const EdgeInsets.all(12),

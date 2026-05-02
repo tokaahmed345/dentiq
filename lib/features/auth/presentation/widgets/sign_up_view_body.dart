@@ -639,7 +639,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
           if (formKey.currentState!.validate()) {
             context.read<SignUpCubit>().signUp(
                   name: nameController.text,
-                  email: emailController.text,
+                  email: emailController.text.trim(),
                   password: passwordController.text,
                   phone: phoneController.text,
                   gender: gender ?? "",

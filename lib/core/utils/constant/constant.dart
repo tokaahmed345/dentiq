@@ -2,6 +2,8 @@ import 'package:dentiq/features/reminder/data/models/dental_reminder_type.dart';
 import 'package:flutter/material.dart';
 
 class Constant {
+    static const keyTheme = 'theme_mode';
+
    static final List<DentalReminderType> reminderTypes = [
     DentalReminderType(
       title: "Morning Brushing",

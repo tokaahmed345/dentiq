@@ -10,7 +10,7 @@ class ProgressView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blue[50],
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar:  CustomAppBar(
           arrowBack: IconButton(onPressed:(){ GoRouter.of(context).pop();}, icon: const Icon(Icons.arrow_back_ios,color: AppColors.whiteColor,size: 27,))
           ,title: "progress"),

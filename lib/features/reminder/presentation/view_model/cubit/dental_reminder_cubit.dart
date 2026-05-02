@@ -66,13 +66,7 @@ final uniqueId =
       //   ),
       // );
 
-      // 2️⃣ ثم جدول reminder الطبيعي
-      await NotificationService.scheduleReminder(
-        id: uniqueId,
-        title: '🦷 Reminder Scheduled',
-        body: 'موعدك قادم!',
-        dateTime: dateTime,
-      );
+     
 
 
       fetchUpcomingReminders();

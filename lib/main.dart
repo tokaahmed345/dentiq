@@ -1,16 +1,19 @@
 import 'package:dentiq/core/utils/router/app_router.dart';
 import 'package:dentiq/core/utils/service_locator/service_locator.dart';
+import 'package:dentiq/core/utils/themes/app_theme.dart';
+import 'package:dentiq/core/utils/themes/theme_cubit/theme_cubit.dart';
 import 'package:dentiq/features/home/presentation/view_model/cubit/progress_home_tracker_cubit.dart';
-import 'package:dentiq/features/notifications/data/notifications_service.dart';
 import 'package:dentiq/features/notifications/presentation/view_model/cubit/notification_cubit.dart';
 import 'package:dentiq/features/progress_tracker/presentation/view_model/progress_tracker_cubit/progress_tracker_cubit.dart';
-import 'package:dentiq/features/reminder/data/repos/dental_remider_repo.dart';
 import 'package:dentiq/features/reminder/presentation/view_model/cubit/cubit/reminder_history_cubit.dart';
 import 'package:dentiq/features/reminder/presentation/view_model/cubit/dental_reminder_cubit.dart';
+import 'package:dentiq/features/scan/data/model/local_model/local_model.dart';
 import 'package:dentiq/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
@@ -18,9 +21,10 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await NotificationService.init();
-  await NotificationService.requestNotificationPermission();
-  await NotificationService.testNotification();
+  // tz.initializeTimeZones();
+  // tz.setLocalLocation(tz.getLocation('Africa/Cairo'));
+
+  // await NotificationService.init();
   await Supabase.initialize(
     url: 'https://sdyzanmqockopnauzxya.supabase.co',
     anonKey: 'sb_publishable_XHH4GYKnRIouLF3GrPLQLg_DnoMKJ6W',
@@ -28,6 +32,11 @@ void main() async {
   setUp();
 
   // await InAppWebViewController.setWebContentsDebuggingEnabled(true);
+  await dotenv.load(fileName: ".env");
+  await Hive.initFlutter();
+  Hive.registerAdapter(LocalScanModelAdapter());
+
+  await Hive.openBox<LocalScanModel>('scans');
 
   runApp(MultiBlocProvider(
     providers: [
@@ -59,7 +68,10 @@ void main() async {
       ),
       BlocProvider(
         create: (context) => NotificationCubit(),
-      )
+      ),
+      BlocProvider(
+        create: (_) => ThemeCubit()..loadTheme(),
+      ),
     ],
     child: const DentiqApp(),
   ));
@@ -70,9 +82,16 @@ class DentiqApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routerConfig: AppRouter.router,
+    return BlocBuilder<ThemeCubit, ThemeMode>(
+      builder: (context, thememode) {
+        return MaterialApp.router(
+          theme: AppThemes.lightTheme,
+          darkTheme: AppThemes.darkTheme,
+          themeMode: thememode,
+          debugShowCheckedModeBanner: false,
+          routerConfig: AppRouter.router,
+        );
+      },
     );
   }
 }

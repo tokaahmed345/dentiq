@@ -89,7 +89,7 @@ class _ForgotPasswordViewBodyState extends State<ForgotPasswordViewBody> {
                     radius: 12,
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        context.read<ForgotPasswordCubit>().sendLink(emailController.text);
+                        context.read<ForgotPasswordCubit>().sendLink(emailController.text.trim());
                       }
                     },
                   ),

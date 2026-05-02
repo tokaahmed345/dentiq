@@ -58,13 +58,13 @@ class PersonalInfoCard extends StatelessWidget {
               ],
             ),
           CustomFormField(hint: 'Name', controller: name,enabled: isEditing,),
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
           CustomFormField(hint: 'Phone', controller: phone,enabled: isEditing,),
-                    SizedBox(height: 20,),
+                    const SizedBox(height: 20,),
 
                     CustomFormField(hint: 'Email', controller: email,enabled: isEditing,),
 
-                    SizedBox(height: 20,),
+                    const SizedBox(height: 20,),
 
  if (isEditing) ...[
               CustomFormField(hint: 'Old Password', controller: oldPassword), // جديد

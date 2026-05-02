@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:dentiq/features/profile/presentation/view_model/cubit/profile_image_cubit.dart';
 import 'package:dentiq/features/profile/presentation/view_model/cubit/profile_info_cubit.dart';
+import 'package:dentiq/features/scan/presentation/view_model/health_risk_cubit/health_risk_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -115,10 +116,22 @@ class ProfileHeader extends StatelessWidget {
         ),
 
         const SizedBox(height: 4),
-        Text(
-          "Oral Health • Good",
-          style: TextStyle(color: AppColors.blueGrey),
-        ),
+       BlocBuilder<HealthRiskCubit, HealthRiskState>(
+  builder: (context, state) {
+    String text = "Loading...";
+    if (state is HealthRiskSuccess) {
+      text = state.risk;
+      
+    } else if (state is HealthRiskFailure) {
+      text = "Error";
+    }
+    return Text(
+      " HealthRisk • $text",
+      style: TextStyle(color: AppColors.blueGrey),
+    );
+  },
+),
+
       ],
     );
   }

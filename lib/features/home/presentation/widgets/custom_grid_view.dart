@@ -1,4 +1,5 @@
 import 'package:dentiq/core/utils/colors/app_colors.dart';
+import 'package:dentiq/features/home/presentation/home_view.dart';
 import 'package:dentiq/features/progress_tracker/presentation/progress_view.dart';
 import 'package:dentiq/features/reminder/presentation/reminder_view.dart';
 import 'package:dentiq/features/scan/presentation/scan_view.dart';
@@ -41,7 +42,10 @@ class CustomGridView extends StatelessWidget {
                   title: "Scan",
                   color: AppColors.primary!,
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => ScanView()));
+                    // Navigator.push(context, MaterialPageRoute(builder: (_) => ScanView()));
+ final homeState = context.findAncestorStateOfType<HomeViewState>();
+    homeState?.currentIndex = 1; 
+    homeState?.setState((){}); 
                   },
                 ),
               ],

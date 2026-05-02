@@ -1,3 +1,4 @@
+import 'package:dentiq/core/utils/colors/app_colors.dart';
 import 'package:dentiq/features/progress_tracker/presentation/view_model/progress_tracker_cubit/progress_tracker_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -65,7 +66,7 @@ class ProgressViewBody extends StatelessWidget {
                 Card(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)),
-                  color: Colors.blue.shade50,
+                  color: Theme.of(context).colorScheme.surface,
                   elevation: 4,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
@@ -100,46 +101,93 @@ class ProgressViewBody extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
 
+                // Expanded(
+                //   child: ListView.builder(
+                //     itemCount: routines.length,
+                //     itemBuilder: (context, index) {
+                //       final entry = routines[index];
+                //       return Card(
+                //         shape: RoundedRectangleBorder(
+                //             borderRadius: BorderRadius.circular(20)),
+                //         margin: const EdgeInsets.symmetric(vertical: 8),
+                //         elevation: 3,
+                //         color: Colors.blue.shade50,
+                //         child: Padding(
+                //           padding: const EdgeInsets.symmetric(
+                //               horizontal: 16, vertical: 12),
+                //           child: Row(
+                //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //             children: [
+                //               Text(entry['title'] as String,
+                //                   style: TextStyle(
+                //                       fontSize: 16,
+                //                       fontWeight: FontWeight.bold,
+                //                       color: Colors.blue.shade900)),
+                //               Checkbox(
+                //                 value: entry['done'] as bool,
+                //                 activeColor: Colors.blue,
+                //                 onChanged: (checked) {
+                //                   context
+                //                       .read<ProgressTrackerCubit>()
+                //                       .updateRoutine(
+                //                           entry['title'] as String,
+                //                           checked ?? false);
+                //                 },
+                //               ),
+                //             ],
+                //           ),
+                //         ),
+                //       );
+                //     },
+                //   ),
+                // ),
                 Expanded(
-                  child: ListView.builder(
-                    itemCount: routines.length,
-                    itemBuilder: (context, index) {
-                      final entry = routines[index];
-                      return Card(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                        margin: const EdgeInsets.symmetric(vertical: 8),
-                        elevation: 3,
-                        color: Colors.blue.shade50,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 12),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(entry['title'] as String,
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blue.shade900)),
-                              Checkbox(
-                                value: entry['done'] as bool,
-                                activeColor: Colors.blue,
-                                onChanged: (checked) {
-                                  context
-                                      .read<ProgressTrackerCubit>()
-                                      .updateRoutine(
-                                          entry['title'] as String,
-                                          checked ?? false);
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  ),
+  child: ListView.builder(
+    itemCount: routines.length,
+    itemBuilder: (context, index) {
+      final entry = routines[index];
+      return Card(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20)),
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        elevation: 3,
+        color:Theme.of(context).cardColor,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(20),
+          onTap: () {
+            final newValue = !(entry['done'] as bool);
+            context
+                .read<ProgressTrackerCubit>()
+                .updateRoutine(entry['title'] as String, newValue);
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(entry['title'] as String,
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue.shade900)),
+                Checkbox(
+                  value: entry['done'] as bool,
+                  onChanged: null,
+                    fillColor: MaterialStateProperty.resolveWith<Color>((states) {
+                    return (entry['done'] as bool) 
+                        ? AppColors.blueColor
+                        : AppColors.transparent ; 
+                  }),
                 ),
+              ],
+            ),
+          ),
+        ),
+      );
+    },
+  ),
+),
+
               ],
             ),
           );

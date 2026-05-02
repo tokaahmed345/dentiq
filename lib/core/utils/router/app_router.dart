@@ -2,6 +2,7 @@ import 'package:dentiq/core/utils/router/routes_name.dart';
 import 'package:dentiq/features/auth/presentation/forgot_password_view.dart';
 import 'package:dentiq/features/auth/presentation/log_in_view.dart';
 import 'package:dentiq/features/auth/presentation/sign_up_view.dart';
+import 'package:dentiq/features/chat/presentation/chat_view.dart';
 import 'package:dentiq/features/home/presentation/home_view.dart';
 import 'package:dentiq/features/onboarding/presentation/onboarding_view.dart';
 import 'package:dentiq/features/profile/presentation/widgets/profile_view_body.dart';
@@ -76,6 +77,11 @@ class AppRouter {
         path: RoutesName.reminderHistory,
         name: RoutesName.reminderHistory,
         builder: (context, state) =>  ReminderHistoryPage(),
+      ),
+       GoRoute(
+        path: RoutesName.chat,
+        name: RoutesName.chat,
+        builder: (context, state) =>  ChatView(),
       ),
     ],
   );

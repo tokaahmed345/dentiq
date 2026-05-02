@@ -1,5 +1,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dentiq/core/utils/service/api_service.dart';
+import 'package:dentiq/core/utils/service/dio_consumer.dart';
 import 'package:dentiq/core/utils/sharedprefrence.dart';
 import 'package:dentiq/features/auth/data/repos/forgot_password_repo/forgot_password.dart';
 import 'package:dentiq/features/auth/data/repos/forgot_password_repo/forgot_password_repo_impl.dart';
@@ -13,6 +15,9 @@ import 'package:dentiq/features/auth/presentation/view_model/auth_cubit/forgot_p
 import 'package:dentiq/features/auth/presentation/view_model/auth_cubit/log_in_cubit/log_in_cubit.dart';
 import 'package:dentiq/features/auth/presentation/view_model/auth_cubit/sign_up_cubit/sign_up_cubit.dart';
 import 'package:dentiq/features/auth/presentation/view_model/log_out_cubit/log_out_cubit.dart';
+import 'package:dentiq/features/chat/data/repos/chat_repo.dart';
+import 'package:dentiq/features/chat/data/repos/chat_repo_impl.dart';
+import 'package:dentiq/features/chat/presentation/view_model/cubit/chat_cubit.dart';
 import 'package:dentiq/features/home/presentation/view_model/cubit/progress_home_tracker_cubit.dart';
 import 'package:dentiq/features/profile/data/repos/profile_header_repo.dart';
 import 'package:dentiq/features/profile/data/repos/profile_header_repo_impl.dart';
@@ -27,13 +32,27 @@ import 'package:dentiq/features/reminder/data/repos/dental_remider_repo.dart';
 import 'package:dentiq/features/reminder/data/repos/dental_reminder_repo_impl.dart';
 import 'package:dentiq/features/reminder/presentation/view_model/cubit/cubit/reminder_history_cubit.dart';
 import 'package:dentiq/features/reminder/presentation/view_model/cubit/dental_reminder_cubit.dart';
-import 'package:dentiq/features/reminder/presentation/widgets/reminder_history.dart';
+import 'package:dentiq/features/scan/data/model/model_service.dart';
+import 'package:dentiq/features/scan/data/repos/detection_repo.dart';
+import 'package:dentiq/features/scan/data/repos/detection_repo_impl.dart';
+import 'package:dentiq/features/scan/data/repos/diseases_repo/diseases_repo_impl.dart';
+import 'package:dentiq/features/scan/data/repos/diseases_repo/diseases_repo.dart';
+import 'package:dentiq/features/scan/data/repos/local_repo/local_repo.dart';
+import 'package:dentiq/features/scan/data/repos/scan_repo/scan_repo.dart';
+import 'package:dentiq/features/scan/data/repos/scan_repo/scan_repo_impl.dart';
+import 'package:dentiq/features/scan/presentation/view_model/cubit/scan_history_cubit.dart';
+import 'package:dentiq/features/scan/presentation/view_model/health_risk_cubit/health_risk_cubit.dart';
+import 'package:dentiq/features/scan/presentation/view_model/last_scan_cubit/last_scan_cubit.dart';
+import 'package:dentiq/features/scan/presentation/view_model/detection_cubit/detection_cubit.dart';
+import 'package:dentiq/features/scan/presentation/view_model/diseases_cubit/diseases_cubit.dart';
+import 'package:dentiq/features/scan/presentation/view_model/scan_count_cubit/scan_cubit.dart';
 import 'package:dentiq/features/tips/data/repo/articles_repo/article_repo.dart';
 import 'package:dentiq/features/tips/data/repo/articles_repo/article_repo_impl.dart';
 import 'package:dentiq/features/tips/data/repo/video_repo/video_repo.dart';
 import 'package:dentiq/features/tips/data/repo/video_repo/video_repo_impl.dart';
 import 'package:dentiq/features/tips/presentation/view_model/cubit/articles_cubit.dart';
 import 'package:dentiq/features/tips/presentation/view_model/videos_cubit/videos_cubit_cubit.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -45,7 +64,10 @@ void setUp(){
 
     getIt.registerLazySingleton<FirebaseFirestore>(()=>FirebaseFirestore.instance);
 getIt.registerLazySingleton<SharedPrefs>(() => SharedPrefs());
+  getIt.registerLazySingleton<Dio>(() => Dio());
 
+  getIt.registerLazySingleton<ApiService>(
+      () => DioConsumer(dio: getIt<Dio>()));
   getIt.registerLazySingleton<SignUpRepo>(()=>SignUpRepoImpl(firebaseAuth:  getIt.get<FirebaseAuth>(), firestore:getIt.get<FirebaseFirestore>(), sharedPrefs: getIt.get<SharedPrefs>() ));
   getIt.registerFactory<SignUpCubit>(()=>SignUpCubit(getIt.get<SignUpRepo>()));
    getIt.registerLazySingleton<LogInRepo>(()=>LogInRepoImpl(firebaseAuth:  getIt.get<FirebaseAuth>(), sharedPrefs:getIt.get<SharedPrefs>()  ,  ));
@@ -86,5 +108,38 @@ getIt.registerLazySingleton<DentalReminderCubit>(
   getIt.registerFactory<LogOutCubit>(()=>LogOutCubit(  getIt.get<LogoutRepo>()));
   getIt.registerFactory<ReminderHistoryCubit>(()=>ReminderHistoryCubit(  getIt.get<DentalRemiderRepo>()));
    getIt.registerFactory<ProgressHomeTrackerCubit>(()=>ProgressHomeTrackerCubit(  getIt.get<ProgressRepo>(),getIt.get<DentalRemiderRepo>()),);
+
+  getIt.registerLazySingleton<ModelService>(() => ModelService());
+getIt.registerLazySingleton<DetectionRepository>(
+    () => DetectionRepositoryImpl(getIt<ModelService>()),
+  );
+  getIt.registerLazySingleton<LocalScanRepo>(
+    () => LocalScanRepo(),
+  );
+
+    getIt.registerFactory(() => DetectionCubit(getIt<DetectionRepository>(), scanRepo: getIt.get<ScanRepo>(), localScanRepo:getIt.get<LocalScanRepo>() ));
+
+
+getIt.registerLazySingleton<DiseaseRepo>(
+    () => DiseaseRepoImpl(getIt.get<FirebaseFirestore>()),
+  );
+    getIt.registerFactory(() => DiseasesCubit( getIt<DiseaseRepo>()));
+
+
+
+getIt.registerLazySingleton<ScanRepo>(
+    () => ScanRepoImpl(getIt.get<FirebaseFirestore>(), supabase: getIt.get<SupabaseClient>() ),
+  );
+    getIt.registerFactory(() => ScanCubit( getIt<ScanRepo>()));
+
+    getIt.registerFactory(() => LastScanCubit( getIt<ScanRepo>()));
+    getIt.registerFactory(() => HealthRiskCubit( getIt<ScanRepo>()));
+   
+   getIt.registerLazySingleton<ChatRepo>(
+    () => ChatRepoImpl(apiService: getIt.get<ApiService>()),
+  );
+    getIt.registerFactory(() => ChatCubit( getIt<ChatRepo>()));
+
+    getIt.registerFactory(() => ScanHistoryCubit( getIt<ScanRepo>(),getIt.get<LocalScanRepo>()));
 
 }

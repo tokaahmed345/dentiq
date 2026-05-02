@@ -9,56 +9,6 @@ import 'package:dentiq/features/profile/presentation/widgets/tips_profile_sectio
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-
-// class ProfileViewBody extends StatefulWidget {
-//   const ProfileViewBody({super.key});
-
-//   @override
-//   State<ProfileViewBody> createState() => _ProfileViewBodyState();
-// }
-
-// class _ProfileViewBodyState extends State<ProfileViewBody> {
-//   File? pickedImage;
-//   bool isEditing = false;
-//   final TextEditingController password=TextEditingController();
-
-//   Future<void> pickImage() async {
-//     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-//     if (image != null) setState(() => pickedImage = File(image.path));
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SingleChildScrollView(
-//         child: Column(
-//           children: [
-//             Header(),
-//             const SizedBox(height: 20),
-//             SummaryRow(),
-//             const SizedBox(height: 24),
-//             const LastScanCard(),
-//             const SizedBox(height: 24),
-//             TipsSectionProfile(),
-//             const SizedBox(height: 24),
-//             PersonalInfoCard(
-//               isEditing: isEditing,
-//               onToggle: () => setState(() => isEditing = !isEditing),
-//               name:context.read<ProfileInfoCubit>().nameController,
-//               phone:context.read<ProfileInfoCubit>().phoneController, 
-//               email: context.read<ProfileInfoCubit>().emailController, password: password,
-
-//             ),
-//             const SizedBox(height: 24),
-//             SettingsSection(),
-//             const SizedBox(height: 40),
-//           ],
-//         ),
-//       );
-    
-//   }
-// }
-
-
 class ProfileViewBody extends StatefulWidget {
   const ProfileViewBody({super.key});
 

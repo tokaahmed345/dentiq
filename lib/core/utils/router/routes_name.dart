@@ -9,5 +9,6 @@ class RoutesName {
   static const String tips='/tips';
 static const String profile="/ProfileView";
 static const String reminderHistory="/reminderHistory";
+static const String chat="/chat";
 
 }

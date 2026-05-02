@@ -1,5 +1,4 @@
 
-import 'package:dentiq/core/utils/assets/app_assets.dart';
 import 'package:dentiq/core/utils/colors/app_colors.dart';
 import 'package:dentiq/core/utils/styles/app_style.dart';
 import 'package:dentiq/features/tips/data/models/articles_model.dart';
