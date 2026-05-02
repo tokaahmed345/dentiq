@@ -109,6 +109,13 @@
 
 <table>
 <tr>
+<td><img src="screenshots/scan.jpg" width="200"/></td>
+<td><img src="screenshots/scan2.jpg" width="200"/></td>
+<td><img src="screenshots/scan_detection.jpg" width="200"/></td>
+<td><img src="screenshots/scan_history.jpg" width="200"/></td>
+</tr>
+
+<tr>
 <td><img src="screenshots/splash.jpg" width="200"/></td>
 <td><img src="screenshots/onboarding.jpg" width="200"/></td>
 <td><img src="screenshots/onboarding2.jpg" width="200"/></td>
@@ -134,6 +141,18 @@
 <td><img src="screenshots/done_reminder.jpg" width="200"/></td>
 <td><img src="screenshots/chat_bot.jpg" width="200"/></td>
 <td><img src="screenshots/log_out.jpg" width="200"/></td>
+<td><img src="screenshots/reminder_history.jpg" width="200"/></td>
+
+</tr>
+<tr>
+<td><img src="screenshots/chat2.jpg" width="200"/></td>
+<td><img src="screenshots/chat3.jpg" width="200"/></td>
+<td><img src="screenshots/reminder2.jpg.jpg" width="200"/></td>
+<td><img src="screenshots/reminder3.jpg" width="200"/></td>
+<td><img src="screenshots/reminder4.jpg" width="200"/></td>
+<td><img src="screenshots/reminder5.jpg" width="200"/></td>
+
+
 </tr>
 </table>
 
