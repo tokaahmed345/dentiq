@@ -113,6 +113,10 @@
 <td><img src="screenshots/scan2.jpg" width="200"/></td>
 <td><img src="screenshots/scan_detection.jpg" width="200"/></td>
 <td><img src="screenshots/scan_history.jpg" width="200"/></td>
+<td><img src="screenshots/tips_videos.jpg" width="200"/></td>
+
+<td><img src="screenshots/tips2.jpg" width="200"/></td>
+
 </tr>
 
 <tr>
@@ -120,6 +124,9 @@
 <td><img src="screenshots/onboarding.jpg" width="200"/></td>
 <td><img src="screenshots/onboarding2.jpg" width="200"/></td>
 <td><img src="screenshots/onboarding3.jpg" width="200"/></td>
+<td><img src="screenshots/tips_article.jpg" width="200"/></td>
+
+<td><img src="screenshots/tips_guidelines.jpg" width="200"/></td>
 </tr>
 
 <tr>
@@ -127,14 +134,12 @@
 <td><img src="screenshots/sign_up.jpg" width="200"/></td>
 <td><img src="screenshots/signup2.jpg" width="200"/></td>
 <td><img src="screenshots/forget_pass.jpg" width="200"/></td>
+<td><img src="screenshots/profile.jpg" width="200"/></td>
+<td><img src="screenshots/personal page.jpg" width="200"/></td>
+
 </tr>
 
-<tr>
-<td><img src="screenshots/home.jpg" width="200"/></td>
-<td><img src="screenshots/profile.jpg" width="200"/></td>
-<td><img src="screenshots/scan.jpg" width="200"/></td>
-<td><img src="screenshots/scan2.jpg" width="200"/></td>
-</tr>
+
 
 <tr>
 <td><img src="screenshots/reminder.jpg" width="200"/></td>
@@ -142,12 +147,13 @@
 <td><img src="screenshots/chat_bot.jpg" width="200"/></td>
 <td><img src="screenshots/log_out.jpg" width="200"/></td>
 <td><img src="screenshots/reminder_history.jpg" width="200"/></td>
+<td><img src="screenshots/home.jpg" width="200"/></td>
 
 </tr>
 <tr>
 <td><img src="screenshots/chat2.jpg" width="200"/></td>
 <td><img src="screenshots/chat3.jpg" width="200"/></td>
-<td><img src="screenshots/reminder2.jpg.jpg" width="200"/></td>
+<td><img src="screenshots/reminder2.jpg" width="200"/></td>
 <td><img src="screenshots/reminder3.jpg" width="200"/></td>
 <td><img src="screenshots/reminder4.jpg" width="200"/></td>
 <td><img src="screenshots/reminder5.jpg" width="200"/></td>
