@@ -105,62 +105,76 @@
     <h2>📱 App Screenshots</h2>
     <p>Below are real screens from the Dentiq application:</p>
 
-    <style>
-        .screenshots img {
-            width: 200px;
-            height: auto;
-            border-radius: 10px;
-        }
-    </style>
+    <div style="text-align: center; margin-bottom: 25px;">
 
-    <div class="screenshots">
-        <img src="screenshots/splash.jpg" >
-        <img src="screenshots/onboarding.jpg" >
-        <img src="screenshots/onboarding2.jpg" >
-        <img src="screenshots/onboarding3.jpg" >
+        <img src="screenshots/splash.jpg" alt="Splash Screen"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
 
-        <img src="screenshots/login.jpg">
-        <img src="screenshots/sign_up.jpg" >
-        <img src="screenshots/signup2.jpg" >
-        <img src="screenshots/forget_pass.jpg" alt="Forgot Password">
+        <img src="screenshots/onboarding.jpg" alt="Onboarding 1"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
 
-        <img src="screenshots/home.jpg" alt="Home Screen">
-        <img src="screenshots/profile.jpg" alt="Profile Page">
-        <img src="screenshots/personal page.jpg" alt="Personal Page">
+        <img src="screenshots/onboarding2.jpg" alt="Onboarding 2"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
 
-        <img src="screenshots/scan.jpg" alt="Scan Screen">
-        <img src="screenshots/scan2.jpg" alt="Scan 2">
-        <img src="screenshots/scan_detection.jpg" alt="Scan Detection Result">
-        <img src="screenshots/scan_history.jpg" alt="Scan History">
+        <img src="screenshots/onboarding3.jpg" alt="Onboarding 3"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
 
-        <img src="screenshots/reminder.jpg" alt="Reminder">
-        <img src="screenshots/reminder2.jpg" alt="Reminder 2">
-        <img src="screenshots/reminder3.jpg" alt="Reminder 3">
-        <img src="screenshots/reminder4.jpg" alt="Reminder 4">
-        <img src="screenshots/reminder5.jpg" alt="Reminder 5">
-        <img src="screenshots/done_reminder.jpg" alt="Done Reminder">
+        <img src="screenshots/login.jpg" alt="Login Screen"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
 
-        <img src="screenshots/reminder_history.jpg" alt="Reminder History">
+        <img src="screenshots/sign_up.jpg" alt="Sign Up Screen"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
 
-        <img src="screenshots/progress.jpg" alt="Progress">
-        <img src="screenshots/progress_tracker.jpg" alt="Progress Tracker">
+        <img src="screenshots/signup2.jpg" alt="Sign Up Alternative"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
 
-        <img src="screenshots/chat_bot.jpg" alt="Chat Bot">
-        <img src="screenshots/chat2.jpg" alt="Chat 2">
-        <img src="screenshots/chat3.jpg" alt="Chat 3">
+        <img src="screenshots/forget_pass.jpg" alt="Forgot Password"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
 
-        <img src="screenshots/tips_article.jpg" alt="Tips Article">
-        <img src="screenshots/tips_guidelines.jpg" alt="Tips Guidelines">
-        <img src="screenshots/tips_videos.jpg" alt="Tips Videos">
-        <img src="screenshots/tips2.jpg" alt="Tips 2">
+        <img src="screenshots/home.jpg" alt="Home Screen"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
 
-        <img src="screenshots/article _details.jpg" alt="Article Details">
+        <img src="screenshots/profile.jpg" alt="Profile Page"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
 
-        <img src="screenshots/log_out.jpg" alt="Logout Screen">
+        <img src="screenshots/personal_page.jpg" alt="Personal Page"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+
+        <img src="screenshots/scan.jpg" alt="Scan Screen"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+
+        <img src="screenshots/scan2.jpg" alt="Scan 2"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+
+        <img src="screenshots/scan_detection.jpg" alt="Scan Result"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+
+        <img src="screenshots/scan_history.jpg" alt="Scan History"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+
+        <img src="screenshots/reminder.jpg" alt="Reminder"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+
+        <img src="screenshots/done_reminder.jpg" alt="Done Reminder"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+
+        <img src="screenshots/reminder_history.jpg" alt="Reminder History"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+
+        <img src="screenshots/progress.jpg" alt="Progress"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+
+        <img src="screenshots/chat_bot.jpg" alt="Chat Bot"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+
+        <img src="screenshots/tips_videos.jpg" alt="Tips Videos"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+
+        <img src="screenshots/log_out.jpg" alt="Logout Screen"
+            style="width:200px; margin:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
 
     </div>
 </div>
-
 <div class="box">
     <h2>⚙️ Technologies Used</h2>
     <ul>
