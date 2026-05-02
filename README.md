@@ -105,6 +105,14 @@
     <h2>📱 App Screenshots</h2>
     <p>Below are real screens from the Dentiq application:</p>
 
+    <style>
+        .screenshots img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+
     <div class="screenshots">
 
         <img src="screenshots/splash.jpg" alt="Splash Screen">
