@@ -104,38 +104,40 @@
 
     
 ## 📱 App Screenshots
-    <p>Below are real screens from the Dentiq application:</p>
 
+<p align="center">
 
-<img src="screenshots/splash.jpg" width="200"/>
-<img src="screenshots/onboarding.jpg" width="200"/>
-<img src="screenshots/onboarding2.jpg" width="200"/>
-<img src="screenshots/onboarding3.jpg" width="200"/>
+<table>
+<tr>
+<td><img src="screenshots/splash.jpg" width="200"/></td>
+<td><img src="screenshots/onboarding.jpg" width="200"/></td>
+<td><img src="screenshots/onboarding2.jpg" width="200"/></td>
+<td><img src="screenshots/onboarding3.jpg" width="200"/></td>
+</tr>
 
-<img src="screenshots/login.jpg" width="200"/>
-<img src="screenshots/sign_up.jpg" width="200"/>
-<img src="screenshots/signup2.jpg" width="200"/>
-<img src="screenshots/forget_pass.jpg" width="200"/>
+<tr>
+<td><img src="screenshots/login.jpg" width="200"/></td>
+<td><img src="screenshots/sign_up.jpg" width="200"/></td>
+<td><img src="screenshots/signup2.jpg" width="200"/></td>
+<td><img src="screenshots/forget_pass.jpg" width="200"/></td>
+</tr>
 
-<img src="screenshots/home.jpg" width="200"/>
-<img src="screenshots/profile.jpg" width="200"/>
-<img src="screenshots/personal_page.jpg" width="200"/>
+<tr>
+<td><img src="screenshots/home.jpg" width="200"/></td>
+<td><img src="screenshots/profile.jpg" width="200"/></td>
+<td><img src="screenshots/scan.jpg" width="200"/></td>
+<td><img src="screenshots/scan2.jpg" width="200"/></td>
+</tr>
 
-<img src="screenshots/scan.jpg" width="200"/>
-<img src="screenshots/scan2.jpg" width="200"/>
-<img src="screenshots/scan_detection.jpg" width="200"/>
-<img src="screenshots/scan_history.jpg" width="200"/>
+<tr>
+<td><img src="screenshots/reminder.jpg" width="200"/></td>
+<td><img src="screenshots/done_reminder.jpg" width="200"/></td>
+<td><img src="screenshots/chat_bot.jpg" width="200"/></td>
+<td><img src="screenshots/log_out.jpg" width="200"/></td>
+</tr>
+</table>
 
-<img src="screenshots/reminder.jpg" width="200"/>
-<img src="screenshots/done_reminder.jpg" width="200"/>
-<img src="screenshots/reminder_history.jpg" width="200"/>
-
-<img src="screenshots/progress.jpg" width="200"/>
-<img src="screenshots/chat_bot.jpg" width="200"/>
-<img src="screenshots/tips_videos.jpg" width="200"/>
-<img src="screenshots/log_out.jpg" width="200"/>
-
----
+</p>
 </div>
 <div class="box">
     <h2>⚙️ Technologies Used</h2>
