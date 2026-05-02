@@ -114,15 +114,14 @@
     </style>
 
     <div class="screenshots">
+        <img src="screenshots/splash.jpg" >
+        <img src="screenshots/onboarding.jpg" >
+        <img src="screenshots/onboarding2.jpg" >
+        <img src="screenshots/onboarding3.jpg" >
 
-        <img src="screenshots/splash.jpg" alt="Splash Screen">
-        <img src="screenshots/onboarding.jpg" alt="Onboarding 1">
-        <img src="screenshots/onboarding2.jpg" alt="Onboarding 2">
-        <img src="screenshots/onboarding3.jpg" alt="Onboarding 3">
-
-        <img src="screenshots/login.jpg" alt="Login Screen">
-        <img src="screenshots/sign_up.jpg" alt="Sign Up Screen">
-        <img src="screenshots/signup2.jpg" alt="Sign Up Alternative">
+        <img src="screenshots/login.jpg">
+        <img src="screenshots/sign_up.jpg" >
+        <img src="screenshots/signup2.jpg" >
         <img src="screenshots/forget_pass.jpg" alt="Forgot Password">
 
         <img src="screenshots/home.jpg" alt="Home Screen">
