@@ -103,20 +103,54 @@
 
 <div class="box">
     <h2>📱 App Screenshots</h2>
-    <p>Main application screens:</p>
+    <p>Below are real screens from the Dentiq application:</p>
 
     <div class="screenshots">
-        <img src="screenshots/splash.png" alt="Splash Screen">
-        <img src="screenshots/onboarding.png" alt="Onboarding">
-        <img src="screenshots/login.png" alt="Login">
-        <img src="screenshots/signup.png" alt="Sign Up">
-        <img src="screenshots/home.png" alt="Home">
-        <img src="screenshots/scan.png" alt="Scan">
-        <img src="screenshots/result.png" alt="Result">
-        <img src="screenshots/tracker.png" alt="Tracker">
-        <img src="screenshots/reminder.png" alt="Reminder">
-        <img src="screenshots/chatbot.png" alt="Chatbot">
-        <img src="screenshots/profile.png" alt="Profile">
+
+        <img src="screenshots/splash.jpg" alt="Splash Screen">
+        <img src="screenshots/onboarding.jpg" alt="Onboarding 1">
+        <img src="screenshots/onboarding2.jpg" alt="Onboarding 2">
+        <img src="screenshots/onboarding3.jpg" alt="Onboarding 3">
+
+        <img src="screenshots/login.jpg" alt="Login Screen">
+        <img src="screenshots/sign_up.jpg" alt="Sign Up Screen">
+        <img src="screenshots/signup2.jpg" alt="Sign Up Alternative">
+        <img src="screenshots/forget_pass.jpg" alt="Forgot Password">
+
+        <img src="screenshots/home.jpg" alt="Home Screen">
+        <img src="screenshots/profile.jpg" alt="Profile Page">
+        <img src="screenshots/personal page.jpg" alt="Personal Page">
+
+        <img src="screenshots/scan.jpg" alt="Scan Screen">
+        <img src="screenshots/scan2.jpg" alt="Scan 2">
+        <img src="screenshots/scan_detection.jpg" alt="Scan Detection Result">
+        <img src="screenshots/scan_history.jpg" alt="Scan History">
+
+        <img src="screenshots/reminder.jpg" alt="Reminder">
+        <img src="screenshots/reminder2.jpg" alt="Reminder 2">
+        <img src="screenshots/reminder3.jpg" alt="Reminder 3">
+        <img src="screenshots/reminder4.jpg" alt="Reminder 4">
+        <img src="screenshots/reminder5.jpg" alt="Reminder 5">
+        <img src="screenshots/done_reminder.jpg" alt="Done Reminder">
+
+        <img src="screenshots/reminder_history.jpg" alt="Reminder History">
+
+        <img src="screenshots/progress.jpg" alt="Progress">
+        <img src="screenshots/progress_tracker.jpg" alt="Progress Tracker">
+
+        <img src="screenshots/chat_bot.jpg" alt="Chat Bot">
+        <img src="screenshots/chat2.jpg" alt="Chat 2">
+        <img src="screenshots/chat3.jpg" alt="Chat 3">
+
+        <img src="screenshots/tips_article.jpg" alt="Tips Article">
+        <img src="screenshots/tips_guidelines.jpg" alt="Tips Guidelines">
+        <img src="screenshots/tips_videos.jpg" alt="Tips Videos">
+        <img src="screenshots/tips2.jpg" alt="Tips 2">
+
+        <img src="screenshots/article _details.jpg" alt="Article Details">
+
+        <img src="screenshots/log_out.jpg" alt="Logout Screen">
+
     </div>
 </div>
 
