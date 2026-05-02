@@ -101,25 +101,69 @@
     </ul>
 </div>
 
-<div class="box">
-    <h2>📱 App Screenshots</h2>
-    <p>Main application screens:</p>
 
-    <div class="screenshots">
-        <img src="screenshots/splash.png" alt="Splash Screen">
-        <img src="screenshots/onboarding.png" alt="Onboarding">
-        <img src="screenshots/login.png" alt="Login">
-        <img src="screenshots/signup.png" alt="Sign Up">
-        <img src="screenshots/home.png" alt="Home">
-        <img src="screenshots/scan.png" alt="Scan">
-        <img src="screenshots/result.png" alt="Result">
-        <img src="screenshots/tracker.png" alt="Tracker">
-        <img src="screenshots/reminder.png" alt="Reminder">
-        <img src="screenshots/chatbot.png" alt="Chatbot">
-        <img src="screenshots/profile.png" alt="Profile">
-    </div>
+    
+## 📱 App Screenshots
+
+<p align="center">
+
+<table>
+<tr>
+<td><img src="screenshots/scan.jpg" width="200"/></td>
+<td><img src="screenshots/scan2.jpg" width="200"/></td>
+<td><img src="screenshots/scan_detection.jpg" width="200"/></td>
+<td><img src="screenshots/scan_history.jpg" width="200"/></td>
+<td><img src="screenshots/tips_videos.jpg" width="200"/></td>
+
+<td><img src="screenshots/tips2.jpg" width="200"/></td>
+
+</tr>
+
+<tr>
+<td><img src="screenshots/splash.jpg" width="200"/></td>
+<td><img src="screenshots/onboarding.jpg" width="200"/></td>
+<td><img src="screenshots/onboarding2.jpg" width="200"/></td>
+<td><img src="screenshots/onboarding3.jpg" width="200"/></td>
+<td><img src="screenshots/tips_article.jpg" width="200"/></td>
+
+<td><img src="screenshots/tips_guidelines.jpg" width="200"/></td>
+</tr>
+
+<tr>
+<td><img src="screenshots/login.jpg" width="200"/></td>
+<td><img src="screenshots/sign_up.jpg" width="200"/></td>
+<td><img src="screenshots/signup2.jpg" width="200"/></td>
+<td><img src="screenshots/forget_pass.jpg" width="200"/></td>
+<td><img src="screenshots/profile.jpg" width="200"/></td>
+<td><img src="screenshots/personal page.jpg" width="200"/></td>
+
+</tr>
+
+
+
+<tr>
+<td><img src="screenshots/reminder.jpg" width="200"/></td>
+<td><img src="screenshots/done_reminder.jpg" width="200"/></td>
+<td><img src="screenshots/chat_bot.jpg" width="200"/></td>
+<td><img src="screenshots/log_out.jpg" width="200"/></td>
+<td><img src="screenshots/reminder_history.jpg" width="200"/></td>
+<td><img src="screenshots/home.jpg" width="200"/></td>
+
+</tr>
+<tr>
+<td><img src="screenshots/chat2.jpg" width="200"/></td>
+<td><img src="screenshots/chat3.jpg" width="200"/></td>
+<td><img src="screenshots/reminder2.jpg" width="200"/></td>
+<td><img src="screenshots/reminder3.jpg" width="200"/></td>
+<td><img src="screenshots/reminder4.jpg" width="200"/></td>
+<td><img src="screenshots/reminder5.jpg" width="200"/></td>
+
+
+</tr>
+</table>
+
+</p>
 </div>
-
 <div class="box">
     <h2>⚙️ Technologies Used</h2>
     <ul>
