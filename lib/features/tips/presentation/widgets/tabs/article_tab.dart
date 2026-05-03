@@ -32,6 +32,7 @@ class ArticlesTab extends StatelessWidget {
             width: 120,
             height: 120,
             decoration: BoxDecoration(
+              
               color: Colors.grey[300],
               borderRadius: const BorderRadius.horizontal(
                 left: Radius.circular(20),

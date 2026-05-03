@@ -16,9 +16,9 @@ class TipsSectionCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+           Text(
             'Tips for best results:',
-            style: TextStyle(fontWeight: FontWeight.w600),
+            style: TextStyle(fontWeight: FontWeight.w600,color: Theme.of(context).cardColor),
           ),
           const SizedBox(height: 12),
           ...tips.map((tip) => TipItem(text: tip)).toList(),
@@ -44,8 +44,9 @@ class TipItem extends StatelessWidget {
           Expanded(
             child: Text(
                 text,
-                style: const TextStyle(
+                style:  TextStyle(
                   fontSize: 14,
+                  color: Theme.of(context).cardColor
                 ),
               ),
           ),

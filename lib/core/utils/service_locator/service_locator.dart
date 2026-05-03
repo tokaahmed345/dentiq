@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dentiq/core/utils/service/api_service.dart';
 import 'package:dentiq/core/utils/service/dio_consumer.dart';
 import 'package:dentiq/core/utils/sharedprefrence.dart';
+import 'package:dentiq/core/utils/themes/theme_cubit/theme_cubit.dart';
 import 'package:dentiq/features/auth/data/repos/forgot_password_repo/forgot_password.dart';
 import 'package:dentiq/features/auth/data/repos/forgot_password_repo/forgot_password_repo_impl.dart';
 import 'package:dentiq/features/auth/data/repos/log_in_repo/log_in_repo.dart';
@@ -141,5 +142,6 @@ getIt.registerLazySingleton<ScanRepo>(
     getIt.registerFactory(() => ChatCubit( getIt<ChatRepo>()));
 
     getIt.registerFactory(() => ScanHistoryCubit( getIt<ScanRepo>(),getIt.get<LocalScanRepo>()));
+    getIt.registerFactory(() => ThemeCubit( ));
 
 }

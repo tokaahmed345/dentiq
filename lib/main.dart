@@ -21,17 +21,13 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  // tz.initializeTimeZones();
-  // tz.setLocalLocation(tz.getLocation('Africa/Cairo'));
-
-  // await NotificationService.init();
+ 
   await Supabase.initialize(
     url: 'https://sdyzanmqockopnauzxya.supabase.co',
     anonKey: 'sb_publishable_XHH4GYKnRIouLF3GrPLQLg_DnoMKJ6W',
   );
   setUp();
 
-  // await InAppWebViewController.setWebContentsDebuggingEnabled(true);
   await dotenv.load(fileName: ".env");
   await Hive.initFlutter();
   Hive.registerAdapter(LocalScanModelAdapter());
@@ -40,18 +36,7 @@ void main() async {
 
   runApp(MultiBlocProvider(
     providers: [
-      // BlocProvider(
-      //   create: (context) => getIt.get<ProgressTrackerCubit>()..trackProgress(),
-      // ),
-      //   BlocProvider(
-      //   create: (context) => NotificationCubit(),
-      // ),
-      //   BlocProvider(
-      //   create: (context) => getIt.get<ProgressHomeTrackerCubit>()..loadHomeProgress(),
-      // ),
-      // BlocProvider(
-      //   create: (context) => getIt.get<DentalReminderCubit>(),
-      // ),
+    
 
       BlocProvider(
         create: (_) => getIt<ProgressTrackerCubit>()..trackProgress(),

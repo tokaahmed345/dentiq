@@ -66,8 +66,8 @@ final Widget? suffixIconWidget;
               child: Container(
                 width: 44,
                 height: 44,
-                decoration: const BoxDecoration(
-                  color: AppColors.whiteColor,
+                decoration:  BoxDecoration(
+            color: Theme.of(context).colorScheme.surface,
                   shape: BoxShape.circle,
                 ),
                 child: suffixIconWidget ?? Icon(suffixIcon, color: AppColors.primary),

@@ -138,7 +138,10 @@ class ChatViewBody extends StatefulWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               decoration: BoxDecoration(
-                color: Colors.grey.shade100,
+                color:Theme.of(context).brightness == Brightness.dark
+          ? Colors.blueGrey.shade700   
+        : Colors.grey.shade100,
+                
                 borderRadius: BorderRadius.circular(25),
               ),
               child: TextField(

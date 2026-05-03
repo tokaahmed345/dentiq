@@ -11,7 +11,7 @@ final Article article;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[50],
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -41,46 +41,9 @@ final Article article;
                   
                   Text(
                    article.content,
-                                        style: AppStyle.text16.copyWith(color:AppColors.blueGrey,)
+                                        style: AppStyle.text16.copyWith(color:  Theme.of(context).colorScheme.onSurface,)
 
                   ),
-//                   const SizedBox(height: 24),
-
-// Container(
-//   padding: const EdgeInsets.all(16),
-//   decoration: BoxDecoration(
-//     color: Colors.blue[100],
-//     borderRadius: BorderRadius.circular(16),
-//   ),
-//   child: Column(
-//     crossAxisAlignment: CrossAxisAlignment.start,
-//     children: [
-//       Row(
-//         children: [
-//            Icon(
-//             Icons.lightbulb_outline,
-//             color: AppColors.primary,
-//             size: 22,
-//           ),
-//           const SizedBox(width: 8),
-//           Text(
-//             'Key Takeaways',
-//             style: AppStyle.text16.copyWith(
-//               fontWeight: FontWeight.bold,
-//               color: AppColors.darkBlue,
-//             ),
-//           ),
-//         ],
-//       ),
-
-//       // const SizedBox(height: 12),
-
-//       // _buildBulletText('Consistency is more important than intensity'),
-//       // _buildBulletText('Proper technique ensures better results'),
-//       // _buildBulletText('Make it a daily habit for long-term benefits'),
-//     ],
-//   ),
-// ),
 
                 ],
               ),

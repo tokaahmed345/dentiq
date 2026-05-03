@@ -123,7 +123,8 @@ class _ReminderViewBodyState extends State<ReminderViewBody> {
                       decoration: BoxDecoration(
                         color: isSelected
                             ? AppColors.primary!.withOpacity(0.08)
-                            : Colors.white,
+                            :     Theme.of(context).colorScheme.surface,
+
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
                           color: isSelected
@@ -197,7 +198,7 @@ class _ReminderViewBodyState extends State<ReminderViewBody> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 16, vertical: 14),
                         decoration: BoxDecoration(
-                          color: Colors.grey.shade100,
+                          color: Theme.of(context).colorScheme.surface,
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Row(
@@ -224,6 +225,8 @@ class _ReminderViewBodyState extends State<ReminderViewBody> {
                       child: state is DentalReminderLoading
                           ? const Center(child: CircularProgressIndicator())
                           : ElevatedButton.icon(
+                            
+                            
                               icon: const Icon(
                                 Icons.alarm,
                                 color: AppColors.whiteColor,
@@ -232,7 +235,7 @@ class _ReminderViewBodyState extends State<ReminderViewBody> {
     ? null
     : () async {
         final now = DateTime.now();
-final testReminderTime = now.add(const Duration(seconds: 10)); // بعد 10 ثواني
+final testReminderTime = now.add(const Duration(seconds: 10)); 
         final reminderDateTime = DateTime(
           now.year,
           now.month,
@@ -261,14 +264,7 @@ final testReminderTime = now.add(const Duration(seconds: 10)); // بعد 10 ثو
         );
 
         await context.read<DentalReminderCubit>().addReminder(reminder);
-       // ⚡ التعديل هنا
-//         await NotificationService.scheduleDailyNotification(
-//           id: reminderDateTime.millisecondsSinceEpoch ~/ 1000,
-//           title: reminder.title,
-//           body: reminder.subtitle,
-//           time:   TimeOfDay(hour: testReminderTime.hour, minute: testReminderTime.minute),
-//  // ✅ هنا
-//         );
+       
 
         context.read<DentalReminderCubit>().fetchUpcomingReminders();
       },

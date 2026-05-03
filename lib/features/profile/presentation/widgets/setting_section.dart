@@ -1,4 +1,5 @@
 import 'package:dentiq/core/utils/colors/app_colors.dart';
+import 'package:dentiq/core/utils/constant/constant.dart';
 import 'package:dentiq/core/utils/router/routes_name.dart';
 import 'package:dentiq/core/utils/service_locator/service_locator.dart';
 import 'package:dentiq/core/utils/sharedprefrence.dart';
@@ -10,6 +11,7 @@ import 'package:dentiq/features/scan/presentation/widgets/scan_history_view.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 
 class SettingsSection extends StatelessWidget {
@@ -80,30 +82,30 @@ class SettingsSection extends StatelessWidget {
               },
             ),
           ),
-//       ListTile(
-//   contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-//   leading: CircleAvatar(
-//     backgroundColor: AppColors.primary!.withOpacity(0.1),
-//     child: Icon(
-//       context.watch<ThemeCubit>().state == ThemeMode.dark
-//           ? Icons.dark_mode
-//           : Icons.light_mode,
-//       color: AppColors.primary,
-//     ),
-//   ),
-//   title: Text(
-//     context.watch<ThemeCubit>().state == ThemeMode.dark
-//         ? "Dark Mode"
-//         : "Light Mode",
-//     style: const TextStyle(fontWeight: FontWeight.w500),
-//   ),
-//   trailing: Switch(
-//     value: context.watch<ThemeCubit>().state == ThemeMode.dark,
-//     onChanged: (value) {
-//       context.read<ThemeCubit>().toggleTheme();
-//     },
-//   ),
-// ),
+      ListTile(
+  contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+  leading: CircleAvatar(
+    backgroundColor: AppColors.primary!.withOpacity(0.1),
+    child: Icon(
+      context.watch<ThemeCubit>().state == ThemeMode.dark
+          ? Icons.dark_mode
+          : Icons.light_mode,
+      color: AppColors.primary,
+    ),
+  ),
+  title: Text(
+    context.watch<ThemeCubit>().state == ThemeMode.dark
+        ? "Dark Mode"
+        : "Light Mode",
+    style: const TextStyle(fontWeight: FontWeight.w500),
+  ),
+  trailing: Switch(
+    value: context.watch<ThemeCubit>().state == ThemeMode.dark,
+    onChanged: (value) {
+      context.read<ThemeCubit>().toggleTheme();
+    },
+  ),
+),
         ],
       ),
     );
@@ -130,7 +132,11 @@ class SettingsSection extends StatelessWidget {
             onPressed: () async {
               Navigator.pop(context);
               await getIt<SharedPrefs>().clearAll();
+    await getIt<ThemeCubit>().clearTheme(); 
+
+
               context.read<LogOutCubit>().logOut();
+
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primary,
@@ -172,7 +178,7 @@ class _SettingTile extends StatelessWidget {
       title: Text(
         title,
         style: TextStyle(
-          color: danger ? Colors.red : Colors.black,
+          color: danger ? Colors.red : Theme.of(context).colorScheme.onSurface,
           fontWeight: FontWeight.w500,
         ),
       ),
