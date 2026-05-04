@@ -33,13 +33,14 @@ class CustomRemiderList extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15)),
                 color: 
-                    
-                   Colors.blue.shade50, 
+                  Theme.of(context).colorScheme.surface,  
+                  //  Colors.blue.shade50, 
                 child: ListTile(
                   leading: Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: AppColors.primary,
+                      color: 
+                      AppColors.primary,
                       shape: BoxShape.circle,
                     ),
                     child: Icon(

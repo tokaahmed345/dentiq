@@ -28,7 +28,7 @@ class _GuidelineTileState extends State<GuidelineTile> {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color:  Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(16),
           border: isExpanded
               ? Border.all(color: AppColors.primary!, width: 1.2)
@@ -64,8 +64,8 @@ class _GuidelineTileState extends State<GuidelineTile> {
                     fontWeight:
                         isExpanded ? FontWeight.bold : FontWeight.w600,
                     color: isExpanded
-                        ? AppColors.primary
-                        : Colors.black,
+                        ?Theme.of(context).colorScheme.primary
+                        : Theme.of(context).colorScheme.primary,
                     fontSize: 16,
                   ),
                 ),

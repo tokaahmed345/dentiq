@@ -6,8 +6,6 @@ abstract class DentalRemiderRepo {
   Future<Either<Failure, DentalReminder>> addReminder(DentalReminder reminder);
   
   Future<Either<Failure,List<DentalReminder>>> getReminder();
-  //   Future<void> markAsDone(String reminderId);
-  // Future<void> updateReminderStatus(String reminderId, ReminderStatus status) ;
 Future<Either<Failure, DentalReminder>> updateReminder(DentalReminder reminder) ;
 
 }

@@ -3,7 +3,6 @@ import 'package:dentiq/core/utils/service_locator/service_locator.dart';
 import 'package:dentiq/core/utils/themes/app_theme.dart';
 import 'package:dentiq/core/utils/themes/theme_cubit/theme_cubit.dart';
 import 'package:dentiq/features/home/presentation/view_model/cubit/progress_home_tracker_cubit.dart';
-import 'package:dentiq/features/notifications/presentation/view_model/cubit/notification_cubit.dart';
 import 'package:dentiq/features/progress_tracker/presentation/view_model/progress_tracker_cubit/progress_tracker_cubit.dart';
 import 'package:dentiq/features/reminder/presentation/view_model/cubit/cubit/reminder_history_cubit.dart';
 import 'package:dentiq/features/reminder/presentation/view_model/cubit/dental_reminder_cubit.dart';
@@ -21,17 +20,13 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  // tz.initializeTimeZones();
-  // tz.setLocalLocation(tz.getLocation('Africa/Cairo'));
-
-  // await NotificationService.init();
+ 
   await Supabase.initialize(
     url: 'https://sdyzanmqockopnauzxya.supabase.co',
     anonKey: 'sb_publishable_XHH4GYKnRIouLF3GrPLQLg_DnoMKJ6W',
   );
   setUp();
 
-  // await InAppWebViewController.setWebContentsDebuggingEnabled(true);
   await dotenv.load(fileName: ".env");
   await Hive.initFlutter();
   Hive.registerAdapter(LocalScanModelAdapter());
@@ -40,18 +35,7 @@ void main() async {
 
   runApp(MultiBlocProvider(
     providers: [
-      // BlocProvider(
-      //   create: (context) => getIt.get<ProgressTrackerCubit>()..trackProgress(),
-      // ),
-      //   BlocProvider(
-      //   create: (context) => NotificationCubit(),
-      // ),
-      //   BlocProvider(
-      //   create: (context) => getIt.get<ProgressHomeTrackerCubit>()..loadHomeProgress(),
-      // ),
-      // BlocProvider(
-      //   create: (context) => getIt.get<DentalReminderCubit>(),
-      // ),
+    
 
       BlocProvider(
         create: (_) => getIt<ProgressTrackerCubit>()..trackProgress(),
@@ -66,9 +50,7 @@ void main() async {
       BlocProvider(
         create: (_) => getIt<ReminderHistoryCubit>(),
       ),
-      BlocProvider(
-        create: (context) => NotificationCubit(),
-      ),
+      
       BlocProvider(
         create: (_) => ThemeCubit()..loadTheme(),
       ),

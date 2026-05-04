@@ -38,12 +38,7 @@ class SummaryRow extends StatelessWidget {
 
           const SizedBox(width: 14),
 
-          // const Expanded(
-          //   child: _SummaryItem(
-          //     title: "Score",
-          //     value: "85%",
-          //   ),
-          // ),
+     
           Expanded(
   child: BlocBuilder<HealthRiskCubit, HealthRiskState>(
     builder: (context, state) {

@@ -14,6 +14,6 @@ class ProgressView extends StatelessWidget {
         appBar:  CustomAppBar(
           arrowBack: IconButton(onPressed:(){ GoRouter.of(context).pop();}, icon: const Icon(Icons.arrow_back_ios,color: AppColors.whiteColor,size: 27,))
           ,title: "progress"),
-        body: ProgressViewBody());
+        body: const ProgressViewBody());
   }
 }

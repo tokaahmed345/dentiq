@@ -13,13 +13,11 @@ final class ProgressTrackerSuccess extends ProgressTrackerState {
   final DailyProgressModel dailyProgress;
   final double overallProgress; 
   final String message;
-  // final int streak; 
 
   const ProgressTrackerSuccess({
     required this.dailyProgress,
     required this.overallProgress,
     required this.message,
-    // required this.streak,
   });
 
   @override

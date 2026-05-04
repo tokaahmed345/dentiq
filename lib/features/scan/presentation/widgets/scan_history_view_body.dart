@@ -2,7 +2,7 @@
 import 'dart:io';
 
 import 'package:dentiq/core/utils/colors/app_colors.dart';
-import 'package:dentiq/features/scan/presentation/view_model/cubit/scan_history_cubit.dart';
+import 'package:dentiq/features/scan/presentation/view_model/scan_history_cubit/scan_history_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -54,15 +54,18 @@ return ListView.builder(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
-                color: AppColors.whiteColor,
+                color: Theme.of(context).colorScheme.surface,
+                
+                // AppColors.whiteColor,
                 child: ListTile(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   title: Text(
                     scan.label,
-                    style:  const TextStyle(
+                    style:   TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
-                      color: AppColors.blackColor,
+                      // color: AppColors.blackColor
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
                   subtitle: Column(
@@ -75,7 +78,7 @@ return ListView.builder(
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        dateTime, // shows date + time
+                        dateTime, 
                         style:  TextStyle(color: AppColors.grey),
                       ),
                     ],

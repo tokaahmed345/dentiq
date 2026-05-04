@@ -16,9 +16,9 @@ class TipsSectionCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+           Text(
             'Tips for best results:',
-            style: TextStyle(fontWeight: FontWeight.w600),
+            style: TextStyle(fontWeight: FontWeight.w600,color: Theme.of(context).cardColor),
           ),
           const SizedBox(height: 12),
           ...tips.map((tip) => TipItem(text: tip)).toList(),
@@ -31,7 +31,7 @@ class TipsSectionCard extends StatelessWidget {
 
 class TipItem extends StatelessWidget {
   final String text;
-  const TipItem({required this.text});
+  const TipItem({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -39,13 +39,14 @@ class TipItem extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 8),
       child: Row(
         children:  [
-          Icon(Icons.check_circle, color: AppColors.greenColor, size: 18),
-          SizedBox(width: 8),
+          const Icon(Icons.check_circle, color: AppColors.greenColor, size: 18),
+          const SizedBox(width: 8),
           Expanded(
             child: Text(
                 text,
-                style: const TextStyle(
+                style:  TextStyle(
                   fontSize: 14,
+                  color: Theme.of(context).cardColor
                 ),
               ),
           ),

@@ -17,34 +17,7 @@ class DetectionCubit extends Cubit<DetectionState> {
   final DetectionRepository repository;
 final ScanRepo scanRepo;
 final LocalScanRepo localScanRepo;
-  // Future<void> detect(File image) async {
-  //   emit(DetectionLoading());
-
-  //   final result = await repository.detect(image);
-
-  //   result.fold(
-  //     (fail) => emit(DetectionFailure(errorMessage:fail.message)),
-  //     (prediction) async{
-  //         final userId = getIt.get<FirebaseAuth>().currentUser!.uid;
-
-  //     // await scanRepo.addScan(
-  //     //   userId: userId,
-  //     //   label: prediction.label,
-  //     //   confidence: prediction.confidence,
-  //     //   
-  //     // );
-  //       final imageUrl = await scanRepo.uploadUserScanImage(userId, image);
-
-  //         await scanRepo.addScan(
-  //           userId: userId,
-  //           label: prediction.label,
-  //           confidence: prediction.confidence,
-  //           imageUrl: imageUrl!,
-  //         );
-  //        emit(DetectionSuccess(predictionModel:  prediction));
-  //     },
-  //   );
-  // }
+ 
   Future<void> detect(File image) async {
   emit(DetectionLoading());
 

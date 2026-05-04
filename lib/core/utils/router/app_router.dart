@@ -76,12 +76,12 @@ class AppRouter {
         GoRoute(
         path: RoutesName.reminderHistory,
         name: RoutesName.reminderHistory,
-        builder: (context, state) =>  ReminderHistoryPage(),
+        builder: (context, state) =>  const ReminderHistoryPage(),
       ),
        GoRoute(
         path: RoutesName.chat,
         name: RoutesName.chat,
-        builder: (context, state) =>  ChatView(),
+        builder: (context, state) =>  const ChatView(),
       ),
     ],
   );

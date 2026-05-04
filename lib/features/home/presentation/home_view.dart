@@ -83,42 +83,20 @@ class HomeViewState extends State<HomeView> {
     );
   }
 Widget notificationIcon(BuildContext context) {
-  // final unreadCount = context.watch<NotificationCubit>().getUnreadCount();
 
   return Stack(
     children: [
       IconButton(
         icon: const Icon(Icons.message),
         onPressed: () {
-          // افتح قائمة notifications
           Navigator.push(
             context,
             MaterialPageRoute(builder: (_) => const ChatView()),
           );
-          // علم كل notifications كمقروءة
-          // context.read<NotificationCubit>().markAllAsRead();
+          
         },
       ),
-      // if (unreadCount > 0)
-      //   Positioned(
-      //     right: 6,
-      //     top: 6,
-      //     child: Container(
-      //       padding: const EdgeInsets.all(4),
-      //       decoration: const BoxDecoration(
-      //         color: Colors.red,
-      //         shape: BoxShape.circle,
-      //       ),
-      //       child: Text(
-      //         unreadCount.toString(),
-      //         style: const TextStyle(
-      //           color: Colors.white,
-      //           fontSize: 12,
-      //           fontWeight: FontWeight.bold,
-      //         ),
-      //       ),
-      //     ),
-      //   ),
+     
     ],
   );
 }

@@ -1,6 +1,6 @@
 
 
-import 'package:dentiq/features/tips/presentation/view_model/cubit/articles_cubit.dart';
+import 'package:dentiq/features/tips/presentation/view_model/article_cubit/articles_cubit.dart';
 import 'package:dentiq/features/tips/presentation/widgets/article_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,7 +10,6 @@ import 'package:dentiq/core/utils/colors/app_colors.dart';
 class ArticlesTab extends StatelessWidget {
   const ArticlesTab({super.key});
 
-  // Shimmer Card
   Widget _buildShimmerCard() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -27,11 +26,11 @@ class ArticlesTab extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // Image placeholder
           Container(
             width: 120,
             height: 120,
             decoration: BoxDecoration(
+              
               color: Colors.grey[300],
               borderRadius: const BorderRadius.horizontal(
                 left: Radius.circular(20),
@@ -39,7 +38,6 @@ class ArticlesTab extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 12),
-          // Text placeholders
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 12),
@@ -89,7 +87,6 @@ class ArticlesTab extends StatelessWidget {
         } else if (state is ArticlesFailure) {
           return Center(child: Text(state.errorMessage));
         } else {
-          // Shimmer loading
           return ListView.builder(
             padding: const EdgeInsets.only(top: 8),
             itemCount:10,

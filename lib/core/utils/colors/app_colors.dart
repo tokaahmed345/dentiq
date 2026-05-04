@@ -27,7 +27,6 @@
 import 'package:flutter/material.dart';
 
 abstract class AppColors {
-  // ── ثابتة مش بتتغير ──
   static const  redColor = Colors.red;
   
   static const Color blueColor = Colors.blue;

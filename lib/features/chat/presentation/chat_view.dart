@@ -15,7 +15,7 @@ class ChatView extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt.get<ChatCubit>(),
       child: Scaffold(
-        backgroundColor: Colors.blue[50],
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: CustomAppBar(
             arrowBack: IconButton(
                 onPressed: () {
@@ -27,7 +27,7 @@ class ChatView extends StatelessWidget {
                   size: 27,
                 )),
             title: "Chat Assistant"),
-        body: ChatViewBody(),
+        body: const ChatViewBody(),
       ),
     );
   }

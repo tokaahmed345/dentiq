@@ -1,5 +1,5 @@
 import 'package:dentiq/core/utils/service_locator/service_locator.dart';
-import 'package:dentiq/features/tips/presentation/view_model/cubit/articles_cubit.dart';
+import 'package:dentiq/features/tips/presentation/view_model/article_cubit/articles_cubit.dart';
 import 'package:dentiq/features/tips/presentation/view_model/videos_cubit/videos_cubit_cubit.dart';
 import 'package:dentiq/features/tips/presentation/widgets/tips_view_body.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,7 @@ class TipsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[50],
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: MultiBlocProvider(
         providers: [
           BlocProvider(
@@ -21,7 +21,7 @@ class TipsView extends StatelessWidget {
             create: (context) => getIt.get<ArticlesCubit>()..getArticles(),
           ),
         ],
-        child: TipsViewBody(),
+        child: const TipsViewBody(),
       ),
     );
   }

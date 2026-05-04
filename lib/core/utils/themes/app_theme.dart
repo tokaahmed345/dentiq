@@ -1,3 +1,4 @@
+import 'package:dentiq/core/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
 abstract class AppThemes {
@@ -6,22 +7,28 @@ abstract class AppThemes {
         scaffoldBackgroundColor: Colors.blue[50],
         colorScheme: ColorScheme.light(
           primary: Colors.blue[900]!,
-
-          surface: Colors.blue[50]!,
+onPrimary: AppColors.blueGrey!.withOpacity(.5),
+          surface: Colors.white,
           onSurface: const Color(0xff003851),
         ),
         useMaterial3: true,
+        cardColor:  const Color(0xff003851),
+
       );
 
   static ThemeData get darkTheme => ThemeData(
         brightness: Brightness.dark,
         scaffoldBackgroundColor: const Color(0xff020617),
-        colorScheme: ColorScheme.dark(
-          primary: Colors.blue[300]!,
-          surface: const Color(0xff0D1B2A),
-          onSurface: const Color(0xffE8EAF0),
+        colorScheme: const ColorScheme.dark(
+          primary:  Color(0xffE8EAF0),
+          surface: Color(0xff0D1B2A),
+          onSurface: Color(0xffE8EAF0),
+          onPrimary:Colors.grey
+          ,
+
         ),
-        cardColor:Colors.blue[900],
+        cardColor:  const Color(0xff003851),
+      
         useMaterial3: true,
       );
 }

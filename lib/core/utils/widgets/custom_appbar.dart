@@ -1,7 +1,6 @@
 
 import 'package:dentiq/core/utils/colors/app_colors.dart';
 import 'package:dentiq/core/utils/styles/app_style.dart';
-import 'package:dentiq/features/tips/presentation/widgets/articles_details.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -66,8 +65,8 @@ final Widget? suffixIconWidget;
               child: Container(
                 width: 44,
                 height: 44,
-                decoration: const BoxDecoration(
-                  color: AppColors.whiteColor,
+                decoration:  BoxDecoration(
+            color: Theme.of(context).colorScheme.surface,
                   shape: BoxShape.circle,
                 ),
                 child: suffixIconWidget ?? Icon(suffixIcon, color: AppColors.primary),

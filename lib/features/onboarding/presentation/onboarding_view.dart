@@ -1,4 +1,3 @@
-import 'package:dentiq/core/utils/assets/app_assets.dart';
 import 'package:dentiq/features/onboarding/presentation/widgets/onboarding_view_body.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +18,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[50],
-      body:SafeArea(child: OnBoardingViewBody())
+      body:const SafeArea(child: OnBoardingViewBody())
     );
   }
 

@@ -25,5 +25,20 @@ Future<String?> getUserName() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear();
   }
+   Future<bool?> getBool(String key) async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(key);
+  }
+
+  Future<void> setBool(String key, bool value) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(key, value);
+  }
+
+  Future<void> remove(String key) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(key);
+    
+  }
 }
 

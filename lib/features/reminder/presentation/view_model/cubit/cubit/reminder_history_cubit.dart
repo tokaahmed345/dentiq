@@ -1,6 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:dentiq/core/utils/service_locator/service_locator.dart';
-import 'package:dentiq/features/home/presentation/view_model/cubit/progress_home_tracker_cubit.dart';
 import 'package:dentiq/features/reminder/data/models/dental_reminder_model.dart';
 import 'package:dentiq/features/reminder/data/repos/dental_remider_repo.dart';
 import 'package:equatable/equatable.dart';

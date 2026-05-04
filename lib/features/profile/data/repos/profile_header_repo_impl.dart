@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:dentiq/core/utils/sharedprefrence.dart';
 import 'package:dentiq/features/profile/data/repos/profile_header_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ProfileHeaderRepoImpl extends ProfileHeaderRepo {

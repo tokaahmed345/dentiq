@@ -1,6 +1,5 @@
 
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:dartz/dartz.dart';
 import 'package:dentiq/core/utils/failure/failure.dart';
 import 'package:dentiq/features/scan/data/model/model_failure.dart';

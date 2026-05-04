@@ -77,7 +77,9 @@ class ProgressViewBody extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.blue.shade900)),
+                                color:Theme.of(context).colorScheme.primary,
+                                
+                          )),
                         const SizedBox(height: 12),
                         LinearProgressIndicator(
                           value: overallProgress,
@@ -101,46 +103,7 @@ class ProgressViewBody extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
 
-                // Expanded(
-                //   child: ListView.builder(
-                //     itemCount: routines.length,
-                //     itemBuilder: (context, index) {
-                //       final entry = routines[index];
-                //       return Card(
-                //         shape: RoundedRectangleBorder(
-                //             borderRadius: BorderRadius.circular(20)),
-                //         margin: const EdgeInsets.symmetric(vertical: 8),
-                //         elevation: 3,
-                //         color: Colors.blue.shade50,
-                //         child: Padding(
-                //           padding: const EdgeInsets.symmetric(
-                //               horizontal: 16, vertical: 12),
-                //           child: Row(
-                //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //             children: [
-                //               Text(entry['title'] as String,
-                //                   style: TextStyle(
-                //                       fontSize: 16,
-                //                       fontWeight: FontWeight.bold,
-                //                       color: Colors.blue.shade900)),
-                //               Checkbox(
-                //                 value: entry['done'] as bool,
-                //                 activeColor: Colors.blue,
-                //                 onChanged: (checked) {
-                //                   context
-                //                       .read<ProgressTrackerCubit>()
-                //                       .updateRoutine(
-                //                           entry['title'] as String,
-                //                           checked ?? false);
-                //                 },
-                //               ),
-                //             ],
-                //           ),
-                //         ),
-                //       );
-                //     },
-                //   ),
-                // ),
+           
                 Expanded(
   child: ListView.builder(
     itemCount: routines.length,
@@ -151,7 +114,7 @@ class ProgressViewBody extends StatelessWidget {
             borderRadius: BorderRadius.circular(20)),
         margin: const EdgeInsets.symmetric(vertical: 8),
         elevation: 3,
-        color:Theme.of(context).cardColor,
+        color:Theme.of(context).colorScheme.surface,
         child: InkWell(
           borderRadius: BorderRadius.circular(20),
           onTap: () {
@@ -169,7 +132,7 @@ class ProgressViewBody extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: Colors.blue.shade900)),
+                        color: Theme.of(context).colorScheme.primary)),
                 Checkbox(
                   value: entry['done'] as bool,
                   onChanged: null,

@@ -1,10 +1,8 @@
 import 'package:dentiq/core/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 
 
-// ================= TIPS =================
 class TipsSectionProfile extends StatelessWidget {
   const TipsSectionProfile({super.key, });
  final List<String> tips = const [

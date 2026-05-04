@@ -7,10 +7,8 @@ import 'package:dentiq/features/reminder/data/repos/dental_remider_repo.dart';
 
 part 'progress_home_tracker_state.dart';
 
-/// حالة المهمة
 enum TaskStatus { pending, done, missed }
 
-/// مهمة يومية (Routine أو Reminder)
 class Task {
   final String id;
   final String title;

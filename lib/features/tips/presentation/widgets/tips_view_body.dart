@@ -11,11 +11,10 @@ class TipsViewBody extends StatelessWidget {
     return const TabBarView(
       children: [
         VideosTab(),
-                // GuidelinesTab(),
+        // GuidelinesTab(),
 
         ArticlesTab(),
-                        GuidelinesTab(),
-
+        GuidelinesTab(),
       ],
     );
   }

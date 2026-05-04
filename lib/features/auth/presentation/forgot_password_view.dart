@@ -32,7 +32,7 @@ class ForgotPasswordView extends StatelessWidget {
       ),
       body: BlocProvider(
         create: (context) => getIt.get<ForgotPasswordCubit>(),
-        child: ForgotPasswordViewBody(),
+        child: const ForgotPasswordViewBody(),
       ),
     );
   }

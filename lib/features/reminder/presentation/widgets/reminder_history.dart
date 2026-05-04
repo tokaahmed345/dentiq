@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dentiq/core/utils/colors/app_colors.dart';
 import 'package:dentiq/core/utils/service_locator/service_locator.dart';
-import 'package:dentiq/features/reminder/data/models/dental_reminder_model.dart';
 import 'package:go_router/go_router.dart';
 class ReminderHistoryPage extends StatelessWidget {
   const ReminderHistoryPage({super.key});
@@ -21,14 +20,14 @@ class ReminderHistoryPage extends StatelessWidget {
           appBar: CustomAppBar(
           arrowBack: IconButton(onPressed:(){ GoRouter.of(context).pop();}, icon: const Icon(Icons.arrow_back_ios,color: AppColors.whiteColor,size: 27,))
           ,title: "Reminder History"),
-        backgroundColor: Colors.blue[50],
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           body: Column(
             children: [
               Container(
                 margin: const  EdgeInsets.only(left: 8,right: 8) ,
   padding: const EdgeInsets.symmetric(horizontal: 8),
   decoration: BoxDecoration(
-    color:          Colors.blue[50],
+    color:          Theme.of(context).scaffoldBackgroundColor,
 
     borderRadius: BorderRadius.circular(20),
   ),
@@ -42,8 +41,8 @@ class ReminderHistoryPage extends StatelessWidget {
                   ],
                 ),
               ),
-              Expanded(
-                child: const TabBarView(
+              const Expanded(
+                child: TabBarView(
                   children: [
                     MissedTab(),
                     DoneTab(),

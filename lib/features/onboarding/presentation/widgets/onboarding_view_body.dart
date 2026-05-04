@@ -5,7 +5,6 @@ import 'package:dentiq/core/utils/widgets/custom_elevated_button.dart';
 import 'package:dentiq/features/onboarding/data/model/onboarding_data.dart';
 import 'package:dentiq/features/onboarding/presentation/widgets/dot_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 class OnBoardingViewBody extends StatefulWidget {

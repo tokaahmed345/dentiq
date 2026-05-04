@@ -14,7 +14,7 @@ class SignUpView extends StatelessWidget {
       resizeToAvoidBottomInset: true,
       body: BlocProvider(
         create: (context) => getIt.get<SignUpCubit>(),
-        child: SignUpViewBody(),
+        child: const SignUpViewBody(),
       ),
     );
   }
