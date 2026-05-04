@@ -1,13 +1,5 @@
 part of 'diseases_cubit.dart';
 
-// sealed class DiseasesState extends Equatable {
-//   const DiseasesState();
-
-//   @override
-//   List<Object> get props => [];
-// }
-
-// final class DiseasesInitial extends DiseasesState {}
 
 sealed class DiseasesState extends Equatable {
   const DiseasesState();

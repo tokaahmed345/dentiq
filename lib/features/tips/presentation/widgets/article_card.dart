@@ -1,6 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dentiq/core/utils/assets/app_assets.dart';
-import 'package:dentiq/core/utils/colors/app_colors.dart';
+
 import 'package:dentiq/core/utils/styles/app_style.dart';
 import 'package:dentiq/features/tips/data/models/articles_model.dart';
 import 'package:dentiq/features/tips/presentation/widgets/articles_details.dart';
@@ -49,7 +47,7 @@ class ArticleCard extends StatelessWidget {
                   width: 120,
                 height: 120,
                 fit: BoxFit.cover,
-errorBuilder: (context, url, error) => Icon(Icons.error),
+errorBuilder: (context, url, error) => const Icon(Icons.error),
               )
             
             ),

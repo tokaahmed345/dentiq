@@ -11,8 +11,8 @@ final class HealthRiskInitial extends HealthRiskState {}
 final class HealthRiskLoading extends HealthRiskState {}
 
 final class HealthRiskSuccess extends HealthRiskState {
-  final double average; // 0.0 - 1.0
-  final String risk;    // Low, Medium, High
+  final double average;
+  final String risk;   
 
   const HealthRiskSuccess(this.average, this.risk);
 

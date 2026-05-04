@@ -3,7 +3,6 @@ class Article {
   final String subtitle;
   final String imageUrl;
   final String content;
-  // final List<String> keyTakeaways;
 
   Article({
     required this.title,
@@ -18,7 +17,6 @@ class Article {
       subtitle: map['subtitle'] ?? '',
       imageUrl: map['imageUrl'] ?? '',
       content: map['content'] ?? '',
-      // keyTakeaways: List<String>.from(map['keyTakeaways'] ?? []),
 
     );
   }

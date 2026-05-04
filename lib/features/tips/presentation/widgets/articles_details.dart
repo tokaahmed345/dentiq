@@ -15,7 +15,7 @@ final Article article;
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            leading: CustomArrowBack(),
+            leading: const CustomArrowBack(),
             automaticallyImplyLeading: false,
             expandedHeight: 260,
             pinned: true,
@@ -37,7 +37,7 @@ final Article article;
                     
                  
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   
                   Text(
                    article.content,
@@ -57,29 +57,6 @@ final Article article;
   }
   
 
-// Widget _buildBulletText(String text) {
-//   return Padding(
-//     padding: const EdgeInsets.only(bottom: 8),
-//     child: Row(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         const Text(
-//           '• ',
-//           style: TextStyle(fontSize: 18),
-//         ),
-//         Expanded(
-//           child: Text(
-//             text,
-//             style: AppStyle.text16.copyWith(
-//               color: AppColors.blueGrey,
-//             ),
-//           ),
-//         ),
-//       ],
-//     ),
-//   );
-// }
-  
 }
 
 class CustomArrowBack extends StatelessWidget {

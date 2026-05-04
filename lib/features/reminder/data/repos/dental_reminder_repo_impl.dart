@@ -59,16 +59,7 @@ Future<Either<Failure, DentalReminder>> updateReminder(DentalReminder reminder) 
   }
 }
 
-  // @override
-  // Future<void> markAsDone(String reminderId) async {
-  //   final userId = await sharedPreferences.getUserId();
-  //   await firestore
-  //       .collection('users')
-  //       .doc(userId)
-  //       .collection('reminders')
-  //       .doc(reminderId)
-  //       .update({'isDone': true});
-  // }
+
 
 
 }

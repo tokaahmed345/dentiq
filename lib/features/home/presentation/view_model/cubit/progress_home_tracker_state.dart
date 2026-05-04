@@ -15,14 +15,14 @@ class HomeProgressSuccess extends ProgressHomeTrackerState {
   final double reminderProgress;
   final double overallProgress;
   final String message;
-  final List<Task> tasks; // ✅ أضفنا قائمة المهام
+  final List<Task> tasks;
 
   HomeProgressSuccess({
     required this.routineProgress,
     required this.reminderProgress,
     required this.overallProgress,
     required this.message,
-    required this.tasks, // لازم يتم تمريرها
+    required this.tasks,
   });
 
   @override

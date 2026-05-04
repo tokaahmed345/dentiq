@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dentiq/core/utils/failure/failure.dart';
 import 'package:dentiq/features/auth/data/model/log_in_model.dart';
-import 'package:dentiq/features/auth/data/model/sign_up_model.dart';
 
 abstract class LogInRepo {
   Future<Either<Failure,LogInModel>>login({  

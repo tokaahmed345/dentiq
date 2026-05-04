@@ -1,17 +1,15 @@
 import 'package:dentiq/core/utils/colors/app_colors.dart';
-import 'package:dentiq/core/utils/constant/constant.dart';
 import 'package:dentiq/core/utils/router/routes_name.dart';
 import 'package:dentiq/core/utils/service_locator/service_locator.dart';
 import 'package:dentiq/core/utils/sharedprefrence.dart';
 import 'package:dentiq/core/utils/themes/theme_cubit/theme_cubit.dart';
 import 'package:dentiq/features/auth/presentation/view_model/log_out_cubit/log_out_cubit.dart';
 import 'package:dentiq/features/reminder/presentation/widgets/reminder_history.dart';
-import 'package:dentiq/features/scan/presentation/view_model/cubit/scan_history_cubit.dart';
+import 'package:dentiq/features/scan/presentation/view_model/scan_history_cubit/scan_history_cubit.dart';
 import 'package:dentiq/features/scan/presentation/widgets/scan_history_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 
 class SettingsSection extends StatelessWidget {

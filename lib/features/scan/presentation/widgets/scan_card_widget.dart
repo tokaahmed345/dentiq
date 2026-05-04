@@ -25,14 +25,12 @@ class ScanCardWidget extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          /// Lottie Animation
           Lottie.asset(AppAssets.scan),
 
-          /// Text Overlay
-          Positioned(
+          const Positioned(
             bottom: 40,
             child: Column(
-              children: const [
+              children: [
                 Text(
                   'Position your teeth in the frame',
                   style: TextStyle(

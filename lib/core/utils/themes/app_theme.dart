@@ -19,10 +19,10 @@ onPrimary: AppColors.blueGrey!.withOpacity(.5),
   static ThemeData get darkTheme => ThemeData(
         brightness: Brightness.dark,
         scaffoldBackgroundColor: const Color(0xff020617),
-        colorScheme: ColorScheme.dark(
-          primary:  const Color(0xffE8EAF0),
-          surface: const Color(0xff0D1B2A),
-          onSurface: const Color(0xffE8EAF0),
+        colorScheme: const ColorScheme.dark(
+          primary:  Color(0xffE8EAF0),
+          surface: Color(0xff0D1B2A),
+          onSurface: Color(0xffE8EAF0),
           onPrimary:Colors.grey
           ,
 

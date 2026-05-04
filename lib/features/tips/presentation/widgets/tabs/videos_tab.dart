@@ -1,44 +1,4 @@
-// import 'package:dentiq/features/tips/presentation/view_model/cubit/videos_cubit_cubit.dart';
-// import 'package:dentiq/features/tips/presentation/widgets/video_card.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
 
-// class VideosTab extends StatelessWidget {
-//   const VideosTab({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return BlocConsumer<VideosCubit, VideosCubitState>(
-//       listener: (context, state) {
-//       },
-//       builder: (context, state) {
-        
-//         if (state is VideosCubitSuccess) {
-//       final res=state.videos;
-
-//   return SizedBox(
-    
-//     height: 260,
-//     child: ListView.builder(
-//       scrollDirection: Axis.vertical,
-//       itemCount: res.length,
-//       itemBuilder: (context, index) {
-//                     final video = res[index];
-//         return   VideoCard(videoModel: video);
-
-//       } 
-//     ),
-//   );
-// }else if(state is VideosCubitFailure ){
-//  return  Text(state.errorMessage);
-
-// }else{
-//   return SizedBox();
-// }
-//       },
-//     );
-//   }
-// }
 import 'package:dentiq/core/utils/colors/app_colors.dart';
 import 'package:dentiq/features/tips/presentation/view_model/videos_cubit/videos_cubit_cubit.dart';
 import 'package:dentiq/features/tips/presentation/widgets/video_card.dart';

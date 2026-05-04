@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dentiq/core/utils/colors/app_colors.dart';
 import 'package:dentiq/features/scan/presentation/view_model/last_scan_cubit/last_scan_cubit.dart';
-import 'package:dentiq/features/scan/presentation/view_model/scan_count_cubit/scan_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 

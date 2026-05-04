@@ -3,7 +3,6 @@ import 'package:dentiq/core/utils/service_locator/service_locator.dart';
 import 'package:dentiq/core/utils/themes/app_theme.dart';
 import 'package:dentiq/core/utils/themes/theme_cubit/theme_cubit.dart';
 import 'package:dentiq/features/home/presentation/view_model/cubit/progress_home_tracker_cubit.dart';
-import 'package:dentiq/features/notifications/presentation/view_model/cubit/notification_cubit.dart';
 import 'package:dentiq/features/progress_tracker/presentation/view_model/progress_tracker_cubit/progress_tracker_cubit.dart';
 import 'package:dentiq/features/reminder/presentation/view_model/cubit/cubit/reminder_history_cubit.dart';
 import 'package:dentiq/features/reminder/presentation/view_model/cubit/dental_reminder_cubit.dart';
@@ -51,9 +50,7 @@ void main() async {
       BlocProvider(
         create: (_) => getIt<ReminderHistoryCubit>(),
       ),
-      BlocProvider(
-        create: (context) => NotificationCubit(),
-      ),
+      
       BlocProvider(
         create: (_) => ThemeCubit()..loadTheme(),
       ),

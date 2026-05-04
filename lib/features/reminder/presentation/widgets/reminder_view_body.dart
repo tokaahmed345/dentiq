@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dentiq/features/notifications/data/notifications_service.dart';
 import 'package:dentiq/features/reminder/data/models/dental_reminder_model.dart';
 import 'package:dentiq/features/reminder/presentation/view_model/cubit/dental_reminder_cubit.dart';
 import 'package:flutter/material.dart';

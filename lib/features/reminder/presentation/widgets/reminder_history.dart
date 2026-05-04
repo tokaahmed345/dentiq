@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dentiq/core/utils/colors/app_colors.dart';
 import 'package:dentiq/core/utils/service_locator/service_locator.dart';
-import 'package:dentiq/features/reminder/data/models/dental_reminder_model.dart';
 import 'package:go_router/go_router.dart';
 class ReminderHistoryPage extends StatelessWidget {
   const ReminderHistoryPage({super.key});
@@ -42,8 +41,8 @@ class ReminderHistoryPage extends StatelessWidget {
                   ],
                 ),
               ),
-              Expanded(
-                child: const TabBarView(
+              const Expanded(
+                child: TabBarView(
                   children: [
                     MissedTab(),
                     DoneTab(),

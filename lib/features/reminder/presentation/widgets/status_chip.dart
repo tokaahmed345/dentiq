@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class StatusChip extends StatelessWidget {
   final ReminderStatus status;
-  const StatusChip(this.status);
+  const StatusChip(this.status, {super.key});
 
   @override
   Widget build(BuildContext context) {

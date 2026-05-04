@@ -7,12 +7,8 @@ sealed class ScanState extends Equatable {
   List<Object> get props => [];
 }
 
-// Initial state
 final class ScanInitial extends ScanState {}
 
-// =========================
-// States للـ Count/Score
-// =========================
 class ScanCountLoading extends ScanState {}
 
 class ScanCountSuccess extends ScanState {
@@ -31,7 +27,5 @@ class ScanCountFailure extends ScanState {
   List<Object> get props => [message];
 }
 
-// =========================
-// States للـ Last Scan
-// =========================
+
 

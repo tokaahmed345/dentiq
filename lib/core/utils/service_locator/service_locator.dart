@@ -41,7 +41,7 @@ import 'package:dentiq/features/scan/data/repos/diseases_repo/diseases_repo.dart
 import 'package:dentiq/features/scan/data/repos/local_repo/local_repo.dart';
 import 'package:dentiq/features/scan/data/repos/scan_repo/scan_repo.dart';
 import 'package:dentiq/features/scan/data/repos/scan_repo/scan_repo_impl.dart';
-import 'package:dentiq/features/scan/presentation/view_model/cubit/scan_history_cubit.dart';
+import 'package:dentiq/features/scan/presentation/view_model/scan_history_cubit/scan_history_cubit.dart';
 import 'package:dentiq/features/scan/presentation/view_model/health_risk_cubit/health_risk_cubit.dart';
 import 'package:dentiq/features/scan/presentation/view_model/last_scan_cubit/last_scan_cubit.dart';
 import 'package:dentiq/features/scan/presentation/view_model/detection_cubit/detection_cubit.dart';
@@ -51,7 +51,7 @@ import 'package:dentiq/features/tips/data/repo/articles_repo/article_repo.dart';
 import 'package:dentiq/features/tips/data/repo/articles_repo/article_repo_impl.dart';
 import 'package:dentiq/features/tips/data/repo/video_repo/video_repo.dart';
 import 'package:dentiq/features/tips/data/repo/video_repo/video_repo_impl.dart';
-import 'package:dentiq/features/tips/presentation/view_model/cubit/articles_cubit.dart';
+import 'package:dentiq/features/tips/presentation/view_model/article_cubit/articles_cubit.dart';
 import 'package:dentiq/features/tips/presentation/view_model/videos_cubit/videos_cubit_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';

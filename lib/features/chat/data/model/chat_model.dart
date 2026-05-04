@@ -1,34 +1,4 @@
 
-// class ChatModel {
-
-//     List<Candidates>? candidates;
-//     UsageMetadata? usageMetadata;
-//     String? modelVersion;
-//     String? responseId;
-
-//     ChatModel({this.candidates, this.usageMetadata, this.modelVersion, this.responseId});
-
-//     ChatModel.fromJson(Map<String, dynamic> json) {
-//         candidates = json["candidates"] == null ? null : (json["candidates"] as List).map((e) => Candidates.fromJson(e)).toList();
-//         usageMetadata = json["usageMetadata"] == null ? null : UsageMetadata.fromJson(json["usageMetadata"]);
-//         modelVersion = json["modelVersion"];
-//         responseId = json["responseId"];
-//     }
-
-//     Map<String, dynamic> toJson() {
-//         final Map<String, dynamic> _data = <String, dynamic>{};
-//         if(candidates != null) {
-//             _data["candidates"] = candidates?.map((e) => e.toJson()).toList();
-//         }
-//         if(usageMetadata != null) {
-//             _data["usageMetadata"] = usageMetadata?.toJson();
-//         }
-//         _data["modelVersion"] = modelVersion;
-//         _data["responseId"] = responseId;
-//         return _data;
-//     }
-    
-// }
 
 class ChatModel {
   List<Candidates>? candidates;

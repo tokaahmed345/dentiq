@@ -8,7 +8,6 @@ import 'package:dentiq/core/utils/widgets/custom_text_form_field.dart';
 import 'package:dentiq/core/utils/widgets/snackbar.dart';
 import 'package:dentiq/features/auth/presentation/view_model/auth_cubit/log_in_cubit/log_in_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 

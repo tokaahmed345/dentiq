@@ -2,7 +2,7 @@
 import 'dart:io';
 
 import 'package:dentiq/core/utils/colors/app_colors.dart';
-import 'package:dentiq/features/scan/presentation/view_model/cubit/scan_history_cubit.dart';
+import 'package:dentiq/features/scan/presentation/view_model/scan_history_cubit/scan_history_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';

@@ -27,7 +27,7 @@ class ChatView extends StatelessWidget {
                   size: 27,
                 )),
             title: "Chat Assistant"),
-        body: ChatViewBody(),
+        body: const ChatViewBody(),
       ),
     );
   }

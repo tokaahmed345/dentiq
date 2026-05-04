@@ -1,10 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:dentiq/features/notifications/data/notifications_service.dart';
 import 'package:dentiq/features/reminder/data/models/dental_reminder_model.dart';
 import 'package:dentiq/features/reminder/data/repos/dental_remider_repo.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 part 'dental_reminder_state.dart';
 
@@ -51,20 +49,6 @@ final uniqueId =
 
       debugPrint('📝 Adding reminder with ID $uniqueId at $dateTime');
 
-      // 1️⃣ Force show immediately (للتأكد من عمل Notification plugin)
-      // await NotificationService.notifications.show(
-      //   uniqueId,
-      //   '🦷 Reminder Test',
-      //   'This shows immediately for debug',
-      //   const NotificationDetails(
-      //     android: AndroidNotificationDetails(
-      //       'reminder_channel',
-      //       'Reminders',
-      //       importance: Importance.max,
-      //       priority: Priority.high,
-      //     ),
-      //   ),
-      // );
 
      
 

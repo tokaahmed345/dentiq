@@ -19,7 +19,7 @@ class LogInView extends StatelessWidget {
             padding: EdgeInsets.only(
               bottom: MediaQuery.of(context).viewInsets.bottom + 20,
             ),
-            child: SafeArea(
+            child: const SafeArea(
               child: LogInViewBody(),
             ),
           ),
