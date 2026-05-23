@@ -118,7 +118,6 @@
 <td><img src="screenshots/tips2.jpg" width="200"/></td>
 
 </tr>
-
 <tr>
 <td><img src="screenshots/splash.jpg" width="200"/></td>
 <td><img src="screenshots/onboarding.jpg" width="200"/></td>
@@ -129,6 +128,23 @@
 <td><img src="screenshots/tips_guidelines.jpg" width="200"/></td>
 </tr>
 
+<tr>
+<td><img src="screenshots/Recording_20260523_183403.jpg" width="200"/></td>
+<td><img src="screenshots/Recording_20260523_183415.jpg" width="200"/></td>
+<td><img src="screenshots/Recording_20260523_183354.jpg" width="200"/></td>
+<td><img src="screenshots/Recording_20260523_183349.jpg" width="200"/></td>
+<td><img src="screenshots/Recording_20260523_183324.jpg" width="200"/></td>
+
+</tr>
+
+
+<tr>
+<td><img src="screenshots/Recording_20260523_183250.jpg" width="200"/></td>
+ <td><img src="screenshots/Recording_20260523_183228.jpg" width="200"/></td>
+ <td><img src="screenshots/Recording_20260523_183238.jpg" width="200"/></td>
+
+<td><img src="screenshots/Recording_20260523_183256.jpg" width="200"/></td>
+</tr>
 <tr>
 <td><img src="screenshots/login.jpg" width="200"/></td>
 <td><img src="screenshots/sign_up.jpg" width="200"/></td>
@@ -186,6 +202,15 @@
         <li>Authentication system (Login/Signup/Logout/Forgot Password)</li>
         <li>Splash & Onboarding screens</li>
         <li>User profile management</li>
+    </ul>
+</div>
+<div class="box">
+    <h2>🎨 Light & Dark Mode</h2>
+    <ul>
+        <li>Supports both Light & Dark themes</li>
+        <li>Improves user experience in different lighting conditions</li>
+        <li>Automatically adapts based on system settings (optional)</li>
+        <li>Provides consistent and modern UI design</li>
     </ul>
 </div>
 

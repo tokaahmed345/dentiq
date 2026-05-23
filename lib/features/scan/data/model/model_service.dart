@@ -1,10 +1,7 @@
-
-
-import 'dart:typed_data';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
 import 'package:image/image.dart' as img;
-
 import '../model/prediction_model.dart';
 
 class ModelService {
@@ -22,9 +19,13 @@ class ModelService {
       _labels = labelData.split('\n');
 
       _isInitialized = true;
-      print("Model initialized successfully from assets!");
+      if (kDebugMode) {
+        print("Model initialized successfully from assets!");
+      }
     } catch (e) {
-      print("Failed to initialize model from assets: $e");
+      if (kDebugMode) {
+        print("Failed to initialize model from assets: $e");
+      }
     }
   }
 
