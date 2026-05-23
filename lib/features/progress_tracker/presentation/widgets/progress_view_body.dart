@@ -94,9 +94,7 @@ class ProgressViewBody extends StatelessWidget {
                         Text(state.message,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16)),
-                        // const SizedBox(height: 4),
-                        // Text("Streak: ${state.streak} days",
-                        //     style: const TextStyle(fontSize: 14)),
+                    
                       ],
                     ),
                   ),

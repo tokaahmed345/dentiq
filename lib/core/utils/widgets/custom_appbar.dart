@@ -8,14 +8,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     required this.title,
     this.subtitle,
-    this.onNotificationTap,
+    this.onTap,
     this.bottom,
     this.suffixIcon, this.arrowBack, this.suffixIconWidget,
   });
 
   final String title;
   final String? subtitle;
-  final VoidCallback? onNotificationTap;
+  final VoidCallback? onTap;
   final PreferredSizeWidget? bottom;
 final IconData ?suffixIcon;
 final Widget ?arrowBack;
@@ -59,9 +59,9 @@ final Widget? suffixIconWidget;
               ],
             ),
           ),
-          if (onNotificationTap != null)
+          if (onTap != null)
             GestureDetector(
-              onTap: onNotificationTap,
+              onTap: onTap,
               child: Container(
                 width: 44,
                 height: 44,

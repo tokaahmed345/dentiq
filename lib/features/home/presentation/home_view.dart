@@ -39,10 +39,10 @@ class HomeViewState extends State<HomeView> {
         return CustomAppBar(
           title: "DentIQ",
           subtitle: "Your smile, our priority",
-          onNotificationTap: () {
+          onTap: () {
 
           },
-    suffixIconWidget: notificationIcon(context), 
+    suffixIconWidget: SuffixIcon(context), 
         );
 
       case 1:
@@ -82,7 +82,7 @@ class HomeViewState extends State<HomeView> {
       ),
     );
   }
-Widget notificationIcon(BuildContext context) {
+Widget SuffixIcon(BuildContext context) {
 
   return Stack(
     children: [
