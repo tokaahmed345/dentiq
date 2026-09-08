@@ -2,7 +2,7 @@
 <html lang="en">
 <body>
 
-<h1>🦷 Dentiq - Smart Dental Care App</h1>
+<h1> 🦷 Dentiq - Smart Dental Care App</h1>
 
 <div class="box">
     <h2>📌 Overview</h2>
