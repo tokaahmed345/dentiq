@@ -6,7 +6,7 @@ import 'package:dentiq/features/auth/data/repos/sign_up_repo/sign_up_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class SignUpRepoImpl extends SignUpRepo {
+class SignUpRepoImpl implements SignUpRepo {
   final FirebaseAuth firebaseAuth;
   final FirebaseFirestore firestore;
   final SharedPrefs sharedPrefs;

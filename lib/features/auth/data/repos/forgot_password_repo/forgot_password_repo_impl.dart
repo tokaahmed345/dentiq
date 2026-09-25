@@ -3,7 +3,7 @@ import 'package:dentiq/core/utils/failure/failure.dart';
 import 'package:dentiq/features/auth/data/repos/forgot_password_repo/forgot_password.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class ForgotPasswordRepoImpl extends ForgotPasswordRepo {
+class ForgotPasswordRepoImpl implements ForgotPasswordRepo {
   final FirebaseAuth firebaseAuth;
 
   ForgotPasswordRepoImpl(this.firebaseAuth);
