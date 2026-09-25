@@ -220,6 +220,9 @@
         Developed by <b>Toka Ahmed</b><br>
         Flutter Mobile Developer
     </p>
+     <p>
+        🔗 AI Model Repository: <a href="https://github.com/tokaahmed345/Dental-Disease-Classification-Mode" target="_blank">Dental-Disease-Classification-Model</a>
+    </p>
 </div>
 
 </body>
