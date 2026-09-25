@@ -5,7 +5,7 @@ import 'package:dentiq/features/auth/data/model/log_in_model.dart';
 import 'package:dentiq/features/auth/data/repos/log_in_repo/log_in_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class LogInRepoImpl extends LogInRepo {
+class LogInRepoImpl implements LogInRepo {
   final FirebaseAuth firebaseAuth;
 final SharedPrefs sharedPrefs;
   LogInRepoImpl({

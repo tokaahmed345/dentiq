@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dentiq/core/utils/service/api_service.dart';
 import 'package:dentiq/core/utils/service/dio_consumer.dart';
@@ -59,89 +58,112 @@ import 'package:get_it/get_it.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 final getIt = GetIt.instance;
-void setUp(){
-  getIt.registerLazySingleton<FirebaseAuth>(()=>FirebaseAuth.instance);
-  getIt.registerLazySingleton<SupabaseClient>(()=>Supabase.instance.client);
+void setUp() {
+  getIt.registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance);
+  getIt.registerLazySingleton<SupabaseClient>(() => Supabase.instance.client);
 
-    getIt.registerLazySingleton<FirebaseFirestore>(()=>FirebaseFirestore.instance);
-getIt.registerLazySingleton<SharedPrefs>(() => SharedPrefs());
+  getIt.registerLazySingleton<FirebaseFirestore>(
+      () => FirebaseFirestore.instance);
+  getIt.registerLazySingleton<SharedPrefs>(() => SharedPrefs());
   getIt.registerLazySingleton<Dio>(() => Dio());
+  getIt.registerLazySingleton<ApiService>(() => DioConsumer(dio: getIt<Dio>()));
+  getIt.registerLazySingleton<SignUpRepo>(() => SignUpRepoImpl(
+      firebaseAuth: getIt.get<FirebaseAuth>(),
+      firestore: getIt.get<FirebaseFirestore>(),
+      sharedPrefs: getIt.get<SharedPrefs>()));
+  getIt
+      .registerFactory<SignUpCubit>(() => SignUpCubit(getIt.get<SignUpRepo>()));
+  getIt.registerLazySingleton<LogInRepo>(() => LogInRepoImpl(
+        firebaseAuth: getIt.get<FirebaseAuth>(),
+        sharedPrefs: getIt.get<SharedPrefs>(),
+      ));
+  getIt.registerFactory<LogInCubit>(() => LogInCubit(getIt.get<LogInRepo>()));
+  getIt.registerLazySingleton<ForgotPasswordRepo>(() => ForgotPasswordRepoImpl(
+        getIt.get<FirebaseAuth>(),
+      ));
+  getIt.registerFactory<ForgotPasswordCubit>(
+      () => ForgotPasswordCubit(getIt.get<ForgotPasswordRepo>()));
 
-  getIt.registerLazySingleton<ApiService>(
-      () => DioConsumer(dio: getIt<Dio>()));
-  getIt.registerLazySingleton<SignUpRepo>(()=>SignUpRepoImpl(firebaseAuth:  getIt.get<FirebaseAuth>(), firestore:getIt.get<FirebaseFirestore>(), sharedPrefs: getIt.get<SharedPrefs>() ));
-  getIt.registerFactory<SignUpCubit>(()=>SignUpCubit(getIt.get<SignUpRepo>()));
-   getIt.registerLazySingleton<LogInRepo>(()=>LogInRepoImpl(firebaseAuth:  getIt.get<FirebaseAuth>(), sharedPrefs:getIt.get<SharedPrefs>()  ,  ));
-  getIt.registerFactory<LogInCubit>(()=>LogInCubit( getIt.get<LogInRepo>()));
-    getIt.registerLazySingleton<ForgotPasswordRepo>(()=>ForgotPasswordRepoImpl(  getIt.get<FirebaseAuth>(),  ));
-  getIt.registerFactory<ForgotPasswordCubit>(()=>ForgotPasswordCubit( getIt.get<ForgotPasswordRepo>()));
- 
-     getIt.registerLazySingleton<VideoRepo>(()=>VideoRepoImpl( firebaseFirestore:  getIt.get<FirebaseFirestore>(),  ));
-  getIt.registerFactory<VideosCubit>(()=>VideosCubit( getIt.get<VideoRepo>()));
- 
+  getIt.registerLazySingleton<VideoRepo>(() => VideoRepoImpl(
+        firebaseFirestore: getIt.get<FirebaseFirestore>(),
+      ));
+  getIt.registerFactory<VideosCubit>(() => VideosCubit(getIt.get<VideoRepo>()));
 
-      getIt.registerLazySingleton<ArticleRepo>(()=>ArticleRepoImpl( firebaseFirestore:  getIt.get<FirebaseFirestore>(),  ));
-  getIt.registerFactory<ArticlesCubit>(()=>ArticlesCubit( getIt.get<ArticleRepo>()));
- 
- 
-      getIt.registerLazySingleton<ProgressRepo>(()=>DailyProgressRepoImpl( firestore:  getIt.get<FirebaseFirestore>(), sharedPreferences: getIt.get<SharedPrefs>() ));
-  getIt.registerFactory<ProgressTrackerCubit>(()=>ProgressTrackerCubit( getIt.get<ProgressRepo>()));
- 
+  getIt.registerLazySingleton<ArticleRepo>(() => ArticleRepoImpl(
+        firebaseFirestore: getIt.get<FirebaseFirestore>(),
+      ));
+  getIt.registerFactory<ArticlesCubit>(
+      () => ArticlesCubit(getIt.get<ArticleRepo>()));
 
+  getIt.registerLazySingleton<ProgressRepo>(() => DailyProgressRepoImpl(
+      firestore: getIt.get<FirebaseFirestore>(),
+      sharedPreferences: getIt.get<SharedPrefs>()));
+  getIt.registerFactory<ProgressTrackerCubit>(
+      () => ProgressTrackerCubit(getIt.get<ProgressRepo>()));
 
-       getIt.registerLazySingleton<DentalRemiderRepo>(()=>DentalReminderRepoImpl( firestore:  getIt.get<FirebaseFirestore>(), sharedPreferences: getIt.get<SharedPrefs>() ));
-getIt.registerLazySingleton<DentalReminderCubit>(
-  () => DentalReminderCubit(
-   getIt.get<DentalRemiderRepo>(),
-
-  ),
-);
- 
-       getIt.registerLazySingleton<ProfileHeaderRepo>(()=>ProfileHeaderRepoImpl( firebaseAuth:  getIt.get<FirebaseAuth>(), sharedPrefs: getIt.get<SharedPrefs>() ,supabase: getIt.get<SupabaseClient>()));
-  getIt.registerFactory<ProfileHeaderCubit>(()=>ProfileHeaderCubit(repo:  getIt.get<ProfileHeaderRepo>(), firebaseAuth: getIt.get<FirebaseAuth>()));
- 
-
- 
-       getIt.registerLazySingleton<ProfileInfoRepo>(()=>ProfileRepoImpl( firebaseAuth:  getIt.get<FirebaseAuth>(), firestore: getIt.get<FirebaseFirestore>()));
-  getIt.registerFactory<ProfileInfoCubit>(()=>ProfileInfoCubit(  getIt.get<ProfileInfoRepo>()));
- 
-     getIt.registerLazySingleton<LogoutRepo>(()=>LogoutRepoImpl( firebaseAuth:  getIt.get<FirebaseAuth>(), ));
-  getIt.registerFactory<LogOutCubit>(()=>LogOutCubit(  getIt.get<LogoutRepo>()));
-  getIt.registerFactory<ReminderHistoryCubit>(()=>ReminderHistoryCubit(  getIt.get<DentalRemiderRepo>()));
-   getIt.registerFactory<ProgressHomeTrackerCubit>(()=>ProgressHomeTrackerCubit(  getIt.get<ProgressRepo>(),getIt.get<DentalRemiderRepo>()),);
-
+  getIt.registerLazySingleton<DentalRemiderRepo>(() => DentalReminderRepoImpl(
+      firestore: getIt.get<FirebaseFirestore>(),
+      sharedPreferences: getIt.get<SharedPrefs>()));
+  getIt.registerLazySingleton<DentalReminderCubit>(
+    () => DentalReminderCubit(
+      getIt.get<DentalRemiderRepo>(),
+    ),
+  );
+  getIt.registerLazySingleton<ProfileHeaderRepo>(() => ProfileHeaderRepoImpl(
+      firebaseAuth: getIt.get<FirebaseAuth>(),
+      sharedPrefs: getIt.get<SharedPrefs>(),
+      supabase: getIt.get<SupabaseClient>()));
+  getIt.registerFactory<ProfileHeaderCubit>(() => ProfileHeaderCubit(
+      repo: getIt.get<ProfileHeaderRepo>(),
+      firebaseAuth: getIt.get<FirebaseAuth>()));
+  getIt.registerLazySingleton<ProfileInfoRepo>(() => ProfileRepoImpl(
+      firebaseAuth: getIt.get<FirebaseAuth>(),
+      firestore: getIt.get<FirebaseFirestore>()));
+  getIt.registerFactory<ProfileInfoCubit>(
+      () => ProfileInfoCubit(getIt.get<ProfileInfoRepo>()));
+  getIt.registerLazySingleton<LogoutRepo>(() => LogoutRepoImpl(
+        firebaseAuth: getIt.get<FirebaseAuth>(),
+      ));
+  getIt
+      .registerFactory<LogOutCubit>(() => LogOutCubit(getIt.get<LogoutRepo>()));
+  getIt.registerFactory<ReminderHistoryCubit>(
+      () => ReminderHistoryCubit(getIt.get<DentalRemiderRepo>()));
+  getIt.registerFactory<ProgressHomeTrackerCubit>(
+    () => ProgressHomeTrackerCubit(
+        getIt.get<ProgressRepo>(), getIt.get<DentalRemiderRepo>()),
+  );
   getIt.registerLazySingleton<ModelService>(() => ModelService());
-getIt.registerLazySingleton<DetectionRepository>(
+  getIt.registerLazySingleton<DetectionRepository>(
     () => DetectionRepositoryImpl(getIt<ModelService>()),
   );
   getIt.registerLazySingleton<LocalScanRepo>(
     () => LocalScanRepo(),
   );
 
-    getIt.registerFactory(() => DetectionCubit(getIt<DetectionRepository>(), scanRepo: getIt.get<ScanRepo>(), localScanRepo:getIt.get<LocalScanRepo>() ));
+  getIt.registerFactory(() => DetectionCubit(getIt<DetectionRepository>(),
+      scanRepo: getIt.get<ScanRepo>(),
+      localScanRepo: getIt.get<LocalScanRepo>()));
 
-
-getIt.registerLazySingleton<DiseaseRepo>(
+  getIt.registerLazySingleton<DiseaseRepo>(
     () => DiseaseRepoImpl(getIt.get<FirebaseFirestore>()),
   );
-    getIt.registerFactory(() => DiseasesCubit( getIt<DiseaseRepo>()));
+  getIt.registerFactory(() => DiseasesCubit(getIt<DiseaseRepo>()));
 
-
-
-getIt.registerLazySingleton<ScanRepo>(
-    () => ScanRepoImpl(getIt.get<FirebaseFirestore>(), supabase: getIt.get<SupabaseClient>() ),
+  getIt.registerLazySingleton<ScanRepo>(
+    () => ScanRepoImpl(getIt.get<FirebaseFirestore>(),
+        supabase: getIt.get<SupabaseClient>()),
   );
-    getIt.registerFactory(() => ScanCubit( getIt<ScanRepo>()));
+  getIt.registerFactory(() => ScanCubit(getIt<ScanRepo>()));
 
-    getIt.registerFactory(() => LastScanCubit( getIt<ScanRepo>()));
-    getIt.registerFactory(() => HealthRiskCubit( getIt<ScanRepo>()));
-   
-   getIt.registerLazySingleton<ChatRepo>(
+  getIt.registerFactory(() => LastScanCubit(getIt<ScanRepo>()));
+  getIt.registerFactory(() => HealthRiskCubit(getIt<ScanRepo>()));
+
+  getIt.registerLazySingleton<ChatRepo>(
     () => ChatRepoImpl(apiService: getIt.get<ApiService>()),
   );
-    getIt.registerFactory(() => ChatCubit( getIt<ChatRepo>()));
+  getIt.registerFactory(() => ChatCubit(getIt<ChatRepo>()));
 
-    getIt.registerFactory(() => ScanHistoryCubit( getIt<ScanRepo>(),getIt.get<LocalScanRepo>()));
-    getIt.registerFactory(() => ThemeCubit( ));
-
+  getIt.registerFactory(
+      () => ScanHistoryCubit(getIt<ScanRepo>(), getIt.get<LocalScanRepo>()));
+  getIt.registerFactory(() => ThemeCubit());
 }
