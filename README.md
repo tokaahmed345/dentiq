@@ -1,16 +1,226 @@
-# dentiq
+<!DOCTYPE html>
+<html lang="en">
+<body>
 
-A new Flutter project.
+<h1> 🦷 Dentiq - Smart Dental Care App</h1>
 
-## Getting Started
+<div class="box">
+    <h2>📌 Overview</h2>
+    <p>
+        Dentiq is a smart mobile application designed to help users monitor and improve their dental health.
+        The app uses a deep learning model to scan dental images and detect common oral diseases.
+    </p>
+    <p>
+        It also integrates an AI-powered chatbot using Gemini, allowing users to ask dental-related questions
+        and receive intelligent, real-time assistance.
+    </p>
+</div>
 
-This project is a starting point for a Flutter application.
+<div class="box">
+    <h2>🚀 App Flow (Authentication Journey)</h2>
+    <ul>
+        <li>✨ Splash Screen (App loading & branding)</li>
+        <li>📖 Onboarding Screens (App introduction & features)</li>
+        <li>🔐 Authentication System:
+            <ul>
+                <li>Login</li>
+                <li>Sign Up</li>
+                <li>Forgot Password (Reset via Firebase)</li>
+                <li>Logout</li>
+            </ul>
+        </li>
+        <li>👤 User Profile Management</li>
+    </ul>
+</div>
 
-A few resources to get you started if this is your first Flutter project:
+<div class="box">
+    <h2>🧠 AI Disease Detection</h2>
+    <ul>
+        <li>Scan dental images using camera or gallery</li>
+        <li>Detect diseases:
+            <ul>
+                <li>Calculus</li>
+                <li>Gingivitis</li>
+                <li>Mouth Ulcer</li>
+                <li>Caries</li>
+            </ul>
+        </li>
+        <li>Powered by MobileNetV2 model</li>
+        <li>Displays prediction with confidence score</li>
+    </ul>
+</div>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<div class="box">
+    <h2>📊 Daily Tracker</h2>
+    <ul>
+        <li>Track daily dental care routines</li>
+        <li>Monitor progress over time</li>
+        <li>Encourage consistency and healthy habits</li>
+    </ul>
+</div>
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<div class="box">
+    <h2>⏰ Reminder System</h2>
+    <ul>
+        <li>Create dental care reminders</li>
+        <li>Status tracking:
+            <ul>
+                <li>✅ Done</li>
+                <li>❌ Missed</li>
+            </ul>
+        </li>
+        <li>Reminder history tracking</li>
+    </ul>
+</div>
+
+<div class="box">
+    <h2>📜 History Management</h2>
+    <ul>
+        <li>View scan history</li>
+        <li>View reminder history</li>
+        <li>Track user activity over time</li>
+    </ul>
+</div>
+
+<div class="box">
+    <h2>🤖 AI Chatbot Assistant</h2>
+    <ul>
+        <li>Powered by Gemini AI</li>
+        <li>Answer dental-related questions</li>
+        <li>Real-time smart responses</li>
+        <li>Improve user experience & engagement</li>
+    </ul>
+</div>
+
+<div class="box">
+    <h2>💡 Tips & Guidance</h2>
+    <ul>
+        <li>Dental care tips</li>
+        <li>Video tutorials</li>
+        <li>Oral hygiene recommendations</li>
+    </ul>
+</div>
+
+
+    
+## 📱 App Screenshots
+
+<p align="center">
+
+<table>
+<tr>
+<td><img src="screenshots/scan.jpg" width="200"/></td>
+<td><img src="screenshots/scan2.jpg" width="200"/></td>
+<td><img src="screenshots/scan_detection.jpg" width="200"/></td>
+<td><img src="screenshots/scan_history.jpg" width="200"/></td>
+<td><img src="screenshots/tips_videos.jpg" width="200"/></td>
+
+<td><img src="screenshots/tips2.jpg" width="200"/></td>
+
+</tr>
+<tr>
+<td><img src="screenshots/splash.jpg" width="200"/></td>
+<td><img src="screenshots/onboarding.jpg" width="200"/></td>
+<td><img src="screenshots/onboarding2.jpg" width="200"/></td>
+<td><img src="screenshots/onboarding3.jpg" width="200"/></td>
+<td><img src="screenshots/tips_article.jpg" width="200"/></td>
+
+<td><img src="screenshots/tips_guidelines.jpg" width="200"/></td>
+</tr>
+
+<tr>
+<td><img src="screenshots/Recording_20260523_183403.jpg" width="200"/></td>
+<td><img src="screenshots/Recording_20260523_183415.jpg" width="200"/></td>
+<td><img src="screenshots/Recording_20260523_183354.jpg" width="200"/></td>
+<td><img src="screenshots/Recording_20260523_183349.jpg" width="200"/></td>
+<td><img src="screenshots/Recording_20260523_183324.jpg" width="200"/></td>
+
+</tr>
+
+
+<tr>
+<td><img src="screenshots/Recording_20260523_183250.jpg" width="200"/></td>
+ <td><img src="screenshots/Recording_20260523_183228.jpg" width="200"/></td>
+ <td><img src="screenshots/Recording_20260523_183238.jpg" width="200"/></td>
+
+<td><img src="screenshots/Recording_20260523_183256.jpg" width="200"/></td>
+</tr>
+<tr>
+<td><img src="screenshots/login.jpg" width="200"/></td>
+<td><img src="screenshots/sign_up.jpg" width="200"/></td>
+<td><img src="screenshots/signup2.jpg" width="200"/></td>
+<td><img src="screenshots/forget_pass.jpg" width="200"/></td>
+<td><img src="screenshots/profile.jpg" width="200"/></td>
+<td><img src="screenshots/personal page.jpg" width="200"/></td>
+
+</tr>
+
+
+
+<tr>
+<td><img src="screenshots/reminder.jpg" width="200"/></td>
+<td><img src="screenshots/done_reminder.jpg" width="200"/></td>
+<td><img src="screenshots/chat_bot.jpg" width="200"/></td>
+<td><img src="screenshots/log_out.jpg" width="200"/></td>
+<td><img src="screenshots/reminder_history.jpg" width="200"/></td>
+<td><img src="screenshots/home.jpg" width="200"/></td>
+
+</tr>
+<tr>
+<td><img src="screenshots/chat2.jpg" width="200"/></td>
+<td><img src="screenshots/chat3.jpg" width="200"/></td>
+<td><img src="screenshots/reminder2.jpg" width="200"/></td>
+<td><img src="screenshots/reminder3.jpg" width="200"/></td>
+<td><img src="screenshots/reminder4.jpg" width="200"/></td>
+<td><img src="screenshots/reminder5.jpg" width="200"/></td>
+
+
+</tr>
+</table>
+
+</p>
+</div>
+<div class="box">
+    <h2>⚙️ Technologies Used</h2>
+    <ul>
+        <li>Flutter</li>
+        <li>Firebase (Auth + Firestore)</li>
+        <li>TensorFlow / Keras</li>
+        <li>MobileNetV2</li>
+        <li>MVVM Architecture + Cubit</li>
+    </ul>
+</div>
+
+<div class="box">
+    <h2>🚀 Features Summary</h2>
+    <ul>
+        <li>AI disease detection system</li>
+        <li>Daily tracker & habits</li>
+        <li>Smart reminder system</li>
+        <li>History tracking</li>
+        <li>AI chatbot (Gemini)</li>
+        <li>Authentication system (Login/Signup/Logout/Forgot Password)</li>
+        <li>Splash & Onboarding screens</li>
+        <li>User profile management</li>
+    </ul>
+</div>
+<div class="box">
+    <h2>🎨 Light & Dark Mode</h2>
+    <ul>
+        <li>Supports both Light & Dark themes</li>
+        <li>Improves user experience in different lighting conditions</li>
+        <li>Automatically adapts based on system settings (optional)</li>
+        <li>Provides consistent and modern UI design</li>
+    </ul>
+</div>
+
+<div class="box">
+    <h2>👩‍💻 Developer</h2>
+    <p>
+        Developed by <b>Toka Ahmed</b><br>
+        Flutter Mobile Developer
+    </p>
+</div>
+
+</body>
+</html>
